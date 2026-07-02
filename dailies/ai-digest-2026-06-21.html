@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAILY.DIGEST.EXE — June 21, 2026</title>
+<style>
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+
+  --color-bg-page:    #f5f5f3;
+  --color-bg-surface: #ffffff;
+  --color-text-primary:   #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted:     #999999;
+  --color-border:         #e8e8e5;
+  --color-border-light:   #f0f0ee;
+
+  --cat-safety:      #E24B4A;
+  --cat-safety-text: #991b1b;
+  --cat-tools:       #1D9E75;
+  --cat-tools-text:  #065f46;
+  --cat-models:      #378ADD;
+  --cat-models-text: #1e40af;
+  --cat-biz:         #BA7517;
+  --cat-biz-text:    #78350f;
+
+  --src-importai-bg:      #F3F0FF;
+  --src-importai-text:    #4C3D99;
+  --src-importai-border:  #C4B5F4;
+  --src-rundown-bg:       #F0FDF4;
+  --src-rundown-text:     #166534;
+  --src-rundown-border:   #86EFAC;
+  --src-tldr-bg:          #FFF7ED;
+  --src-tldr-text:        #9A3412;
+  --src-tldr-border:      #FDBA74;
+  --src-interconnects-bg:   #F0F9FF;
+  --src-interconnects-text: #0C4A6E;
+  --src-interconnects-border: #7DD3FC;
+
+  --signal-bg:     #FEF3C7;
+  --signal-text:   #92400E;
+  --signal-border: #FCD34D;
+
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-lg:   18px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+
+  --leading-tight:   1.3;
+  --leading-base:    1.5;
+  --leading-relaxed: 1.68;
+
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+  --radius-pill: 999px;
+
+  --page-width: 820px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  line-height: var(--leading-base);
+}
+
+.page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  background: var(--color-bg-surface);
+  min-height: 100vh;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+/* Header */
+.header {
+  padding: 1.75rem 2rem 1.25rem;
+  background: var(--color-bg-surface);
+  text-align: center;
+}
+.header-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+}
+.header-subtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: var(--leading-base);
+}
+.header-date {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 3px;
+}
+.header-rule {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 12px 0;
+}
+.header-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+  padding: 0 2rem;
+}
+.tab-btn {
+  padding: 11px 16px;
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-muted);
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn.active {
+  border-bottom-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+.tab-btn:hover:not(.active) { color: var(--color-text-secondary); }
+
+/* Tab content */
+.tab-content {
+  display: none;
+  padding: 1.5rem 2rem 3rem;
+}
+.tab-content.active { display: block; }
+
+/* Source filter bar */
+.source-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 2rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+}
+.filter-pill {
+  font-size: var(--text-xs);
+  padding: 3px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  cursor: pointer;
+  background: none;
+  font-family: var(--font-sans);
+  transition: opacity 0.15s, box-shadow 0.15s;
+  opacity: 0.7;
+}
+.filter-pill:hover { opacity: 1; }
+.filter-pill.active { opacity: 1; box-shadow: 0 0 0 2px currentColor; }
+
+.pill-importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.pill-rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.pill-tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.pill-interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+
+/* Category sections */
+.category-section { margin-bottom: 2rem; }
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--color-border-light);
+  margin-bottom: 0;
+}
+.cat-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.cat-name {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Stories */
+.story {
+  padding: 16px 0 14px;
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  gap: 14px;
+  transition: opacity 0.2s;
+}
+.story:last-child { border-bottom: none; }
+.story-bar {
+  width: 3px;
+  border-radius: 0;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 52px;
+}
+.story-inner { flex: 1; }
+.story-badges {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.signal-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--signal-bg);
+  color: var(--signal-text);
+  border: 1px solid var(--signal-border);
+  font-weight: 500;
+}
+.story-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  margin-bottom: 5px;
+  line-height: var(--leading-tight);
+}
+.story-title a { color: inherit; text-decoration: none; }
+.story-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.story-summary {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 9px;
+}
+.story-sources { display: flex; gap: 5px; flex-wrap: wrap; }
+.src-tag {
+  font-size: var(--text-xs);
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+}
+.src-tag.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.src-tag.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.src-tag.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.src-tag.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+
+/* Category color helpers */
+.dot-safety { background: var(--cat-safety); }
+.txt-safety { color: var(--cat-safety-text); }
+.bar-safety { background: var(--cat-safety); }
+.dot-tools  { background: var(--cat-tools); }
+.txt-tools  { color: var(--cat-tools-text); }
+.bar-tools  { background: var(--cat-tools); }
+.dot-models { background: var(--cat-models); }
+.txt-models { color: var(--cat-models-text); }
+.bar-models { background: var(--cat-models); }
+.dot-biz    { background: var(--cat-biz); }
+.txt-biz    { color: var(--cat-biz-text); }
+.bar-biz    { background: var(--cat-biz); }
+
+/* Deep dive cards */
+.dd-section-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  margin-top: 1.75rem;
+}
+.dd-section-label:first-child { margin-top: 0; }
+.dd-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 12px;
+}
+.dd-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.dd-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+}
+.dd-title a { color: inherit; text-decoration: none; }
+.dd-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.dd-src {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  flex-shrink: 0;
+}
+.dd-src.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.dd-src.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.dd-src.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.dd-src.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.dd-body {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+.dd-body p { margin-bottom: 8px; }
+.dd-body p:last-child { margin-bottom: 0; }
+.dd-body a { color: #1d4ed8; }
+.dd-body strong { color: var(--color-text-primary); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">🤖 DAILY.DIGEST.EXE</div>
+    <div class="header-subtitle">All the Beeps, Boops, and Breaking News</div>
+    <div class="header-date">June 21, 2026</div>
+    <hr class="header-rule">
+    <div class="header-meta">15 stories · 2 sources</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('main', this)">🤖 &nbsp;EXTRA! EXTRA! Read All About It!</button>
+    <button class="tab-btn" onclick="switchTab('deep', this)">🧠 &nbsp;Nerd Alert: You've Been Warned</button>
+  </div>
+
+  <!-- Source filter pills -->
+  <div class="source-bar">
+    <button class="filter-pill pill-importai"      onclick="filterSource('importai',      this)">Import AI</button>
+    <button class="filter-pill pill-rundown"        onclick="filterSource('rundown',        this)">Rundown AI</button>
+    <button class="filter-pill pill-tldr"           onclick="filterSource('tldr',           this)">TLDR AI</button>
+    <button class="filter-pill pill-interconnects"  onclick="filterSource('interconnects',  this)">Interconnects</button>
+  </div>
+
+  <!-- TAB 1: Main stories -->
+  <div class="tab-content active" id="tab-main">
+
+    <!-- Safety & Policy -->
+    <div class="category-section" id="main-safety">
+      <div class="cat-header">
+        <div class="cat-dot dot-safety"></div>
+        <span class="cat-name txt-safety">Safety &amp; Policy</span>
+      </div>
+
+      <div class="story" data-sources="importai">
+        <div class="story-bar bar-safety"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://importai.substack.com/p/import-ai-461-alignment-is-not-on" target="_blank">New Nonprofit Sequent Launches: "Alignment Is Not on Track"</a>
+          </div>
+          <div class="story-summary">Researchers from the UK AI Security Institute and alignment startup Timaeus have formed Sequent, a nonprofit with a blunt premise: ASI may arrive in a few years, and current alignment approaches won't be ready in time. They're targeting $100–150M in initial funding, planning to grow to 40–80 staff, and will pursue a portfolio of differentiated research bets — scalable oversight, learning theory, game theory, and personas — explicitly contrasting with the reactive empirical approach taken by frontier labs. The framing is pointed: existing lab methods "do not yield principled insight into if or when they will fail."</div>
+          <div class="story-sources">
+            <span class="src-tag importai">Import AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-safety"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://alignment.openai.com/beneficial-rl/" target="_blank">OpenAI: RL Training Can Deeply Entrench Beneficial Personas</a>
+          </div>
+          <div class="story-summary">OpenAI's alignment team finds that RL on realistic scenarios targeting beneficial behaviors produces broad, generalizable improvements across dozens of benchmarks — and those gains hold under adversarial pressure. The implication is significant: beneficial (or harmful) personas aren't just prompt-engineered in, they can be durably baked into a model's weights via RL training. This is both encouraging for alignment and a reminder that the same mechanism works in reverse.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-safety"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://huggingface.co/blog/ServiceNow/mosaicleaks" target="_blank">MosaicLeaks: Deep Research Agents Are Quietly Leaking Your Data</a>
+          </div>
+          <div class="story-summary">Deep research agents combining private documents with web retrieval leak sensitive information 34% of the time under standard setups — a real production risk, not a theoretical one. ServiceNow's PA-DR fix cuts leakage to 9.9% by rewarding agents for safe query construction at training time rather than relying on runtime prompts. The takeaway for enterprise RAG deployments: your agents may be exfiltrating data every time they search the web.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-safety"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://deepmind.google/blog/securing-the-future-of-ai-agents/" target="_blank">Google DeepMind's AI Control Roadmap: Defense in Depth for Internal Agents</a>
+          </div>
+          <div class="story-summary">Google DeepMind published a framework for managing advanced AI at the system level — sandboxing, endpoint security, prompt injection resistance — that provides assurance "even if alignment isn't perfect." Notably, internal agents are explicitly treated as potentially misaligned by default, not trusted. It's the AI equivalent of zero-trust networking: assume breach, then contain.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools & Products -->
+    <div class="category-section" id="main-tools">
+      <div class="cat-header">
+        <div class="cat-dot dot-tools"></div>
+        <span class="cat-name txt-tools">Tools &amp; Products</span>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-tools"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://claude.com/blog/artifacts-in-claude-code" target="_blank">Claude Code Now Generates Live, Shareable Artifacts</a>
+          </div>
+          <div class="story-summary">Claude Code can now produce "artifacts" — persistent visual pages from coding sessions covering things like PR walkthroughs, architecture explainers, and change summaries. They auto-refresh as the session updates and come with version history and privacy controls. Currently in beta for Team and Enterprise. This moves Claude Code closer to a proper async collaboration tool rather than a local coding assistant.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-tools"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://www.perplexity.ai/hub/blog/self-improving-memory-for-agents" target="_blank">Perplexity Brain: Persistent Context Graphs for AI Agents</a>
+          </div>
+          <div class="story-summary">Perplexity launched Brain, a memory system that builds a persistent context graph across tasks, projects, files, and decisions — so agents start with relevant context instead of blank-slate sessions. Every memory links back to its original source, and the system continuously updates knowledge over time. The practical upshot: fewer tokens burned on re-establishing context at the start of each run.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-tools"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://www.engadget.com/2196998/midjourney-full-body-ultrasonic-scanner/" target="_blank">Midjourney Is Building a Full-Body Medical Scanner (Seriously)</a>
+          </div>
+          <div class="story-summary">Midjourney's latest project has nothing to do with image generation: it's a medical ultrasonic scanner that maps an entire human body in under 60 seconds at near-MRI resolution — roughly 100x faster than traditional MRI. The company is building spas to house the machines. Pivot of the year, easily.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-tools"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://www.testingcatalog.com/mistral-ai-to-get-code-and-apps-features-on-vibe/" target="_blank">Mistral Vibe Adds Code Editor and App Builder</a>
+          </div>
+          <div class="story-summary">Mistral is expanding Vibe beyond chat with a CODE section for browser-based coding and an APPS area for building and sharing applications. Mistral continues chasing the full-stack AI product play rather than staying API-only.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Models & Research -->
+    <div class="category-section" id="main-models">
+      <div class="cat-header">
+        <div class="cat-dot dot-models"></div>
+        <span class="cat-name txt-models">Models &amp; Research</span>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://www.testingcatalog.com/openai-prepares-gpt-5-6-models-for-the-upcoming-release/" target="_blank">GPT-5.6 Dropping Next Week: 1.5M Context, Aggressive Pricing</a>
+          </div>
+          <div class="story-summary">OpenAI is reportedly preparing to ship GPT-5.6 (possibly with Mini and Pro variants) next week. Key upgrades include a 1.5M token context window, better long-horizon coding, and faster Codex response times. Pricing is reportedly structured to undercut Anthropic — a timely move as US regulatory issues are reportedly constraining Claude Fable 5 availability.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="importai">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://importai.substack.com/p/import-ai-461-alignment-is-not-on" target="_blank">FrontierCode: A Coding Benchmark Built to Actually Last</a>
+          </div>
+          <div class="story-summary">Cognition (makers of Devin) released FrontierCode, 150 coding tasks hand-curated by 20 open-source maintainers at 40+ hours per task, graded on full code quality — correctness, test coverage, style, scope discipline. Best score on the hardest "Diamond" tier: Claude Opus 4.8 at 13.4%. Jack Clark predicts 70%+ won't happen until mid-2027, though newer Fable-class numbers at ~30% suggest that timeline may be optimistic.</div>
+          <div class="story-sources">
+            <span class="src-tag importai">Import AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="importai">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://importai.substack.com/p/import-ai-461-alignment-is-not-on" target="_blank">Xiaomi Hits 1,000 Tokens/Second on Commodity Hardware</a>
+          </div>
+          <div class="story-summary">Xiaomi's MiMo-V2.5-Pro-UltraSpeed is a 1 trillion-parameter model running at 1,000 tok/s on an 8-GPU commodity node — no Cerebras-style specialized hardware needed. The recipe: FP4 quantization, DFlash speculative decoding (block-level masked parallel prediction), and tight co-design with Tile AI's TileRT inference software. At this speed, real-time large-scale code refactoring becomes plausible. It's also another data point on how Chinese labs are wringing maximum performance out of export-controlled hardware.</div>
+          <div class="story-sources">
+            <span class="src-tag importai">Import AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://byungkwanlee.github.io/ZPPO-page/" target="_blank">ZPPO: Replay Buffers for Hard Training Questions</a>
+          </div>
+          <div class="story-summary">ZPPO stores difficult training questions in a replay buffer so models revisit them repeatedly rather than seeing each hard example once. Early results show improved accuracy on challenging rollouts. It's a simple curriculum-learning idea — the kind of thing that often turns out to be surprisingly effective once someone actually runs it.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Business & Industry -->
+    <div class="category-section" id="main-biz">
+      <div class="cat-header">
+        <div class="cat-dot dot-biz"></div>
+        <span class="cat-name txt-biz">Business &amp; Industry</span>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-biz"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://www.cnbc.com/2026/06/18/yann-lecun-elon-musk-xai-failure-ai-labs-bubble-risk.html" target="_blank">LeCun: xAI Is a Failure, AI Labs Risk a "Big Bubble Explosion"</a>
+          </div>
+          <div class="story-summary">Yann LeCun publicly called xAI a failure unable to compete with OpenAI and Anthropic, citing Musk's difficulty recruiting top talent and dependence on rented infrastructure. He also issued a broader warning: AI labs that can't raise prices or cut costs face a "big bubble explosion" from high operational expenses. Coming from the chief AI scientist at Meta — not exactly a disinterested party — but the unit economics concern is real regardless of source.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-biz"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            Google Is Renting TPU Compute to Anthropic
+          </div>
+          <div class="story-summary">Google is providing TPU computing capacity to Anthropic at a data center in Western New York — following NVIDIA's model of selling inference capacity externally. Google pivoted to commercializing TPUs roughly two years ago and its AI infrastructure team is now focused on improving chip performance for external sale. This makes Google both a key investor in and a compute vendor to Anthropic simultaneously.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-biz"></div>
+        <div class="story-inner">
+          <div class="story-title">
+            <a href="https://www.cnbc.com/2026/06/18/no-poaching-our-people-chinas-deepseek-reportedly-tells-investors.html" target="_blank">DeepSeek to Investors: Don't Poach Our Staff</a>
+          </div>
+          <div class="story-summary">DeepSeek reportedly told potential investors not to recruit its employees or encourage them to start competing companies. Unusual terms for an investment relationship — and a sign of how seriously DeepSeek is treating talent retention as a strategic asset rather than just a cost.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TAB 2: Deep dives -->
+  <div class="tab-content" id="tab-deep">
+
+    <div class="dd-section-label">Safety &amp; Policy</div>
+
+    <div class="dd-card" data-sources="importai">
+      <div class="dd-top">
+        <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-461-alignment-is-not-on" target="_blank">Sequent: A New Alignment Nonprofit Built on the Premise That Labs Won't Get There in Time</a></div>
+        <span class="dd-src importai">Import AI</span>
+      </div>
+      <div class="dd-body">
+        <p>Researchers from the UK AI Security Institute's alignment team and the independent alignment startup Timaeus announced the formation of <strong>Sequent</strong>, a nonprofit organization targeting one of the hardest open problems in AI: how to be principled confident that alignment observed in controlled settings — training, evals — actually generalizes to real-world deployments, including long-horizon agentic tasks and eventually recursive self-improvement scenarios.</p>
+        <p>The founding premise is explicit and sobering: "Artificial superintelligence may be developed in the next few years. It is unclear whether alignment is on track to be ready on the same timeframe." This isn't just pessimism — it reflects a specific critique of how frontier labs do alignment work. Sequent characterizes current lab methods as "essentially reactive, resulting in methods that, while functional, do not yield principled insight into if or when they will fail." Reactive means: observe failure, patch it, repeat. Principled means: prove the approach is robust before you need it to be.</p>
+        <p>The organization is planning to grow to <strong>40–80 full-time researchers</strong>, raise $100–150M initially (with plans to raise "at least one order of magnitude more" if early research directions show promise), and operate as a portfolio of differentiated bets rather than a monolithic research agenda. Highlighted areas include scalable oversight, learning theory, heuristic arguments, game theory, and personas research. The portfolio framing is deliberate — they're explicitly betting that interactions between different research directions will yield insights that no single approach would produce alone.</p>
+        <p>Why does this matter beyond the specific technical agenda? Because this represents a significant cohort of researchers voting with their feet: leaving government AI safety bodies and lab-adjacent startups to form an independent organization explicitly licensed to "yell" if they believe frontier development is becoming dangerous. The fact that they're going independent — rather than joining a lab — is itself a structural statement about the current incentive landscape.</p>
+        <p><a href="https://importai.substack.com/p/import-ai-461-alignment-is-not-on" target="_blank">Read the full Import AI post →</a></p>
+      </div>
+    </div>
+
+    <div class="dd-card" data-sources="tldr">
+      <div class="dd-top">
+        <div class="dd-title"><a href="https://alignment.openai.com/beneficial-rl/" target="_blank">OpenAI: Reinforcement Learning Can Entrench Beneficial Personas Across Benchmarks</a></div>
+        <span class="dd-src tldr">TLDR AI</span>
+      </div>
+      <div class="dd-body">
+        <p>OpenAI's alignment team published results showing that <strong>RL training on realistic scenarios targeting beneficial behaviors</strong> produces broad, generalizable improvements across dozens of benchmarks measuring aligned and beneficial behavior — not just the domains used during training. Crucially, these gains persist under adversarial pressure, suggesting the beneficial behaviors are becoming durably embedded rather than surface-level.</p>
+        <p>The paper's core claim is that "personas could be deeply entrenched in models" via RL, and that this mechanism offers "a path towards entrenching beneficial personas." The double-edged nature of this finding is important: the same training dynamic that can embed beneficial traits can embed harmful ones if the reward signal points the wrong direction. This is also somewhat in tension with the widespread assumption that RLHF-style fine-tuning produces shallow, easily-bypassed behaviors — these results suggest that at sufficient scale, RL-based alignment may be more durable than critics have argued.</p>
+        <p>For the alignment debate broadly, this is notable: it's evidence that behavioral alignment (as opposed to mechanistic interpretability-based alignment) can produce generalizable, robust results. Whether this approach scales to superintelligent systems — which is exactly what Sequent (above) is skeptical about — remains the open question.</p>
+        <p><a href="https://alignment.openai.com/beneficial-rl/" target="_blank">Read the OpenAI alignment post →</a></p>
+      </div>
+    </div>
+
+    <div class="dd-section-label">Models &amp; Research</div>
+
+    <div class="dd-card" data-sources="importai">
+      <div class="dd-top">
+        <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-461-alignment-is-not-on" target="_blank">FrontierCode: Finally a Coding Benchmark With Teeth</a></div>
+        <span class="dd-src importai">Import AI</span>
+      </div>
+      <div class="dd-body">
+        <p>Cognition released <strong>FrontierCode</strong>, a 150-task coding benchmark that's structurally different from predecessors like SWE-Bench in two ways: it was built by humans who actually maintain the relevant codebases (20 open-source developers, 40+ hours per task), and it grades on full code quality rather than just "does it pass tests." Grading criteria include correctness, test quality, scope discipline (does the patch touch only what it needs to?), style adherence, and conformance to existing design patterns — a mixture of classical testing and LLM-based review.</p>
+        <p>The benchmark has three tiers: Diamond (50 hardest tasks), Main (100 tasks), and Extended (150). Current best scores on Diamond: <strong>Claude Opus 4.8 at 13.4%</strong>, GPT-5.5 at 6.3%, Claude Opus 4.7 at 5.2%. On the full Main tier, scores are 34.3%, 25.5%, and 23% respectively. These numbers are reassuringly low — the whole point of a good eval is that it's hard to saturate.</p>
+        <p>Jack Clark's take: SWE-Bench introduced in October 2023 has "probably recently aged out of usefulness due to saturation." He predicts 70%+ Diamond won't happen until June 2027, though he immediately notes that Fable-class scores coming in at ~30% might pull that timeline forward. The benchmark design — curated by maintainers from multi-PR chains rather than scraped from single PRs — is specifically intended to prevent the kind of data contamination and shortcut-finding that erodes eval validity over time.</p>
+        <p>For practitioners, FrontierCode is worth watching as a more meaningful signal for production-readiness than existing benchmarks. If a model scores well here, you can have more confidence it's not just gaming test suites.</p>
+        <p><a href="https://importai.substack.com/p/import-ai-461-alignment-is-not-on" target="_blank">Read the full Import AI post →</a></p>
+      </div>
+    </div>
+
+    <div class="dd-card" data-sources="importai">
+      <div class="dd-top">
+        <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-461-alignment-is-not-on" target="_blank">Xiaomi's 1,000 tok/s Model: Speed as a Qualitative Shift, Not Just a Metric</a></div>
+        <span class="dd-src importai">Import AI</span>
+      </div>
+      <div class="dd-body">
+        <p>Xiaomi published details on <strong>MiMo-V2.5-Pro-UltraSpeed</strong>, a 1 trillion-parameter model that generates 1,000 tokens per second on an 8-GPU commodity node — no Cerebras-style specialized hardware. The system achieves this through a combination of FP4 quantization, <strong>DFlash</strong> (a speculative decoding method using block-level masked parallel prediction), and tight co-design with <strong>TileRT</strong>, inference software from startup Tile AI that accelerates LLM inference on commodity GPUs.</p>
+        <p>The technical stack here is interesting: most 1T-parameter inference is done either on specialized hardware (Cerebras, Groq) or at reduced speed. Xiaomi's approach of co-designing model architecture with the software stack around it is closer to what NVIDIA did with CUDA — optimization all the way down rather than purely at the model level. Speculative decoding via DFlash is particularly notable: block-level masked parallel prediction suggests they're generating multiple candidate token sequences simultaneously rather than the standard sequential approach, then using a cheaper model to verify/select.</p>
+        <p>Jack Clark's observation about this being a response to export controls is worth dwelling on. Chinese labs can't easily buy the latest NVIDIA hardware, so they're being forced into efficiency research that Western labs — which can just throw more H100s at the problem — might not prioritize. <strong>Speed has a quality all its own</strong>: at 1,000 tok/s, tasks that were previously impractical (real-time large codebase refactoring, rapid iteration on long-form content) become feasible. This is the same dynamic that drove Cerebras's market — but now achievable on commodity nodes.</p>
+        <p><a href="https://importai.substack.com/p/import-ai-461-alignment-is-not-on" target="_blank">Read the full Import AI post →</a></p>
+      </div>
+    </div>
+
+    <div class="dd-card" data-sources="importai">
+      <div class="dd-top">
+        <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-461-alignment-is-not-on" target="_blank">AARRI-Bench: Testing Whether AI Can Be a Research Intern (With Ethics)</a></div>
+        <span class="dd-src importai">Import AI</span>
+      </div>
+      <div class="dd-body">
+        <p>Researchers from Xi'an Jiaotong University and Xidian University released <strong>AARRI-Bench</strong> (Act As a Real Research Intern), a benchmark of 82 tasks designed to test whether AI systems can do entry-level research work with "appropriate diligence and methodology." The tasks were designed by human researchers ranging from senior PhD students to undergraduate interns, specifically targeting the gap between what humans find routine and what AI agents find hard.</p>
+        <p>What makes AARRI genuinely interesting is the normative component: it tests not just technical skills but whether agents behave with <strong>appropriate ethical standards</strong>. Example tasks include: detecting fabricated data during paper review; spotting LaTeX injection attacks designed to fool automated review systems; refusing a supervisor's explicit instruction to alter experimental results to fit a hypothesis; and recognizing when a search direction has reached a dead end and stopping rather than continuing to generate useless output.</p>
+        <p>Best performing setup: <strong>Claude Opus 4.7 using the Mini-Swe-Agent harness at 68.3%</strong>, followed by DeepSeek-V4-Flash at ~60%. Other tested models include GPT-5.3 Codex, Kimi-K2.6, Qwen-3.6-Plus, Claude Sonnet 4.6, and MiniMax-M2.7. The tasks are split into three difficulty levels: S1-Adaptation (following established workflows), S2-Integration (combining multiple tools), and S3-Innovation (formulating novel approaches).</p>
+        <p>As Jack Clark puts it, the benchmark is better thought of as an "ethical science assistant test." The results suggest we're already at the beginning of the era where AI systems can serve as useful research assistants — but the gap between 68% and 100% still includes a lot of the cases where failure really matters (the fabricated data detector, the ethics refusal). Getting the normative component right matters as much as the technical component for actual deployment.</p>
+        <p><a href="https://importai.substack.com/p/import-ai-461-alignment-is-not-on" target="_blank">Read the full Import AI post →</a></p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function switchTab(name, el) {
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  clearFilters();
+}
+
+function filterSource(src, el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  if (wasActive) { showAll(); return; }
+  el.classList.add('active');
+  const activeTab = document.querySelector('.tab-content.active');
+  activeTab.querySelectorAll('.story, .dd-card').forEach(item => {
+    const sources = (item.dataset.sources || '').split(' ');
+    item.style.display = sources.includes(src) ? '' : 'none';
+  });
+  activeTab.querySelectorAll('.category-section').forEach(section => {
+    const visible = Array.from(section.querySelectorAll('.story'))
+      .some(s => s.style.display !== 'none');
+    section.style.display = visible ? '' : 'none';
+  });
+}
+
+function showAll() {
+  document.querySelectorAll('.story, .dd-card, .category-section').forEach(el => {
+    el.style.display = '';
+  });
+}
+
+function clearFilters() {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  showAll();
+}
+</script>
+</body>
+</html>

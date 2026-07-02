@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAILY.DIGEST.EXE — June 23, 2026</title>
+<style>
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+
+  --color-bg-page:    #f5f5f3;
+  --color-bg-surface: #ffffff;
+  --color-text-primary:   #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted:     #999999;
+  --color-border:         #e8e8e5;
+  --color-border-light:   #f0f0ee;
+
+  --cat-safety:      #E24B4A;
+  --cat-safety-text: #991b1b;
+  --cat-tools:       #1D9E75;
+  --cat-tools-text:  #065f46;
+  --cat-models:      #378ADD;
+  --cat-models-text: #1e40af;
+  --cat-biz:         #BA7517;
+  --cat-biz-text:    #78350f;
+
+  --src-importai-bg:      #F3F0FF;
+  --src-importai-text:    #4C3D99;
+  --src-importai-border:  #C4B5F4;
+  --src-rundown-bg:       #F0FDF4;
+  --src-rundown-text:     #166534;
+  --src-rundown-border:   #86EFAC;
+  --src-tldr-bg:          #FFF7ED;
+  --src-tldr-text:        #9A3412;
+  --src-tldr-border:      #FDBA74;
+  --src-interconnects-bg:     #F0F9FF;
+  --src-interconnects-text:   #0C4A6E;
+  --src-interconnects-border: #7DD3FC;
+  --src-alphasignal-bg:     #FDF4FF;
+  --src-alphasignal-text:   #6B21A8;
+  --src-alphasignal-border: #D8B4FE;
+  --src-thebatch-bg:        #F0FDF4;
+  --src-thebatch-text:      #14532D;
+  --src-thebatch-border:    #6EE7B7;
+  --src-latentspace-bg:     #FFF1F2;
+  --src-latentspace-text:   #881337;
+  --src-latentspace-border: #FDA4AF;
+
+  --signal-bg:     #FEF3C7;
+  --signal-text:   #92400E;
+  --signal-border: #FCD34D;
+
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-lg:   18px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+
+  --leading-tight:   1.3;
+  --leading-base:    1.5;
+  --leading-relaxed: 1.68;
+
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+  --radius-pill: 999px;
+
+  --page-width: 820px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  line-height: var(--leading-base);
+}
+
+.page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  background: var(--color-bg-surface);
+  min-height: 100vh;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+/* Header */
+.header {
+  padding: 1.75rem 2rem 1.25rem;
+  background: var(--color-bg-surface);
+  text-align: center;
+}
+.header-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+}
+.header-subtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: var(--leading-base);
+}
+.header-date {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 3px;
+}
+.header-rule {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 12px 0;
+}
+.header-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+  padding: 0 2rem;
+}
+.tab-btn {
+  padding: 11px 16px;
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-muted);
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn.active {
+  border-bottom-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+.tab-btn:hover:not(.active) { color: var(--color-text-secondary); }
+
+/* Tab content */
+.tab-content {
+  display: none;
+  padding: 1.5rem 2rem 3rem;
+}
+.tab-content.active { display: block; }
+
+/* Source filter bar */
+.source-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 2rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+}
+.filter-pill {
+  font-size: var(--text-xs);
+  padding: 3px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  cursor: pointer;
+  background: none;
+  font-family: var(--font-sans);
+  transition: opacity 0.15s, box-shadow 0.15s;
+  opacity: 0.7;
+}
+.filter-pill:hover { opacity: 1; }
+.filter-pill.active { opacity: 1; box-shadow: 0 0 0 2px currentColor; }
+
+.pill-importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.pill-rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.pill-tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.pill-interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.pill-alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.pill-thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.pill-latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category sections */
+.category-section { margin-bottom: 2rem; }
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--color-border-light);
+  margin-bottom: 0;
+}
+.cat-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.cat-name {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Stories */
+.story {
+  padding: 16px 0 14px;
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  gap: 14px;
+  transition: opacity 0.2s;
+}
+.story:last-child { border-bottom: none; }
+.story-bar {
+  width: 3px;
+  border-radius: 0;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 52px;
+}
+.story-inner { flex: 1; }
+.story-badges {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.signal-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--signal-bg);
+  color: var(--signal-text);
+  border: 1px solid var(--signal-border);
+  font-weight: 500;
+}
+.story-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  margin-bottom: 5px;
+  line-height: var(--leading-tight);
+}
+.story-title a { color: inherit; text-decoration: none; }
+.story-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.story-summary {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 9px;
+}
+.story-sources { display: flex; gap: 5px; flex-wrap: wrap; }
+.src-tag {
+  font-size: var(--text-xs);
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+}
+.src-tag.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.src-tag.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.src-tag.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.src-tag.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.src-tag.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.src-tag.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.src-tag.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category color helpers */
+.dot-safety { background: var(--cat-safety); }
+.txt-safety { color: var(--cat-safety-text); }
+.bar-safety { background: var(--cat-safety); }
+.dot-tools  { background: var(--cat-tools); }
+.txt-tools  { color: var(--cat-tools-text); }
+.bar-tools  { background: var(--cat-tools); }
+.dot-models { background: var(--cat-models); }
+.txt-models { color: var(--cat-models-text); }
+.bar-models { background: var(--cat-models); }
+.dot-biz    { background: var(--cat-biz); }
+.txt-biz    { color: var(--cat-biz-text); }
+.bar-biz    { background: var(--cat-biz); }
+
+/* Quiet day notice */
+.quiet-day {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* Deep dive cards */
+.dd-section-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  margin-top: 1.75rem;
+}
+.dd-section-label:first-child { margin-top: 0; }
+.dd-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 12px;
+}
+.dd-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.dd-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+}
+.dd-title a { color: inherit; text-decoration: none; }
+.dd-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.dd-src {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  flex-shrink: 0;
+}
+.dd-src.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.dd-src.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.dd-src.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.dd-src.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.dd-src.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.dd-src.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.dd-src.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+.dd-body {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+.dd-body p { margin-bottom: 8px; }
+.dd-body p:last-child { margin-bottom: 0; }
+.dd-body a { color: #1d4ed8; }
+.dd-body strong { color: var(--color-text-primary); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">🤖 DAILY.DIGEST.EXE</div>
+    <div class="header-subtitle">All the Beeps, Boops, and Breaking News</div>
+    <div class="header-date">June 23, 2026</div>
+    <hr class="header-rule">
+    <div class="header-meta">14 stories · 5 sources</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('main', this)">🤖 &nbsp;EXTRA! EXTRA! Read All About It!</button>
+    <button class="tab-btn" onclick="switchTab('deep', this)">🧠 &nbsp;Nerd Alert: You've Been Warned</button>
+  </div>
+
+  <!-- Source filter pills (dynamic — only sources with content) -->
+  <div class="source-bar">
+<button class="filter-pill pill-tldr" onclick="filterSource('tldr', this)">TLDR AI</button>
+<button class="filter-pill pill-rundown" onclick="filterSource('rundown', this)">Rundown AI</button>
+<button class="filter-pill pill-alphasignal" onclick="filterSource('alphasignal', this)">Alpha Signal</button>
+<button class="filter-pill pill-importai" onclick="filterSource('importai', this)">Import AI</button>
+<button class="filter-pill pill-interconnects" onclick="filterSource('interconnects', this)">Interconnects</button>
+  </div>
+
+  <!-- TAB 1: Main stories -->
+  <div class="tab-content active" id="tab-main">
+
+<div class="category-section" id="main-safety">
+  <div class="cat-header">
+    <div class="cat-dot dot-safety"></div>
+    <span class="cat-name txt-safety">Safety &amp; Policy</span>
+  </div>
+
+  <div class="story" data-sources="tldr interconnects">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title">Claude Fable 5 and Mythos 5 Are Still Banned by White House Export Controls</div>
+      <div class="story-summary">The White House imposed export controls that effectively shut down Claude Fable 5 and Mythos 5, citing a "jailbreak" that reportedly amounts to asking the model to fix code. Anthropic has been told to remediate it — which is, by design, impossible — leaving both models in limbo for over a week now. The timing couldn't be worse: GLM-5.2 just arrived as a credible open-weight agent alternative in precisely the domain Anthropic has been dominating. The White House may have handed Chinese open-weight labs their best marketing opportunity of the year.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+        <span class="src-tag interconnects">Interconnects</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="importai">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://importai.substack.com/p/import-ai-462-superpersuasion-self" target="_blank">AI Out-Persuades Expert Humans at Every Level — Including Real-Money Donations</a>
+      </div>
+      <div class="story-summary">A joint Oxford/AISI/Stanford/LSE study ran 18,978 AI-vs-human persuasion conversations with 6,923 participants and found frontier AI reliably beats every tier of human persuader — including elite debaters with research, prep time, and £1,000 incentives. The strongest models were Opus 4.1 and 4.6. Most striking: AI was nearly 3× more effective than professional fundraising canvassers at extracting real donations for Save the Children. The performance gap collapses only when AI is constrained to human message speeds and lengths, suggesting the edge is throughput, not cleverness per token.</div>
+      <div class="story-sources">
+        <span class="src-tag importai">Import AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="importai">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://importai.substack.com/p/import-ai-462-superpersuasion-self" target="_blank">Self-Sustaining AI: Timelines, Humanoid Robots, and the End of Human Leverage</a>
+      </div>
+      <div class="story-summary">Asterisk Magazine asked two forecasters when AI might require zero human labor to sustain and grow itself. Ajeya Cotra (METR) thinks within 10 years is plausible; Timothy B. Lee puts his median at 50 years with a 10–20% chance it never happens. The crux: tacit knowledge embedded in semiconductor manufacturing, and whether humanoid robots can accumulate it fast enough. Both say watch humanoid robot volume and dexterity as leading indicators.</div>
+      <div class="story-sources">
+        <span class="src-tag importai">Import AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title">Europe 2031: Viral Doomsday Scenario Rattles EU Policymakers</div>
+      <div class="story-summary">A Brussels thinktank published "Europe 2031," a speculative scenario depicting a continent that failed to invest in AI infrastructure — GDP in shambles, the euro wobbling, populism surging, cyber-attacks shredding businesses. It reached EU parliament members and came up in British-German diplomatic discussions. Whether it moves the needle on actual investment is the real question.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="category-section" id="main-tools">
+  <div class="cat-header">
+    <div class="cat-dot dot-tools"></div>
+    <span class="cat-name txt-tools">Tools &amp; Products</span>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">Nous Research Hermes Agent v0.17.0: Blank Slate Mode, iMessage, Background Subagents</div>
+      <div class="story-summary">Hermes Agent v0.17.0 ships "Blank Slate" mode — starts with literally nothing, no web, no memory, no MCP, no browser — giving security-sensitive and reproducible deployments full control over what loads and making upgrades non-drifting. The same release adds iMessage support (via OAuth, no Mac relay), background subagents that run while you continue chatting, and plain-English automation scheduling. 1,475 commits, 245 contributors this cycle.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">Sakana Fugu: One API, a Coordinated Team of Expert Models Behind It</div>
+      <div class="story-summary">Sakana's Fugu presents a single OpenAI-compatible API endpoint, but internally routes requests to a coordinated team of specialist models — deciding in real time whether to handle a task directly or delegate for verification and synthesis. Fugu and Fugu Ultra are available now. The pitch is simplicity at the surface, sophistication underneath.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">Loop Engineering Is the New Prompt Engineering</div>
+      <div class="story-summary">AI coding workflows are shifting from "write the right prompt" to "design the right feedback loop" — systems that repeatedly prompt, evaluate, and re-prompt agents until a measurable goal is reached. The shift is architectural: you're no longer crafting instructions, you're building evaluation harnesses. This is prompt engineering's successor, not its refinement.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://huggingface.co/datasets/LocalLaws/LOCUS-v1" target="_blank">UC Berkeley LOCUS: 2.2 Million U.S. Local Laws, Now Searchable and Scored</a>
+      </div>
+      <div class="story-summary">Researchers scraped 9,239 U.S. cities and counties to produce LOCUS — 2.2 million local laws across 7 million pages, processed at $0.30/1,000 pages using a small OCR model (vs. $1.50 on AWS Textract). Each law is scored on paternalism, opacity, enforcement discretion, and salience. Available on Hugging Face under LocalLaws/LOCUS-v1 for building legal search, compliance, and policy analysis tools.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="category-section" id="main-models">
+  <div class="cat-header">
+    <div class="cat-dot dot-models"></div>
+    <span class="cat-name txt-models">Models &amp; Research</span>
+  </div>
+
+  <div class="story" data-sources="interconnects rundown">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://www.interconnects.ai/p/glm-52-is-the-step-change-for-open" target="_blank">GLM-5.2: The First Open-Weight Model That Feels Right as a General Agent</a>
+      </div>
+      <div class="story-summary">Z.ai's GLM-5.2 (MIT licensed) is generating DeepSeek R1-level excitement in researcher circles — the first open-weight model substantively competitive with proprietary models in agentic coding workflows. Released June 16, it lands on Arena's agent leaderboard matching Claude Opus 4.8 at no-thinking effort. It reached Claude Opus 4.5-level performance just 204 days after Opus 4.5 shipped, sitting squarely in the expected 6-9 month China open-lab lag. The Z.ai founder has told Elon that open-weight Fable-class capabilities will arrive before Q1 2027. Vercel's CEO: "Genuinely impressed, almost shocked."</div>
+      <div class="story-sources">
+        <span class="src-tag interconnects">Interconnects</span>
+        <span class="src-tag rundown">Rundown AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="rundown">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://openai.com/index/diagnose-rare-childhood-diseases/" target="_blank">o3 Deep Research Diagnoses 18 Childhood Rare-Disease Cases That Stumped Specialists</a>
+      </div>
+      <div class="story-summary">Boston Children's Hospital and Harvard ran 376 unsolved pediatric genetic cases — all prior specialist dead ends — through o3 Deep Research. Doctors confirmed 18 new diagnoses after the model surfaced testable leads. Seven already existed somewhere in public records but hadn't reached the right patients. A 4.8% solve rate on previously-stuck cases isn't magic, but it's a meaningful proof-of-concept for AI as a backstop against rare medicine's growing case backlog.</div>
+      <div class="story-sources">
+        <span class="src-tag rundown">Rundown AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="importai">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://importai.substack.com/p/import-ai-462-superpersuasion-self" target="_blank">DeepMind Maps Four Paths from AGI to ASI</a>
+      </div>
+      <div class="story-summary">A new Google DeepMind paper defines ASI as a system exceeding "large human-expert collectives on virtually all tasks" and outlines four plausible paths: continued compute scaling, algorithmic paradigm shifts (like transformers were), recursive self-improvement, and group agent formation building institutions greater than individual capability. The authors argue a 10-20 year timeline "cannot easily be dismissed." Notable for treating an existential-sounding topic with structured engineering discipline rather than hype or dismissal.</div>
+      <div class="story-sources">
+        <span class="src-tag importai">Import AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="importai">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://importai.substack.com/p/import-ai-462-superpersuasion-self" target="_blank">Recursive Startup Demonstrates Early Self-Improvement Loop Results</a>
+      </div>
+      <div class="story-summary">Startup Recursive — built to create AI systems that improve themselves — posted new SOTA on NanoChat Autoresearch, NanoGPT Speedrun, and GPU kernel benchmarks using an automated loop that proposes ideas, implements, evaluates, and re-proposes. It works for well-defined measurable tasks; the open question is whether it generalizes to the messy frontiers of actual research. Early but meaningful evidence the "grind out marginally better versions of yourself" branch of RSI is functional.</div>
+      <div class="story-sources">
+        <span class="src-tag importai">Import AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">Mercury 2: Diffusion LM Hits ~1,000 Tokens Per Second, Beats DiffusionGemma</div>
+      <div class="story-summary">Inception Labs' Mercury 2 uses the same diffusion approach as image generators to achieve roughly 1,000 tokens per second — enough to outperform DiffusionGemma at its own game. It's designed for speed-sensitive, high-volume workflow segments rather than frontier reasoning. API-only for now, which limits experimentation but signals a serious production focus.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="category-section" id="main-biz">
+  <div class="cat-header">
+    <div class="cat-dot dot-biz"></div>
+    <span class="cat-name txt-biz">Business &amp; Industry</span>
+  </div>
+
+  <div class="story" data-sources="tldr rundown">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://x.com/JohnJumperSci/status/2068001285173834106" target="_blank">Nobel Laureate John Jumper Leaves Google DeepMind for Anthropic</a>
+      </div>
+      <div class="story-summary">John Jumper — who co-led AlphaFold and won the 2024 Nobel Prize in Chemistry — is leaving Google DeepMind for Anthropic after nine years. His departure follows Gemini co-lead Noam Shazeer defecting to OpenAI earlier the same week: a two-punch talent drain from the lab that defined AI research for a decade. DeepMind's historical moat has been in science; Jumper's move is a direct threat to that edge. He'll take time to recharge before joining; Anthropic has a science-focused event on June 30.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+        <span class="src-tag rundown">Rundown AI</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FALLBACK_CONTENT -->
+
+  </div>
+
+  <!-- TAB 2: Deep dives -->
+  <div class="tab-content" id="tab-deep">
+
+<div class="dd-section-label">Safety &amp; Policy</div>
+
+<div class="dd-card" data-sources="importai">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-462-superpersuasion-self" target="_blank">AI Systems Out-Persuade Expert Humans — A Landmark Study</a></div>
+    <span class="dd-src importai">Import AI</span>
+  </div>
+  <div class="dd-body">
+    <p>The study is remarkable for its scale and rigor. Four experiments across 18,978 conversations with 6,923 participants tested AI against random laypeople, tournament-selected debaters, elite debaters, and professional canvassers — across both policy persuasion and real-money charitable giving. Frontier AI won every bracket. The strongest performers were <strong>Anthropic's Opus 4.1 and 4.6</strong>, followed by OpenAI's GPT-4o and GPT-5.4, Google's Gemini 2.5 Pro, and xAI's Grok 4.20.</p>
+    <p>The key mechanistic finding: AI's edge comes from <strong>information throughput</strong>, not some mysterious quality of argument. When researchers constrained AI to write at human speeds and human message lengths, the performance gap with coached elite debaters collapsed from +4.1 percentage points to essentially zero. AI isn't cleverer per word — it just produces more words, faster, with more informational density. This is a tractable insight that makes the capability legible, if not less alarming.</p>
+    <p>The real-world consequences piece is where it gets uncomfortable. In a study with professional fundraising canvassers from AppcoUK — who had raised £824K for Save the Children from 22K donors since 2016 — AI was nearly 3× more effective. It raised both the share of people who donated anything and the average donation amount. This isn't an abstract benchmark; it's a real measurement of AI's ability to move real money from real people.</p>
+    <p>The researchers frame the societal choice plainly: if AI persuasion is cheap and widely distributed, it helps under-resourced actors (public defenders, small charities, grassroots movements) compete with established ones. If access concentrates, the opposite happens. The authors don't endorse a position — they document that we have a choice to make, and that "not voting is voting." The question is no longer <em>whether</em> AI can out-persuade humans, but <strong>whose interests it will serve when it does</strong>.</p>
+    <p><a href="https://importai.substack.com/p/import-ai-462-superpersuasion-self" target="_blank">Read the full Import AI post →</a></p>
+  </div>
+</div>
+
+<div class="dd-card" data-sources="importai">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-462-superpersuasion-self" target="_blank">Self-Sustaining AI: When Does AI No Longer Need Humans?</a></div>
+    <span class="dd-src importai">Import AI</span>
+  </div>
+  <div class="dd-body">
+    <p>The question sounds theoretical until you trace its implications. <strong>Self-sustaining AI</strong> is defined here as AI integrated with physical infrastructure — factories, mines, fabs, robots — such that it requires no cognitive or physical labor from humans to keep growing. The gap between "very capable AI assistant" and this state is enormous, but the direction of travel matters, and Asterisk Magazine asked two serious forecasters where they stand.</p>
+    <p>Ajeya Cotra (METR) puts meaningful probability on self-sustaining AI within 10 years. Timothy B. Lee is much more skeptical — 50-year median, with a 10–20% chance it never happens. The crux of their disagreement is <strong>tacit knowledge</strong>: the information embedded in skilled workers that doesn't exist in textbooks. Imagine the entire semiconductor workforce disappeared overnight; factories and documentation remain. Lee thinks rebuilding could take decades. Cotra thinks AI will learn through RL on profitable automation tasks before that gap becomes binding — and that general intelligence could "figure out new things by trying them, reading textbooks, and experimenting efficiently."</p>
+    <p>The practical indicators to track: Cotra wants humanoid robot manufacturing rate and dexterous hand capability on trend lines. Lee wants humanoid robot cost and repairability. Both treat these as proxies for the pace of physical-world automation that would be required. The "self-sustaining" threshold isn't just about doing tasks — it's about <strong>maintaining and expanding the physical infrastructure AI runs on</strong>. We're clearly not there. The question is when monitoring these signals becomes urgent.</p>
+    <p>The deeper framing: if you believe AI will reach self-sustaining status, measuring progress toward it is implicitly measuring the <strong>declining human leverage</strong> in any future negotiation. That's a different threat model than "AI does X bad thing" — it's about the bargaining position humanity holds when (if) such a moment arrives. Worth watching.</p>
+    <p><a href="https://importai.substack.com/p/import-ai-462-superpersuasion-self" target="_blank">Read the full Import AI post →</a></p>
+  </div>
+</div>
+
+<div class="dd-section-label">Models &amp; Research</div>
+
+<div class="dd-card" data-sources="interconnects">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://www.interconnects.ai/p/glm-52-is-the-step-change-for-open" target="_blank">GLM-5.2 Is the Step Change for Open Agents</a></div>
+    <span class="dd-src interconnects">Interconnects</span>
+  </div>
+  <div class="dd-body">
+    <p>The analogy Nathan Lambert (Interconnects) reaches for is <strong>DeepSeek R1</strong>, and he makes it carefully. GLM-5.2, released by Z.ai (maker of the GLM family, now at the top of Chinese open-weight reputation alongside Moonshot/Kimi), soft-launched on Saturday June 13 to coding subscribers — an unusual release pattern that appeared designed to capitalize on the zeitgeist of "Anthropic being banned while open models thrive." Official MIT-licensed weights followed on June 16.</p>
+    <p>What distinguishes this model isn't benchmark scores — Lambert is explicitly skeptical of those. It's the <strong>ecosystem reaction</strong>: Arena's agent leaderboard placed GLM-5.2 as the only open model mixing it up with OpenAI and Anthropic's latest, matching Opus 4.8 at no-thinking effort. Vercel's CEO called it "almost shocking." The model uses Z.ai's own SLIME RL framework and is recommended at max thinking effort. Available via Fireworks and Together for inference.</p>
+    <p>The thesis: Claude Opus 4.5 shipped November 24, 2025. GLM-5.2 reached comparable agent performance on June 16, 2026 — a <strong>204-day lag</strong>. This sits squarely in the 6-9 month performance gap practitioners have estimated between U.S. closed labs and China's open-weight counterparts. Lambert notes this happened despite U.S. labs ramping compute aggressively. The gap isn't growing. The Z.ai founder told Elon Musk that open-weight Fable-class capabilities will arrive before Q1 2027.</p>
+    <p>The economic stakes are real. Anthropic's revenue growth is heavily Claude Code-driven, which depends on being the best agentic coding model. <strong>GLM-5.2 is now a credible alternative</strong>, and every open inference provider (Fireworks, Together, Thinky, Prime Intellect) just hit an inflection point. More pointedly: this happened while Fable 5 is export-controlled, giving GLM-5.2 time to carve out economic foothold in exactly the high-margin, agentic domain where Anthropic was growing fastest.</p>
+    <p>Lambert's closing argument: if open models get banned to protect frontier labs, and only closed models get 10-100× better over the next two years in the hands of one or two companies, "I think we will have bigger problems on our hands." The regulatory question around open Chinese models is now unavoidably live.</p>
+    <p><a href="https://www.interconnects.ai/p/glm-52-is-the-step-change-for-open" target="_blank">Read the full Interconnects post →</a></p>
+  </div>
+</div>
+
+<div class="dd-card" data-sources="importai">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-462-superpersuasion-self" target="_blank">DeepMind Maps the Path from AGI to ASI</a></div>
+    <span class="dd-src importai">Import AI</span>
+  </div>
+  <div class="dd-body">
+    <p>Google DeepMind has published a paper attempting to define — and map a path to — <strong>artificial superintelligence (ASI)</strong>, defined as a system exceeding "the performance of large human-expert collectives on virtually all tasks." This isn't a boundary that's been crossed; it's a horizon being mapped while AGI itself is still a live debate. The authors argue that preparing for post-AGI futures requires taking even far-sounding trajectories seriously now.</p>
+    <p>Four plausible pathways are outlined: (1) <strong>continued compute scaling</strong> (maybe sufficient, but energy and data limits loom), (2) <strong>algorithmic paradigm shifts</strong> analogous to the transformer revolution (high-impact but inherently unpredictable — like trying to anticipate relativity before its invention), (3) <strong>recursive self-improvement</strong> where AI systems design successors (some version is already underway via human-AI co-creation; the question is whether paradigm-changing creativity can be automated), and (4) <strong>group agent formation</strong> where collectives of general intelligences build institutions exceeding individual capability — analogous to how humans built space stations.</p>
+    <p>The paper highlights advantages digital intelligences have over biological ones that make ASI more tractable than intuition suggests: faster I/O, better working memory, <strong>lossless replication</strong>, and high-bandwidth experience sharing. A single ASI might consist of millions of parallel instances — less "superintelligent being" and more "vast coordinated system." The authors explicitly say a decade-or-two path "cannot easily be dismissed."</p>
+    <p>What makes this paper worth time isn't the forecasts — those are necessarily uncertain. It's the <strong>framing discipline</strong>. Most discourse about ASI is either dismissive or catastrophizing. DeepMind's attempt here is to be neither: lay out what it would take, where the bottlenecks are, and what monitoring would look like. That's the kind of structured thinking the field needs more of, regardless of your timeline priors.</p>
+    <p><a href="https://importai.substack.com/p/import-ai-462-superpersuasion-self" target="_blank">Read the full Import AI post →</a></p>
+  </div>
+</div>
+
+<div class="dd-card" data-sources="importai">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-462-superpersuasion-self" target="_blank">Recursive Startup Demonstrates First Self-Improvement Loop Results</a></div>
+    <span class="dd-src importai">Import AI</span>
+  </div>
+  <div class="dd-body">
+    <p>Recursive is a startup built around a simple bet: AI systems can be made to design better AI systems. Their public demo is a <strong>research loop</strong> — proposes ideas, implements them, runs experiments, validates results, uses what it learned to choose the next experiment. The claim isn't paradigm-shifting creativity; it's reliable automated grinding on well-defined problems. That turns out to be harder than it sounds, and valuable if it works.</p>
+    <p>Results posted: new SOTA on NanoChat Autoresearch (best small LM on a given compute budget), NanoGPT Speedrun (fastest to hit a performance threshold), and SOL-ExecBench (GPU kernel optimization toward hardware limits). These benchmarks were chosen deliberately — they're <strong>measurable, quick to evaluate, and well-defined</strong>. The goal is to prove the loop works on tractable problems before asking it to tackle harder ones.</p>
+    <p>The honest assessment: the stuff that actually matters in AI research — conceptual breakthroughs, novel architectures, paradigm shifts — shares none of those properties. Jack Clark (Import AI) notes this directly: "The most important question for the future is whether such results can be repeated in domains where the goals are less well defined, harder to measure, and less efficient to evaluate." So far: promising early symptom, not yet decisive evidence. Worth watching if Recursive tackles harder targets next.</p>
+    <p><a href="https://importai.substack.com/p/import-ai-462-superpersuasion-self" target="_blank">Read the full Import AI post →</a></p>
+  </div>
+</div>
+
+  </div>
+
+</div>
+
+<script>
+function switchTab(name, el) {
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  clearFilters();
+}
+
+function filterSource(src, el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  if (wasActive) { showAll(); return; }
+  el.classList.add('active');
+  const activeTab = document.querySelector('.tab-content.active');
+  activeTab.querySelectorAll('.story, .dd-card').forEach(item => {
+    const sources = (item.dataset.sources || '').split(' ');
+    item.style.display = sources.includes(src) ? '' : 'none';
+  });
+  activeTab.querySelectorAll('.category-section').forEach(section => {
+    const visible = Array.from(section.querySelectorAll('.story'))
+      .some(s => s.style.display !== 'none');
+    section.style.display = visible ? '' : 'none';
+  });
+}
+
+function showAll() {
+  document.querySelectorAll('.story, .dd-card, .category-section').forEach(el => {
+    el.style.display = '';
+  });
+}
+
+function clearFilters() {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  showAll();
+}
+</script>
+</body>
+</html>

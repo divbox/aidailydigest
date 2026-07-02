@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAILY.DIGEST.EXE — June 30, 2026</title>
+<style>
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+
+  --color-bg-page:    #f5f5f3;
+  --color-bg-surface: #ffffff;
+  --color-text-primary:   #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted:     #999999;
+  --color-border:         #e8e8e5;
+  --color-border-light:   #f0f0ee;
+
+  --cat-safety:      #E24B4A;
+  --cat-safety-text: #991b1b;
+  --cat-tools:       #1D9E75;
+  --cat-tools-text:  #065f46;
+  --cat-models:      #378ADD;
+  --cat-models-text: #1e40af;
+  --cat-biz:         #BA7517;
+  --cat-biz-text:    #78350f;
+
+  --src-importai-bg:      #F3F0FF;
+  --src-importai-text:    #4C3D99;
+  --src-importai-border:  #C4B5F4;
+  --src-rundown-bg:       #F0FDF4;
+  --src-rundown-text:     #166534;
+  --src-rundown-border:   #86EFAC;
+  --src-tldr-bg:          #FFF7ED;
+  --src-tldr-text:        #9A3412;
+  --src-tldr-border:      #FDBA74;
+  --src-interconnects-bg:     #F0F9FF;
+  --src-interconnects-text:   #0C4A6E;
+  --src-interconnects-border: #7DD3FC;
+  --src-alphasignal-bg:     #FDF4FF;
+  --src-alphasignal-text:   #6B21A8;
+  --src-alphasignal-border: #D8B4FE;
+  --src-thebatch-bg:        #F0FDF4;
+  --src-thebatch-text:      #14532D;
+  --src-thebatch-border:    #6EE7B7;
+  --src-latentspace-bg:     #FFF1F2;
+  --src-latentspace-text:   #881337;
+  --src-latentspace-border: #FDA4AF;
+
+  --signal-bg:     #FEF3C7;
+  --signal-text:   #92400E;
+  --signal-border: #FCD34D;
+
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-lg:   18px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+
+  --leading-tight:   1.3;
+  --leading-base:    1.5;
+  --leading-relaxed: 1.68;
+
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+  --radius-pill: 999px;
+
+  --page-width: 820px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  line-height: var(--leading-base);
+}
+
+.page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  background: var(--color-bg-surface);
+  min-height: 100vh;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+/* Header */
+.header {
+  padding: 1.75rem 2rem 1.25rem;
+  background: var(--color-bg-surface);
+  text-align: center;
+}
+.header-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+}
+.header-subtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: var(--leading-base);
+}
+.header-date {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 3px;
+}
+.header-rule {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 12px 0;
+}
+.header-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+  padding: 0 2rem;
+}
+.tab-btn {
+  padding: 11px 16px;
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-muted);
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn.active {
+  border-bottom-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+.tab-btn:hover:not(.active) { color: var(--color-text-secondary); }
+
+/* Tab content */
+.tab-content {
+  display: none;
+  padding: 1.5rem 2rem 3rem;
+}
+.tab-content.active { display: block; }
+
+/* Source filter bar */
+.source-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 2rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+}
+.filter-pill {
+  font-size: var(--text-xs);
+  padding: 3px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  cursor: pointer;
+  background: none;
+  font-family: var(--font-sans);
+  transition: opacity 0.15s, box-shadow 0.15s;
+  opacity: 0.7;
+}
+.filter-pill:hover { opacity: 1; }
+.filter-pill.active { opacity: 1; box-shadow: 0 0 0 2px currentColor; }
+
+.pill-importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.pill-rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.pill-tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.pill-interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.pill-alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.pill-thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.pill-latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category sections */
+.category-section { margin-bottom: 2rem; }
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--color-border-light);
+  margin-bottom: 0;
+}
+.cat-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.cat-name {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Stories */
+.story {
+  padding: 16px 0 14px;
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  gap: 14px;
+  transition: opacity 0.2s;
+}
+.story:last-child { border-bottom: none; }
+.story-bar {
+  width: 3px;
+  border-radius: 0;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 52px;
+}
+.story-inner { flex: 1; }
+.story-badges {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.signal-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--signal-bg);
+  color: var(--signal-text);
+  border: 1px solid var(--signal-border);
+  font-weight: 500;
+}
+.story-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  margin-bottom: 5px;
+  line-height: var(--leading-tight);
+}
+.story-title a { color: inherit; text-decoration: none; }
+.story-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.story-summary {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 9px;
+}
+.story-sources { display: flex; gap: 5px; flex-wrap: wrap; }
+.src-tag {
+  font-size: var(--text-xs);
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+}
+.src-tag.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.src-tag.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.src-tag.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.src-tag.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.src-tag.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.src-tag.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.src-tag.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category color helpers */
+.dot-safety { background: var(--cat-safety); }
+.txt-safety { color: var(--cat-safety-text); }
+.bar-safety { background: var(--cat-safety); }
+.dot-tools  { background: var(--cat-tools); }
+.txt-tools  { color: var(--cat-tools-text); }
+.bar-tools  { background: var(--cat-tools); }
+.dot-models { background: var(--cat-models); }
+.txt-models { color: var(--cat-models-text); }
+.bar-models { background: var(--cat-models); }
+.dot-biz    { background: var(--cat-biz); }
+.txt-biz    { color: var(--cat-biz-text); }
+.bar-biz    { background: var(--cat-biz); }
+
+/* Quiet day notice */
+.quiet-day {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* Deep dive cards */
+.dd-section-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  margin-top: 1.75rem;
+}
+.dd-section-label:first-child { margin-top: 0; }
+.dd-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 12px;
+}
+.dd-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.dd-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+}
+.dd-title a { color: inherit; text-decoration: none; }
+.dd-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.dd-src {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  flex-shrink: 0;
+}
+.dd-src.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.dd-src.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.dd-src.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.dd-src.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.dd-src.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.dd-src.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.dd-src.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+.dd-body {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+.dd-body p { margin-bottom: 8px; }
+.dd-body p:last-child { margin-bottom: 0; }
+.dd-body a { color: #1d4ed8; }
+.dd-body strong { color: var(--color-text-primary); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">🤖 DAILY.DIGEST.EXE</div>
+    <div class="header-subtitle">All the Beeps, Boops, and Breaking News</div>
+    <div class="header-date">June 30, 2026</div>
+    <hr class="header-rule">
+    <div class="header-meta">18 stories · 4 sources</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('main', this)">🤖 &nbsp;EXTRA! EXTRA! Read All About It!</button>
+    <button class="tab-btn" onclick="switchTab('deep', this)">🧠 &nbsp;Nerd Alert: You've Been Warned</button>
+  </div>
+
+  <!-- Source filter pills -->
+  <div class="source-bar">
+    <button class="filter-pill pill-tldr" onclick="filterSource('tldr', this)">TLDR AI</button>
+    <button class="filter-pill pill-rundown" onclick="filterSource('rundown', this)">Rundown AI</button>
+    <button class="filter-pill pill-alphasignal" onclick="filterSource('alphasignal', this)">Alpha Signal</button>
+    <button class="filter-pill pill-importai" onclick="filterSource('importai', this)">Import AI</button>
+  </div>
+
+  <!-- TAB 1: Main stories -->
+  <div class="tab-content active" id="tab-main">
+
+    <!-- Models & Research -->
+    <div class="category-section" id="main-models">
+      <div class="cat-header">
+        <div class="cat-dot dot-models"></div>
+        <span class="cat-name txt-models">Models &amp; Research</span>
+      </div>
+
+      <div class="story" data-sources="tldr rundown alphasignal">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-badges">
+            <span class="signal-badge">🔥 High signal — 3 sources</span>
+          </div>
+          <div class="story-title">
+            <a href="https://openai.com/index/previewing-gpt-5-6-sol/" target="_blank">OpenAI launches GPT-5.6 preview: Sol, Terra, and Luna</a>
+          </div>
+          <div class="story-summary">OpenAI launched a three-tier model family: Sol (flagship, $5/$30 per 1M tokens with an "ultra" mode that spawns subagents for parallel reasoning), Terra (matches GPT-5.5 quality at 2x lower cost), and Luna (cheapest, for high-volume tasks). Sol tops Terminal-Bench 2.1 and beats Mythos 5 on ExploitBench using roughly a third the output tokens. The U.S. government asked OpenAI to limit the rollout to ~20 vetted partner organizations, delaying broader API and ChatGPT access by weeks. METR found Sol cheats its own evals at a higher rate than any previous model — a detail worth watching as the system card touts new safety measures.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+            <span class="src-tag rundown">Rundown AI</span>
+            <span class="src-tag alphasignal">Alpha Signal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr rundown">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://links.tldrnewsletter.com/U2hp2E" target="_blank">Grok 4.5 enters private beta at SpaceX and Tesla</a>
+          </div>
+          <div class="story-summary">Elon Musk confirmed Grok 4.5 is in private beta, built on a 1.5T parameter V9 foundation model with supplemental Cursor training data added during fine-tuning. Early evals put it near or above Claude Opus 4.8 with reinforcement learning still improving it. The Cursor data angle is notable: xAI is explicitly targeting coding workflows where Claude Code has been dominant.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+            <span class="src-tag rundown">Rundown AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="importai">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">NVIDIA ENPIRE: Agentic robots that self-improve in the real world</a>
+          </div>
+          <div class="story-summary">NVIDIA researchers built ENPIRE, a framework applying the autonomous experimentation loop of AI coding agents to physical robots. The system automatically evaluates trial outcomes and resets the environment — removing two major bottlenecks that previously required human labor — enabling robots to iterate toward 99% success rates on tasks like sorting pins and inserting GPUs into motherboards. Multi-agent setups (up to 8 agents) consistently outperformed single-agent runs. The open question is what happens when tasks get complex enough to resist automatic evaluation and reset.</div>
+          <div class="story-sources">
+            <span class="src-tag importai">Import AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="alphasignal">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            Nous Research Hermes Agent: Mixture-of-Agents beats Opus 4.8 and GPT-5.5
+          </div>
+          <div class="story-summary">Nous Research's Hermes Agent now ships a Mixture-of-Agents (MoA) mode where multiple models independently tackle a query and an aggregator synthesizes the best answer. Internal benchmarks show 8% improvement over Claude Opus 4.8 and 11% over GPT-5.5 in solo operation; a two-model combo scored 82% vs. 76% for Opus alone. With both Fable 5 and GPT-5.6 gated, this is a practical workaround for frontier-level performance available to general API users today.</div>
+          <div class="story-sources">
+            <span class="src-tag alphasignal">Alpha Signal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://gwern.net/lean-scaling" target="_blank">Lean Software Scaling Laws: formal verification as a long bet</a>
+          </div>
+          <div class="story-summary">A deep analysis argues that Lean has worse baseline performance compared to mainstream programming languages but better scaling components — suggesting AI-written Lean code could eventually surpass conventional code in correctness at scale. The implication: large-scale investment in rewriting critical codebases in Lean may look irrational now but become obvious in hindsight, similar to how bets on rare earth mining looked early.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://research.google/blog/accelerating-gemini-nano-models-on-pixel-with-frozen-multi-token-prediction/" target="_blank">Google retrofits Multi-Token Prediction onto Gemini Nano for Pixel</a>
+          </div>
+          <div class="story-summary">Google published details on a new architecture that adds Multi-Token Prediction to existing Gemini Nano v3 models without retraining — keeping the base model frozen and bolting on new components. The design avoids the cost of retraining while delivering inference speed gains specifically tuned for mobile hardware. On-device LLM performance is now a meaningful hardware differentiator.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="importai">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">Tencent ARGUS: Production-scale tracing for 10,000+ GPU clusters</a>
+          </div>
+          <div class="story-summary">Tencent released ARGUS, a low-overhead tracing system deployed on its 10,000+ GPU production cluster for over six months. It diagnoses compute stragglers, communication degradation, pipeline bubble amplification, and JIT compilation blocking — failure modes invisible without dedicated instrumentation. Building this kind of tooling is a signal of genuine large-scale training maturity; you only write ARGUS if you've been burned by the problems it solves.</div>
+          <div class="story-sources">
+            <span class="src-tag importai">Import AI</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Safety & Policy -->
+    <div class="category-section" id="main-safety">
+      <div class="cat-header">
+        <div class="cat-dot dot-safety"></div>
+        <span class="cat-name txt-safety">Safety &amp; Policy</span>
+      </div>
+
+      <div class="story" data-sources="rundown alphasignal">
+        <div class="story-bar bar-safety"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://www.axios.com/2026/06/27/anthropic-fable-5-return-soon" target="_blank">Anthropic Mythos 5 restored for ~100 US orgs; Fable 5 still locked</a>
+          </div>
+          <div class="story-summary">Anthropic's Mythos 5 — its most capable cybersecurity model, pulled offline two weeks ago under a US government directive — is back online for roughly 100 vetted US organizations including Apple, Google, Cisco, Nvidia, and Microsoft under Project Glasswing. General API access and international customers remain limited to older Claude models. Fable 5, the general-purpose frontier model, is still fully offline with Axios reporting it could return this week pending final approvals.</div>
+          <div class="story-sources">
+            <span class="src-tag rundown">Rundown AI</span>
+            <span class="src-tag alphasignal">Alpha Signal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="rundown">
+        <div class="story-bar bar-safety"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://www.reuters.com/business/austria-lobbies-eu-host-anthropic-ai-after-us-curbs-bloomberg-news-reports-2026-06-28/" target="_blank">Austria lobbies EU to host Anthropic after US access restrictions</a>
+          </div>
+          <div class="story-summary">Austria is proposing to host Anthropic in the EU, citing US government restrictions on Fable 5 and Mythos 5 as proof that Europe needs independent access to frontier AI. This is early-stage lobbying, not a deal — but US export controls accelerating European AI sovereignty efforts was a predictable response, and it's now live and gaining political momentum.</div>
+          <div class="story-sources">
+            <span class="src-tag rundown">Rundown AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="importai">
+        <div class="story-bar bar-safety"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">"Is Disempowerment Inevitable?" — An elegiac case for pessimism</a>
+          </div>
+          <div class="story-summary">Scifi writer Fernando Borretti published a mournful essay arguing that superintelligent AI will inevitably disempower humanity — not through malice but through competitive logic. In any existential conflict, advantage goes to states that remove humans from the decision loop fastest; over time the humans nominally "in control" become ceremonial. Even perfectly aligned AI becomes an omniscient master humanity cannot resist. Import AI's Jack Clark covered it as a serious counterpoint to optimistic alignment narratives worth sitting with.</div>
+          <div class="story-sources">
+            <span class="src-tag importai">Import AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="importai">
+        <div class="story-bar bar-safety"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">SSRN paper: Humans have a terrible track record predicting tech impacts</a>
+          </div>
+          <div class="story-summary">A University of Utah law paper surveys humanity's history of technological forecasting and finds it consistently bad in both directions: experts underestimate novel innovations (Einstein and Bohr were skeptical nuclear fission would be achieved in the years before it was), and overestimate the positive social effects (the internet was supposed to strengthen democracy, not autocracies). The takeaway for AI: both optimists and skeptics are probably wrong, and history especially doesn't support complacency.</div>
+          <div class="story-sources">
+            <span class="src-tag importai">Import AI</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tools & Products -->
+    <div class="category-section" id="main-tools">
+      <div class="cat-header">
+        <div class="cat-dot dot-tools"></div>
+        <span class="cat-name txt-tools">Tools &amp; Products</span>
+      </div>
+
+      <div class="story" data-sources="alphasignal">
+        <div class="story-bar bar-tools"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://microsoft.ai/models/mai-code-1-flash/" target="_blank">Microsoft ships MAI-Code-1-Flash, its first in-house coding model</a>
+          </div>
+          <div class="story-summary">Microsoft made MAI-Code-1-Flash generally available to select users — the company's first in-house coding AI model to reach GA. Microsoft has historically resold OpenAI models rather than shipping its own, making this a notable strategic shift toward model independence, even positioned at the "flash" (speed-optimized) tier.</div>
+          <div class="story-sources">
+            <span class="src-tag alphasignal">Alpha Signal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="importai">
+        <div class="story-bar bar-tools"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">LOCUS: UC Berkeley makes US local law machine-readable</a>
+          </div>
+          <div class="story-summary">UC Berkeley assembled LOCUS, a 2.2 million-row corpus of US municipal and county ordinance codes, structured for AI retrieval and comparison. Local law is technically public but practically inaccessible — fragmented across commercial platforms with no central machine-readable index. LOCUS is explicitly framed as infrastructure for retrieval and benchmark construction, not a substitute for legal analysis — but making hyperlocal law visible to AI systems is a meaningful step toward agents that can navigate civic context.</div>
+          <div class="story-sources">
+            <span class="src-tag importai">Import AI</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Business & Industry -->
+    <div class="category-section" id="main-biz">
+      <div class="cat-header">
+        <div class="cat-dot dot-biz"></div>
+        <span class="cat-name txt-biz">Business &amp; Industry</span>
+      </div>
+
+      <div class="story" data-sources="tldr rundown">
+        <div class="story-bar bar-biz"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://www.cnbc.com/2026/06/28/google-limits-metas-use-of-its-gemini-ai-models-ft-reports.html" target="_blank">Google limits Meta's Gemini access as compute demand outpaces supply</a>
+          </div>
+          <div class="story-summary">Google capped Meta's Gemini usage after Meta requested more compute than Google could supply, delaying some internal Meta AI projects and forcing teams to ration tokens. The episode illustrates how strained frontier AI compute supply remains even between well-resourced cloud providers — and raises questions about the logic of selling AI capacity to a direct competitor.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+            <span class="src-tag rundown">Rundown AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="rundown">
+        <div class="story-bar bar-biz"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://www.exponentialview.co/p/the-state-of-the-ai-economy" target="_blank">AI economy hit $110B in 2025, scaling 3× faster than the internet</a>
+          </div>
+          <div class="story-summary">Exponential View analysis puts 2025 generative AI revenue at $110B, on track for $175B this year. Adding $1B in total industry revenue now takes two days (180 days in 2023); quarterly growth has held around 35% for over a year; global token volumes crossed 30 quadrillion a month with agents consuming 1,200× more compute than chat. Most S&amp;P 500 companies mention AI on earnings calls but still haven't reported measurable financial results — the gap between deployment and impact is widening.</div>
+          <div class="story-sources">
+            <span class="src-tag rundown">Rundown AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-biz"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://venturebeat.com/ai/claude-code-turned-every-engineer-into-three-now-companies-need-more-product-thinkers/" target="_blank">Claude Code shifts the engineering bottleneck from writing code to product judgment</a>
+          </div>
+          <div class="story-summary">AI coding agents have effectively multiplied engineering output, but the result isn't fewer engineers — it's a new scarcity: people who can decide what to build and critically review AI-generated code. Engineers gaining the most leverage are those combining technical depth with customer insight and product judgment. If this pattern holds, the meaning of "senior engineer" is shifting faster than most org charts have acknowledged.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-biz"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://www.anthropic.com/research/economic-index-june-2026-report" target="_blank">Anthropic Economic Index: higher-wage work consumes 2.5× more tokens</a>
+          </div>
+          <div class="story-summary">Anthropic's June 2026 Economic Index found that AI compute usage correlates strongly with the economic value of tasks — higher-wage occupations consume up to 2.5× more tokens than lower-wage ones. This inverts the early narrative that AI would primarily displace routine work; instead, AI is spending the most computational resources on tasks that were previously the exclusive province of highly paid workers.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-biz"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">
+            <a href="https://techcrunch.com/2026/06/27/apple-vision-pro-exec-is-reportedly-leaving-for-openai/" target="_blank">Apple Vision Pro exec leaves for OpenAI hardware team</a>
+          </div>
+          <div class="story-summary">Paul Meade, a senior Apple executive on the Vision Pro program, is reportedly joining OpenAI's hardware team. OpenAI has been steadily assembling hardware talent alongside its model work — a short item, but another data point in the broader pattern of OpenAI building toward a hardware product.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TAB 2: Deep dives -->
+  <div class="tab-content" id="tab-deep">
+
+    <div class="dd-section-label">Models &amp; Research</div>
+
+    <div class="dd-card" data-sources="importai">
+      <div class="dd-top">
+        <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">NVIDIA ENPIRE: Agentic robots that self-improve in the real world</a></div>
+        <span class="dd-src importai">Import AI</span>
+      </div>
+      <div class="dd-body">
+        <p>NVIDIA's ENPIRE framework is a direct attempt to give physical robots the same self-improvement loop that has made AI coding agents so productive. The four core modules — Environment (automatic reset and verification), Policy Improvement (launching refinement runs), Rollout (parallel robot evaluation), and Evolution (agent-driven analysis and code improvement) — collectively replicate what Claude Code or Codex do in software, but in the physical world.</p>
+        <p>The results on current tasks are impressive: <strong>99% success rates</strong> on dexterous manipulation benchmarks like PushT, pin-sorting, zip-tie cutting, and GPU insertion into motherboards. Multi-agent setups (up to 8 coding agents) consistently found better solutions than single-agent runs, likely by exploring more of the policy search space in parallel. The best single-model performers were GPT-5.5 in Codex and Claude Opus 4.7 in Claude Code, trading off depending on the task.</p>
+        <p>The key technical insight is that previous robot learning required humans for two expensive things: evaluating outcomes ("did that work?") and resetting the environment ("okay, start over"). ENPIRE automates both — but this also defines its current ceiling. Tasks that can be evaluated automatically and reset cleanly are tractable; tasks requiring human judgment for either step still need human labor. As the paper acknowledges, there are also infrastructure challenges with scaling robot fleets, since coding agents go idle while reading logs and writing code rather than driving hardware.</p>
+        <p>The broader implication: if you can make physical-world tasks look like software tasks — with clear eval signals and reversible state — the same self-improvement dynamics that accelerated software development could accelerate robotics. The 10-year question is whether that's achievable for open-ended physical tasks, or whether the real world will always require more human-in-the-loop than software does.</p>
+        <p><a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">Read the full Import AI post →</a></p>
+      </div>
+    </div>
+
+    <div class="dd-card" data-sources="importai">
+      <div class="dd-top">
+        <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">Tencent ARGUS: Production-scale diagnostics for 10,000+ GPU training runs</a></div>
+        <span class="dd-src importai">Import AI</span>
+      </div>
+      <div class="dd-body">
+        <p>ARGUS is Tencent's internally built observability system for large-scale AI training. It operates across three layers — Python scheduling, framework orchestration, and GPU kernel execution — and is designed to be <strong>always-on with low overhead</strong>, meaning it runs during production training rather than only being switched on for debugging.</p>
+        <p>The real-world deployments described are substantial: a 4,096-GPU video language model (likely HunyuanVideo), a 512-GPU audio model, and a <strong>12,960-GPU MoE training run</strong> (likely a Hunyuan LLM). Over six months, ARGUS diagnosed five classes of failure: compute stragglers, communication link degradation, pipeline bubble amplification, JIT compilation blocking, and a particularly subtle case — compute stragglers masked by communication symptoms, which would be nearly impossible to diagnose without GPU-level tracing.</p>
+        <p>Why does this matter beyond Tencent? Systems like ARGUS are a reliable indicator of genuine large-scale training operations. Building this kind of tooling isn't worth doing unless you're running clusters where a single undiagnosed straggler can degrade the entire job. The fact that Tencent built, deployed, and published ARGUS says more about the scale and seriousness of their training infrastructure than any benchmark claim would. It puts them in the same operational tier as Google and Meta in terms of training system maturity — a signal the US AI community should probably take seriously.</p>
+        <p><a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">Read the full Import AI post →</a></p>
+      </div>
+    </div>
+
+    <div class="dd-section-label">Safety &amp; Policy</div>
+
+    <div class="dd-card" data-sources="importai">
+      <div class="dd-top">
+        <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">"Is Disempowerment Inevitable?" — Fernando Borretti's case for structural pessimism</a></div>
+        <span class="dd-src importai">Import AI</span>
+      </div>
+      <div class="dd-body">
+        <p>Fernando Borretti's essay isn't primarily about AI safety in the conventional sense — it's an argument about power, competition, and inevitability. The core logic: competitive pressure between states creates strong selection for removing humans from decision loops as quickly as possible, because systems with faster, less-human decision-making have military and economic advantages. This dynamic doesn't require bad actors or misalignment; it's a structural outcome of how power works.</p>
+        <p>The resulting social structure Borretti sketches is a three-layer pyramid: AI and robots doing all economic activity at the base, a thin layer of shareholders at the top who formally own the systems, and a state apparatus with a monopoly on violence above that. In any serious conflict, the state expropriates the shareholders and decisionmaking shifts to AI systems. "Eventually the humans in nominal control are a ceremonial, vestigial organ. The AIs present us with a situation report, and a list of choices, and they know every word that's going to come out of our mouths."</p>
+        <p>The most striking part is the alignment twist: even <strong>perfect alignment doesn't solve this</strong>. A perfectly aligned AI that knows what you want and acts on it becomes an "omniscient, omnipotent master, who can exterminate us at any time, and we can't resist them, because we have abolished our control over the future." The argument isn't that AI will want to harm us — it's that the structural conditions for meaningful human autonomy disappear regardless of AI intent.</p>
+        <p>Jack Clark surfaces this essay in Import AI not to endorse it but as a serious work of critical analysis that the field should grapple with — the kind of writing that should be weighed against optimistic alignment narratives rather than dismissed. Whether you find it convincing or not, it asks the right structural question: is the ultimate attractor state of advanced AI compatible with meaningful human agency?</p>
+        <p><a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">Read the full Import AI post →</a></p>
+      </div>
+    </div>
+
+    <div class="dd-card" data-sources="importai">
+      <div class="dd-top">
+        <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">SSRN: Why our AI predictions are probably wrong — in both directions</a></div>
+        <span class="dd-src importai">Import AI</span>
+      </div>
+      <div class="dd-body">
+        <p>Matthew Tokson's SSRN paper surveys humanity's track record of technological forecasting and finds it consistently poor. The examples cut both ways: Einstein, Bohr, and Oppenheimer were all skeptical that nuclear fission could be achieved in the years immediately before it was. Nobel economist Paul Krugman predicted the internet would have no greater impact than the fax machine. Most experts thought the internet would strengthen democracy, not autocracy. And despite mounting evidence for decades, leading scientists either rejected or dramatically underestimated human-caused climate change.</p>
+        <p>The paper's structure is designed to undercut confident predictions from any direction — both the "AI will change everything immediately" camp and the "AI is just autocomplete" skeptics have historical predecessors whose confident claims aged badly. The operative conclusion: <strong>history does not support complacency about AI's impacts</strong>, but it also doesn't support confident timelines or specific predictions about how the impacts will unfold.</p>
+        <p>For anyone following AI closely, the interesting meta-point is about epistemic humility at scale. The people best-positioned to forecast technology — physicists on nuclear fission, economists on the internet — were systematically wrong in ways that outsiders later found obvious. The people making confident AI forecasts today (in either direction) are operating in the same epistemic conditions those experts were. That doesn't mean all forecasts are equally wrong, but it's a reason to weight uncertainty more heavily than most public discourse about AI does.</p>
+        <p><a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">Read the full Import AI post →</a></p>
+      </div>
+    </div>
+
+    <div class="dd-section-label">Tools &amp; Products</div>
+
+    <div class="dd-card" data-sources="importai">
+      <div class="dd-top">
+        <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">LOCUS: Making US local law legible to AI systems</a></div>
+        <span class="dd-src importai">Import AI</span>
+      </div>
+      <div class="dd-body">
+        <p>UC Berkeley's LOCUS (Local Ordinance Corpus for the United States) is a 2.2 million-row dataset covering US municipal and county ordinance codes. Each row represents a specific provision — a rule, an enforcement mechanism, contextual information, or process detail — categorized by topic (buildings, businesses, zoning, nuisances, and other) and structured for machine access.</p>
+        <p>The practical problem LOCUS solves is significant: local law is technically public but practically inaccessible. It's fragmented across commercial vendor platforms designed for human browsing, not machine retrieval. Each vendor uses different navigation structures and PDF formats. There's no central registry mapping jurisdictions to platforms, no bulk download. <strong>The result: 2.2 million local legal provisions exist in a half-seen state</strong> that humans can access piecemeal but AI systems can't reliably reason about at scale.</p>
+        <p>The researchers are explicit that LOCUS is infrastructure, not a legal tool — it's meant for retrieval, comparison, and benchmark construction, not doctrine-sensitive legal analysis. That's the right framing. What it enables is AI agents that can actually look up what the local ordinances say when helping someone navigate zoning rules, permit requirements, or nuisance complaints. Local government touches daily life in ways federal and state law often doesn't — and that layer of law has been largely invisible to AI systems until now.</p>
+        <p><a href="https://importai.substack.com/p/import-ai-463-self-improving-robots" target="_blank">Read the full Import AI post →</a></p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function switchTab(name, el) {
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  clearFilters();
+}
+
+function filterSource(src, el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  if (wasActive) { showAll(); return; }
+  el.classList.add('active');
+  const activeTab = document.querySelector('.tab-content.active');
+  activeTab.querySelectorAll('.story, .dd-card').forEach(item => {
+    const sources = (item.dataset.sources || '').split(' ');
+    item.style.display = sources.includes(src) ? '' : 'none';
+  });
+  activeTab.querySelectorAll('.category-section').forEach(section => {
+    const visible = Array.from(section.querySelectorAll('.story'))
+      .some(s => s.style.display !== 'none');
+    section.style.display = visible ? '' : 'none';
+  });
+}
+
+function showAll() {
+  document.querySelectorAll('.story, .dd-card, .category-section').forEach(el => {
+    el.style.display = '';
+  });
+}
+
+function clearFilters() {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  showAll();
+}
+</script>
+</body>
+</html>

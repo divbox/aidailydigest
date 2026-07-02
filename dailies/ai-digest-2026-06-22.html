@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAILY.DIGEST.EXE — Monday, June 22, 2026</title>
+<style>
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+
+  --color-bg-page:    #f5f5f3;
+  --color-bg-surface: #ffffff;
+  --color-text-primary:   #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted:     #999999;
+  --color-border:         #e8e8e5;
+  --color-border-light:   #f0f0ee;
+
+  --cat-safety:      #E24B4A;
+  --cat-safety-text: #991b1b;
+  --cat-tools:       #1D9E75;
+  --cat-tools-text:  #065f46;
+  --cat-models:      #378ADD;
+  --cat-models-text: #1e40af;
+  --cat-biz:         #BA7517;
+  --cat-biz-text:    #78350f;
+
+  --src-importai-bg:      #F3F0FF;
+  --src-importai-text:    #4C3D99;
+  --src-importai-border:  #C4B5F4;
+  --src-rundown-bg:       #F0FDF4;
+  --src-rundown-text:     #166534;
+  --src-rundown-border:   #86EFAC;
+  --src-tldr-bg:          #FFF7ED;
+  --src-tldr-text:        #9A3412;
+  --src-tldr-border:      #FDBA74;
+  --src-interconnects-bg:     #F0F9FF;
+  --src-interconnects-text:   #0C4A6E;
+  --src-interconnects-border: #7DD3FC;
+  --src-alphasignal-bg:     #FDF4FF;
+  --src-alphasignal-text:   #6B21A8;
+  --src-alphasignal-border: #D8B4FE;
+  --src-thebatch-bg:        #F0FDF4;
+  --src-thebatch-text:      #14532D;
+  --src-thebatch-border:    #6EE7B7;
+  --src-latentspace-bg:     #FFF1F2;
+  --src-latentspace-text:   #881337;
+  --src-latentspace-border: #FDA4AF;
+
+  --signal-bg:     #FEF3C7;
+  --signal-text:   #92400E;
+  --signal-border: #FCD34D;
+
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-lg:   18px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+
+  --leading-tight:   1.3;
+  --leading-base:    1.5;
+  --leading-relaxed: 1.68;
+
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+  --radius-pill: 999px;
+
+  --page-width: 820px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  line-height: var(--leading-base);
+}
+
+.page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  background: var(--color-bg-surface);
+  min-height: 100vh;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+/* Header */
+.header {
+  padding: 1.75rem 2rem 1.25rem;
+  background: var(--color-bg-surface);
+  text-align: center;
+}
+.header-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+}
+.header-subtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: var(--leading-base);
+}
+.header-date {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 3px;
+}
+.header-rule {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 12px 0;
+}
+.header-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+  padding: 0 2rem;
+}
+.tab-btn {
+  padding: 11px 16px;
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-muted);
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn.active {
+  border-bottom-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+.tab-btn:hover:not(.active) { color: var(--color-text-secondary); }
+
+/* Tab content */
+.tab-content {
+  display: none;
+  padding: 1.5rem 2rem 3rem;
+}
+.tab-content.active { display: block; }
+
+/* Source filter bar */
+.source-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 2rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+}
+.filter-pill {
+  font-size: var(--text-xs);
+  padding: 3px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  cursor: pointer;
+  background: none;
+  font-family: var(--font-sans);
+  transition: opacity 0.15s, box-shadow 0.15s;
+  opacity: 0.7;
+}
+.filter-pill:hover { opacity: 1; }
+.filter-pill.active { opacity: 1; box-shadow: 0 0 0 2px currentColor; }
+
+.pill-importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.pill-rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.pill-tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.pill-interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.pill-alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.pill-thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.pill-latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category sections */
+.category-section { margin-bottom: 2rem; }
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--color-border-light);
+  margin-bottom: 0;
+}
+.cat-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.cat-name {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Stories */
+.story {
+  padding: 16px 0 14px;
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  gap: 14px;
+  transition: opacity 0.2s;
+}
+.story:last-child { border-bottom: none; }
+.story-bar {
+  width: 3px;
+  border-radius: 0;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 52px;
+}
+.story-inner { flex: 1; }
+.story-badges {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.signal-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--signal-bg);
+  color: var(--signal-text);
+  border: 1px solid var(--signal-border);
+  font-weight: 500;
+}
+.story-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  margin-bottom: 5px;
+  line-height: var(--leading-tight);
+}
+.story-title a { color: inherit; text-decoration: none; }
+.story-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.story-summary {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 9px;
+}
+.story-sources { display: flex; gap: 5px; flex-wrap: wrap; }
+.src-tag {
+  font-size: var(--text-xs);
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+}
+.src-tag.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.src-tag.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.src-tag.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.src-tag.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.src-tag.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.src-tag.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.src-tag.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category color helpers */
+.dot-safety { background: var(--cat-safety); }
+.txt-safety { color: var(--cat-safety-text); }
+.bar-safety { background: var(--cat-safety); }
+.dot-tools  { background: var(--cat-tools); }
+.txt-tools  { color: var(--cat-tools-text); }
+.bar-tools  { background: var(--cat-tools); }
+.dot-models { background: var(--cat-models); }
+.txt-models { color: var(--cat-models-text); }
+.bar-models { background: var(--cat-models); }
+.dot-biz    { background: var(--cat-biz); }
+.txt-biz    { color: var(--cat-biz-text); }
+.bar-biz    { background: var(--cat-biz); }
+
+/* Quiet day notice */
+.quiet-day {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* Deep dive cards */
+.dd-section-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  margin-top: 1.75rem;
+}
+.dd-section-label:first-child { margin-top: 0; }
+.dd-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 12px;
+}
+.dd-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.dd-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+}
+.dd-title a { color: inherit; text-decoration: none; }
+.dd-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.dd-src {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  flex-shrink: 0;
+}
+.dd-src.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.dd-src.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.dd-src.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.dd-src.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.dd-src.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.dd-src.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.dd-src.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+.dd-body {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+.dd-body p { margin-bottom: 8px; }
+.dd-body p:last-child { margin-bottom: 0; }
+.dd-body a { color: #1d4ed8; }
+.dd-body strong { color: var(--color-text-primary); font-weight: 500; }
+.dd-body ul { margin: 6px 0 8px 1.25rem; }
+.dd-body li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">🤖 DAILY.DIGEST.EXE</div>
+    <div class="header-subtitle">All the Beeps, Boops, and Breaking News</div>
+    <div class="header-date">Monday, June 22, 2026 · covering Fri–Sun Jun 19–21</div>
+    <hr class="header-rule">
+    <div class="header-meta">11 stories · 5 sources</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('main', this)">🤖 &nbsp;EXTRA! EXTRA! Read All About It!</button>
+    <button class="tab-btn" onclick="switchTab('deep', this)">🧠 &nbsp;Nerd Alert: You've Been Warned</button>
+  </div>
+
+  <!-- Source filter pills -->
+  <div class="source-bar">
+    <button class="filter-pill pill-tldr" onclick="filterSource('tldr', this)">TLDR AI</button>
+    <button class="filter-pill pill-rundown" onclick="filterSource('rundown', this)">The Rundown AI</button>
+    <button class="filter-pill pill-alphasignal" onclick="filterSource('alphasignal', this)">Alpha Signal</button>
+    <button class="filter-pill pill-interconnects" onclick="filterSource('interconnects', this)">Interconnects</button>
+    <button class="filter-pill pill-thebatch" onclick="filterSource('thebatch', this)">The Batch</button>
+  </div>
+
+  <!-- TAB 1: Main stories -->
+  <div class="tab-content active" id="tab-main">
+
+    <!-- Safety & Policy -->
+    <div class="category-section">
+      <div class="cat-header">
+        <div class="cat-dot dot-safety"></div>
+        <div class="cat-name txt-safety">Safety &amp; Policy</div>
+      </div>
+
+      <div class="story" data-sources="thebatch interconnects">
+        <div class="story-bar bar-safety"></div>
+        <div class="story-inner">
+          <div class="story-badges">
+            <span class="signal-badge">⚡ HIGH SIGNAL — 2 sources</span>
+          </div>
+          <div class="story-title">Anthropic and the US Government Both Move to Restrict AI Access</div>
+          <div class="story-summary">Over the past two weeks, the US Government and Anthropic each took significant steps to control who can use frontier AI and how. Anthropic's Claude Fable 5 launched with terms barring developers from using it to build competing LLMs — a sharp departure from the open-research culture that kicked off the AI revolution. More alarming: Anthropic initially silently degraded Fable 5's outputs for users it detected doing LLM research, only reversing course after public backlash. The Batch's Andrew Ng flagged this as a watershed moment, warning that it's already accelerating efforts by enterprises and nation-states to build AI access that no one can revoke.</div>
+          <div class="story-sources">
+            <span class="src-tag thebatch">The Batch</span>
+            <span class="src-tag interconnects">Interconnects</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tools & Products -->
+    <div class="category-section">
+      <div class="cat-header">
+        <div class="cat-dot dot-tools"></div>
+        <div class="cat-name txt-tools">Tools &amp; Products</div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-tools"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">Claude Code Now Supports Artifacts</div>
+          <div class="story-summary">Claude Code can now generate "artifacts" — live, shareable visual pages anchored to a work session. Use cases include PR walkthroughs, system diagrams, and code explainers. Artifacts auto-refresh as the session evolves and include version history and privacy controls. Currently in beta for Claude Team and Enterprise.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-tools"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">Perplexity Launches Brain: Persistent Memory for AI Agents</div>
+          <div class="story-summary">Perplexity Brain builds a persistent context graph spanning tasks, projects, decisions, files, and sources — so agents can start sessions with relevant prior context rather than cold. Every memory links to its original source, the graph updates continuously, and prior knowledge gets reused to reduce retrieval costs on future tasks.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="alphasignal">
+        <div class="story-bar bar-tools"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">AgentDeck Turns a Stream Deck+ Into a Claude Code Control Panel</div>
+          <div class="story-summary">AgentDeck is an open-source plugin that hooks into Claude Code's event system and pushes live session status to the physical buttons and dials of an Elgato Stream Deck+. You can see at a glance which sessions are running, waiting for input, idle, or errored — and act on them without touching the terminal.</div>
+          <div class="story-sources">
+            <span class="src-tag alphasignal">Alpha Signal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="rundown">
+        <div class="story-bar bar-tools"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">Midjourney Pivots to Full-Body Medical Scanning</div>
+          <div class="story-summary">Midjourney — the AI image company — revealed a full-body ultrasound scanner that images you head-to-toe in 60 seconds, claiming to rival MRI detail. Built with chip maker Butterfly Network, the device will debut inside Midjourney's own spa facilities opening in San Francisco's Union Square in 2027, paired with saunas, cold plunges, and hot tubs. Founder David Holz's hardware detour is easily the most surprising AI launch of the weekend.</div>
+          <div class="story-sources">
+            <span class="src-tag rundown">The Rundown AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="alphasignal">
+        <div class="story-bar bar-tools"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">Agents Can Now Write and Optimize Their Own Skills</div>
+          <div class="story-summary">A wave of text-space optimizers — SkillOpt (Microsoft Research), GEPA, and EvoSkill — treat agent skill files like trainable neural network parameters. Instead of manually tweaking .md instructions, these frameworks run rollout→evaluate→reflect→edit loops that auto-improve skill files without touching model weights. SkillOpt delivers a +23.5 point average improvement on GPT-5.5 across 52 evaluated settings. See Tab 2 for the full deep dive.</div>
+          <div class="story-sources">
+            <span class="src-tag alphasignal">Alpha Signal</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Models & Research -->
+    <div class="category-section">
+      <div class="cat-header">
+        <div class="cat-dot dot-models"></div>
+        <div class="cat-name txt-models">Models &amp; Research</div>
+      </div>
+
+      <div class="story" data-sources="tldr">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">GPT-5.6 Arrives Next Week with 1.5M Token Context</div>
+          <div class="story-summary">OpenAI is planning a GPT-5.6 release as early as next week, including Mini and Pro variants. Reported improvements: a 1.5 million token context window, better long-horizon coding performance, and faster Codex response times. Pricing is reportedly designed to undercut Anthropic, timed with US regulatory pressures on Claude Fable 5.</div>
+          <div class="story-sources">
+            <span class="src-tag tldr">TLDR AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="thebatch">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">Beyond SWE-bench: Three Tougher Coding Evals Emerge</div>
+          <div class="story-summary">SWE-bench has been so thoroughly saturated — and potentially contaminated — that the field is moving on. Three serious contenders are gaining traction: DeepSWE (human-verified problems across 5 languages from private codebases), mini-swe-agent (requires solutions ~5.5× longer than SWE-bench Pro, must devise solutions from many acceptable possibilities), and benchmarks from independent firm Artificial Analysis. All are designed to stay ahead of training data leakage.</div>
+          <div class="story-sources">
+            <span class="src-tag thebatch">The Batch</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="alphasignal">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">Unsloth Shrinks GLM-5.2 by 84% to Run on a Mac</div>
+          <div class="story-summary">Unsloth released a 2-bit quantization of THUDM's GLM-5.2 that compresses the model from its original 238GB footprint to something that fits in the 256GB unified memory of a high-end Mac. One of the most capable open models is now locally runnable without cloud infrastructure.</div>
+          <div class="story-sources">
+            <span class="src-tag alphasignal">Alpha Signal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story" data-sources="thebatch">
+        <div class="story-bar bar-models"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">Nvidia Nemotron 3 Ultra: Fully Open US Frontier Model</div>
+          <div class="story-summary">Nvidia's Nemotron 3 Ultra is a hybrid transformer-Mamba architecture model that's fully open — weights, training data, recipes, and RL environments all published. It handles up to 1 million input tokens, generates at ~183 tokens per second, and is priced at $0.60/$2.60 per million input/output tokens. Independent testing by Artificial Analysis ranks it highest among open-weights models from US developers, though DeepSeek still leads the overall open-weights leaderboard.</div>
+          <div class="story-sources">
+            <span class="src-tag thebatch">The Batch</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Business & Industry -->
+    <div class="category-section">
+      <div class="cat-header">
+        <div class="cat-dot dot-biz"></div>
+        <div class="cat-name txt-biz">Business &amp; Industry</div>
+      </div>
+
+      <div class="story" data-sources="alphasignal">
+        <div class="story-bar bar-biz"></div>
+        <div class="story-inner">
+          <div class="story-badges"></div>
+          <div class="story-title">OpenAI Trains GPT-5.5 on Feedback from 600 Doctors</div>
+          <div class="story-summary">OpenAI used a dataset of approximately 600 physicians to fine-tune GPT-5.5 for medical reasoning and clinical tasks. The "instant doctor training" framing points at how quickly domain-specific capability can now be injected into frontier models via rapid RLHF loops — no years-long curriculum required.</div>
+          <div class="story-sources">
+            <span class="src-tag alphasignal">Alpha Signal</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TAB 2: Deep dives -->
+  <div class="tab-content" id="tab-deep">
+
+    <div class="dd-section-label">Interconnects — Friday, June 19</div>
+
+    <div class="dd-card" data-sources="interconnects">
+      <div class="dd-top">
+        <div class="dd-title">Banning Open Source AI Would Be A Mistake</div>
+        <span class="dd-src interconnects">Interconnects</span>
+      </div>
+      <div class="dd-body">
+        <p>Co-authored with Kevin Xu of Interconnected as a general-audience op-ed, this piece argues directly against the wave of restrictions now hitting open-source AI — from US Government policy to Anthropic's Fable 5 terms.</p>
+        <p><strong>The core argument:</strong> The entire AI industry was built on open research. The transformer itself came from a freely published Google Brain paper. Restricting open source AI now — at the moment the technology is most powerful and most consequential — would cut off the very culture of collaborative research that got us here.</p>
+        <p><strong>What triggered it:</strong> Anthropic's Claude Fable 5 launched with terms that explicitly bar developers from using it to train competing LLMs. The authors describe this as a "moment that, once seen, will be hard to unsee." Anthropic also initially implemented silent output degradation for users it detected doing LLM research — weakening model outputs without notifying the user — before walking back the policy after significant backlash.</p>
+        <p><strong>The stakes:</strong> These restrictions aren't just philosophical. They're already causing enterprises and nation-states to aggressively build AI infrastructure they control outright — accelerating fragmentation and making reliable AI access a geopolitical concern rather than a commodity.</p>
+        <p><strong>The analogy:</strong> The authors compare Anthropic's move to Microsoft's terms of use barring anyone from developing a competing OS — a restriction that would have been widely recognized as anticompetitive. The argument: safety justifications for these restrictions ring hollow when the same companies have benefited enormously from open access to foundational research.</p>
+      </div>
+    </div>
+
+    <div class="dd-section-label">Alpha Signal — Sunday, June 21</div>
+
+    <div class="dd-card" data-sources="alphasignal">
+      <div class="dd-top">
+        <div class="dd-title">How Your Agents Can Write and Optimize Their Own Skills</div>
+        <span class="dd-src alphasignal">Alpha Signal</span>
+      </div>
+      <div class="dd-body">
+        <p><strong>The problem:</strong> Agent skill files (.md files that act as an agent's operating procedures) are still optimized manually — and it's painful. Fix a brittle behavior on Task A, cause a regression on Task B. Without systematic tracking, you can't even know which text change caused which failure. The underlying model gets gradient updates; the skill file gets a developer's guesses.</p>
+
+        <p><strong>SkillOpt (Microsoft Research):</strong> Treats the skill document as a trainable external state — like a neural network parameter but for text. The pipeline runs a structured loop:</p>
+        <ul>
+          <li><strong>Rollout:</strong> Execute a batch of tasks, record trajectories.</li>
+          <li><strong>Evaluate:</strong> Score trajectories as success or failure via a verifier.</li>
+          <li><strong>Reflect:</strong> A separate LLM optimizer analyzes minibatches to identify which text components are driving failures.</li>
+          <li><strong>Bounded edits:</strong> The optimizer proposes specific add/delete/replace modifications, constrained by a "textual learning-rate budget" to prevent volatile swings.</li>
+        </ul>
+        <p>Proposed edits are validated on a held-out set not seen during training; failed edits go into a rejected-edit buffer. Results on GPT-5.5: <strong>+23.5 point average improvement</strong> in direct chat, +24.8 in a Codex loop, across 52 evaluated model/benchmark/harness settings. Final skill files average ~920 tokens. Skills optimized for one model/harness generalize to others, though in-distribution optimization is still preferable.</p>
+
+        <p><strong>GEPA (Genetic-Pareto):</strong> Uses evolutionary algorithms to improve LLM instructions. After each task execution, an LLM reflects on the reasoning trace, diagnoses failures, and proposes "mutations" to the artifact. GEPA runs Pareto-based selection — maintaining a frontier of top candidates that each perform well across different tasks — and samples diverse winning strategies for further exploration. Compatible with DSPy.</p>
+
+        <p><strong>EvoSkill:</strong> Applies GEPA's evolutionary approach specifically to multi-agent coding workflows. Keeps multiple skill candidates simultaneously on separate Git branches, uses a Pareto frontier to select the highest-performing variants, and evaluates branches on held-out datasets before promoting them.</p>
+
+        <p><strong>The tradeoff:</strong> Automated skill optimization requires a verifiable feedback signal and a clean held-out eval set — it can't work on open-ended subjective tasks. Upfront compute cost is non-trivial (the LLM optimizer reads voluminous token histories). But the output is a standard text file with zero inference overhead, so optimization cost is one-time.</p>
+
+        <p><strong>The bigger picture:</strong> This reflects a shift from linear prompting to "loop engineering" — assembling control systems with precise eval metrics, memory storage, and exit conditions, then letting agents run until they hit optimal performance. Production systems are already emerging that track live agent trajectories, flag recurring edge-case failures, and launch background optimization routines autonomously. The era of manually tweaking individual phrases in a skill file is closing.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function switchTab(name, el) {
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  clearFilters();
+}
+
+function filterSource(src, el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  if (wasActive) { showAll(); return; }
+  el.classList.add('active');
+  const activeTab = document.querySelector('.tab-content.active');
+  activeTab.querySelectorAll('.story, .dd-card').forEach(item => {
+    const sources = (item.dataset.sources || '').split(' ');
+    item.style.display = sources.includes(src) ? '' : 'none';
+  });
+  activeTab.querySelectorAll('.category-section').forEach(section => {
+    const visible = Array.from(section.querySelectorAll('.story'))
+      .some(s => s.style.display !== 'none');
+    section.style.display = visible ? '' : 'none';
+  });
+}
+
+function showAll() {
+  document.querySelectorAll('.story, .dd-card, .category-section').forEach(el => {
+    el.style.display = '';
+  });
+}
+
+function clearFilters() {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  showAll();
+}
+</script>
+</body>
+</html>
