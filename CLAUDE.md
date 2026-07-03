@@ -35,6 +35,10 @@ All sources active in the skill. Skill runs M–F; Monday looks back 3 days (cov
 - No content found: renders a "quiet day" notice; fallback block rises to top
 - Processed emails (i.e. ones that made it into that day's digest) get the `aidigest` label applied and `INBOX` removed — done as the last step, only after the HTML file saves. Emails that didn't make the cut stay in the inbox.
 
+## Maintenance
+
+- The Cowork scheduled task's prompt (`ai-newsletter-digest`, stored at `/Users/divbox/claude/Scheduled/ai-newsletter-digest/SKILL.md`, outside this repo) is mirrored for version control at `skill/scheduled-task-prompt.md`. **Whenever the scheduled task's prompt is edited again, copy the new text into `skill/scheduled-task-prompt.md` in the same session and note the date/reason.** Nothing syncs these automatically — if they ever disagree, the live Cowork task is the source of truth, this file is just the diff trail.
+
 ## Hub Pipeline (not the skill's job — see docs/digest-hub-spec.md)
 
 The skill only ever writes `ai-digest-YYYY-MM-DD.html` into this project's root. Everything past that — moving it into `dailies/`, regenerating `index.html`/`archive.html`, committing, pushing to GitHub — is `scripts/publish.sh`, run natively on the Mac via `launchd` (see `scripts/com.divbox.digest-publish.plist`). Git credentials and pushes never happen from inside Cowork's sandbox by design.
