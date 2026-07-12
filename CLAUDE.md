@@ -39,6 +39,11 @@ All sources active in the skill. Skill runs M–F; Monday looks back 3 days (cov
 
 - The Cowork scheduled task's prompt (`ai-newsletter-digest`, stored at `/Users/divbox/claude/Scheduled/ai-newsletter-digest/SKILL.md`, outside this repo) is mirrored for version control at `skill/scheduled-task-prompt.md`. **Whenever the scheduled task's prompt is edited again, copy the new text into `skill/scheduled-task-prompt.md` in the same session and note the date/reason.** Nothing syncs these automatically — if they ever disagree, the live Cowork task is the source of truth, this file is just the diff trail.
 
+## Daily Status Check
+
+- A separate Cowork scheduled task (self-check, not the digest skill) checks in on this project daily and writes to `~/claude/Projects/status/AIDigest.md` — one shared status page across several projects. It checks: whether a digest landed for the expected weekday, the size of the untracked `ai-digest-*.html` pile in root (expected to grow while the publish pipeline below is paused — not itself a flag), whether TODO.md's deferred items have gone overdue against their own stated timeline, and basic repo health (`git log`/`git status` vs. `origin/main`).
+- Its prompt is mirrored for version control at `docs/daily-check-prompt.md`, same convention as the digest task's mirror below — re-copy by hand if the live task prompt changes.
+
 ## Hub Pipeline (not the skill's job — see docs/digest-hub-spec.md)
 
 The skill only ever writes `ai-digest-YYYY-MM-DD.html` into this project's root. Everything past that — moving it into `dailies/`, regenerating `index.html`/`archive.html`, committing, pushing to GitHub — is `scripts/publish.sh`, run natively on the Mac via `launchd` (see `scripts/com.divbox.digest-publish.plist`). Git credentials and pushes never happen from inside Cowork's sandbox by design.
