@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAILY.DIGEST.EXE — July 6, 2026</title>
+<style>
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+
+  --color-bg-page:    #f5f5f3;
+  --color-bg-surface: #ffffff;
+  --color-text-primary:   #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted:     #999999;
+  --color-border:         #e8e8e5;
+  --color-border-light:   #f0f0ee;
+
+  --cat-safety:      #E24B4A;
+  --cat-safety-text: #991b1b;
+  --cat-tools:       #1D9E75;
+  --cat-tools-text:  #065f46;
+  --cat-models:      #378ADD;
+  --cat-models-text: #1e40af;
+  --cat-biz:         #BA7517;
+  --cat-biz-text:    #78350f;
+
+  --src-importai-bg:      #F3F0FF;
+  --src-importai-text:    #4C3D99;
+  --src-importai-border:  #C4B5F4;
+  --src-rundown-bg:       #F0FDF4;
+  --src-rundown-text:     #166534;
+  --src-rundown-border:   #86EFAC;
+  --src-tldr-bg:          #FFF7ED;
+  --src-tldr-text:        #9A3412;
+  --src-tldr-border:      #FDBA74;
+  --src-interconnects-bg:     #F0F9FF;
+  --src-interconnects-text:   #0C4A6E;
+  --src-interconnects-border: #7DD3FC;
+  --src-alphasignal-bg:     #FDF4FF;
+  --src-alphasignal-text:   #6B21A8;
+  --src-alphasignal-border: #D8B4FE;
+  --src-thebatch-bg:        #F0FDF4;
+  --src-thebatch-text:      #14532D;
+  --src-thebatch-border:    #6EE7B7;
+  --src-latentspace-bg:     #FFF1F2;
+  --src-latentspace-text:   #881337;
+  --src-latentspace-border: #FDA4AF;
+
+  --signal-bg:     #FEF3C7;
+  --signal-text:   #92400E;
+  --signal-border: #FCD34D;
+
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-lg:   18px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+
+  --leading-tight:   1.3;
+  --leading-base:    1.5;
+  --leading-relaxed: 1.68;
+
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+  --radius-pill: 999px;
+
+  --page-width: 820px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  line-height: var(--leading-base);
+}
+
+.page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  background: var(--color-bg-surface);
+  min-height: 100vh;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+/* Header */
+.header {
+  padding: 1.75rem 2rem 1.25rem;
+  background: var(--color-bg-surface);
+  text-align: center;
+}
+.header-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+}
+.header-subtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: var(--leading-base);
+}
+.header-date {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 3px;
+}
+.header-rule {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 12px 0;
+}
+.header-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+  padding: 0 2rem;
+}
+.tab-btn {
+  padding: 11px 16px;
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-muted);
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn.active {
+  border-bottom-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+.tab-btn:hover:not(.active) { color: var(--color-text-secondary); }
+
+/* Tab content */
+.tab-content {
+  display: none;
+  padding: 1.5rem 2rem 3rem;
+}
+.tab-content.active { display: block; }
+
+/* Source filter bar */
+.source-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 2rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+}
+.filter-pill {
+  font-size: var(--text-xs);
+  padding: 3px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  cursor: pointer;
+  background: none;
+  font-family: var(--font-sans);
+  transition: opacity 0.15s, box-shadow 0.15s;
+  opacity: 0.7;
+}
+.filter-pill:hover { opacity: 1; }
+.filter-pill.active { opacity: 1; box-shadow: 0 0 0 2px currentColor; }
+
+.pill-importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.pill-rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.pill-tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.pill-interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.pill-alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.pill-thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.pill-latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category sections */
+.category-section { margin-bottom: 2rem; }
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--color-border-light);
+  margin-bottom: 0;
+}
+.cat-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.cat-name {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Stories */
+.story {
+  padding: 16px 0 14px;
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  gap: 14px;
+  transition: opacity 0.2s;
+}
+.story:last-child { border-bottom: none; }
+.story-bar {
+  width: 3px;
+  border-radius: 0;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 52px;
+}
+.story-inner { flex: 1; }
+.story-badges {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.signal-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--signal-bg);
+  color: var(--signal-text);
+  border: 1px solid var(--signal-border);
+  font-weight: 500;
+}
+.story-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  margin-bottom: 5px;
+  line-height: var(--leading-tight);
+}
+.story-title a { color: inherit; text-decoration: none; }
+.story-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.story-summary {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 9px;
+}
+.story-sources { display: flex; gap: 5px; flex-wrap: wrap; }
+.src-tag {
+  font-size: var(--text-xs);
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+}
+.src-tag.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.src-tag.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.src-tag.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.src-tag.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.src-tag.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.src-tag.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.src-tag.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category color helpers */
+.dot-safety { background: var(--cat-safety); }
+.txt-safety { color: var(--cat-safety-text); }
+.bar-safety { background: var(--cat-safety); }
+.dot-tools  { background: var(--cat-tools); }
+.txt-tools  { color: var(--cat-tools-text); }
+.bar-tools  { background: var(--cat-tools); }
+.dot-models { background: var(--cat-models); }
+.txt-models { color: var(--cat-models-text); }
+.bar-models { background: var(--cat-models); }
+.dot-biz    { background: var(--cat-biz); }
+.txt-biz    { color: var(--cat-biz-text); }
+.bar-biz    { background: var(--cat-biz); }
+
+/* Quiet day notice */
+.quiet-day {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* Deep dive cards */
+.dd-section-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  margin-top: 1.75rem;
+}
+.dd-section-label:first-child { margin-top: 0; }
+.dd-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 12px;
+}
+.dd-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.dd-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+}
+.dd-title a { color: inherit; text-decoration: none; }
+.dd-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.dd-src {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  flex-shrink: 0;
+}
+.dd-src.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.dd-src.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.dd-src.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.dd-src.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.dd-src.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.dd-src.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.dd-src.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+.dd-body {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+.dd-body p { margin-bottom: 8px; }
+.dd-body p:last-child { margin-bottom: 0; }
+.dd-body a { color: #1d4ed8; }
+.dd-body strong { color: var(--color-text-primary); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">🤖 DAILY.DIGEST.EXE</div>
+    <div class="header-subtitle">All the Beeps, Boops, and Breaking News</div>
+    <div class="header-date">July 6, 2026</div>
+    <hr class="header-rule">
+    <div class="header-meta">16 stories · 5 sources</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('main', this)">🤖 &nbsp;EXTRA! EXTRA! Read All About It!</button>
+    <button class="tab-btn" onclick="switchTab('deep', this)">🧠 &nbsp;Nerd Alert: You've Been Warned</button>
+  </div>
+
+  <!-- Source filter pills (dynamic — only sources with content) -->
+  <div class="source-bar">
+<button class="filter-pill pill-tldr" onclick="filterSource('tldr', this)">TLDR AI</button>
+<button class="filter-pill pill-rundown" onclick="filterSource('rundown', this)">Rundown AI</button>
+<button class="filter-pill pill-alphasignal" onclick="filterSource('alphasignal', this)">Alpha Signal</button>
+<button class="filter-pill pill-thebatch" onclick="filterSource('thebatch', this)">The Batch</button>
+<button class="filter-pill pill-latentspace" onclick="filterSource('latentspace', this)">Latent Space</button>
+  </div>
+
+  <!-- TAB 1: Main stories -->
+  <div class="tab-content active" id="tab-main">
+<div class="category-section" id="main-safety">
+  <div class="cat-header">
+    <div class="cat-dot dot-safety"></div>
+    <span class="cat-name txt-safety">Safety &amp; Policy</span>
+  </div>
+
+  <div class="story" data-sources="rundown">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://fortune.com/2026/07/02/sam-altman-new-world-order-ai-openai-google-anthropic/" target="_blank">Altman pitches a US-led global AI safety forum — and floats giving Washington equity</a>
+      </div>
+      <div class="story-summary">In an FT op-ed, Sam Altman called for a US-led international forum — an IAEA for AI — to set global safety standards and vet model capabilities before wider release. Separately, OpenAI is reportedly discussing handing the US government a 5% equity stake (~$42.6B), with the idea that Anthropic, Google, and Meta could each cede a similar slice to a fund modeled on Alaska's oil-revenue dividend. The pairing reads as a hedge: set the safety rules globally while buying goodwill at home.</div>
+      <div class="story-sources">
+        <span class="src-tag rundown">Rundown AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://www.techtimes.com/articles/319665/20260703/claude-fable-5-back-safety-classifiers-now-reroute-security-agent-loops.htm" target="_blank">Claude Fable 5's safety overhaul: refusal handling, auto-fallback to Opus 4.8, new billing</a>
+      </div>
+      <div class="story-summary">Anthropic detailed three integration-breaking changes for Fable 5 API users: refusals in sensitive categories (starting with offensive cybersecurity) now auto-reroute to Claude Opus 4.8 instead of erroring out, users get a visible notice when it happens, and fallback requests bill at the cheaper cache-read rate — hard-blocked requests aren't billed at all. It's a pragmatic patch after last month's abrupt Fable 5 suspensions, but it means the model that answers isn't always the model your code called.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="category-section" id="main-tools">
+  <div class="cat-header">
+    <div class="cat-dot dot-tools"></div>
+    <span class="cat-name txt-tools">Tools &amp; Products</span>
+  </div>
+
+  <div class="story" data-sources="rundown">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">Claude gets a Slack integration for delegating team tasks</div>
+      <div class="story-summary">Rundown's plus-note flags a new way to delegate team tasks to Claude directly inside Slack — folding agent work into the channel where teams already coordinate, rather than a separate app or browser tab.</div>
+      <div class="story-sources">
+        <span class="src-tag rundown">Rundown AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://www.anthropic.com/news/claude-science-ai-workbench" target="_blank">Claude Science exits beta walls: an AI workbench wired into 60+ scientific databases</a>
+      </div>
+      <div class="story-summary">Anthropic launched Claude Science in public beta, free to all paid Claude subscribers, with native connections to 60+ scientific databases (UniProt, PDB, Ensembl, ClinVar, ChEMBL, GEO, and more) plus specialist tooling for genomics, proteomics, cheminformatics, and structural biology. It's less a new model than a purpose-built harness — the interesting bet is that pre-wiring domain data access matters as much as raw model capability for scientific work.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://github.com/github/spec-kit" target="_blank">GitHub ships Spec-Kit, an open-source toolkit for spec-driven development</a>
+      </div>
+      <div class="story-summary">Spec-Kit formalizes "spec-driven development" — /specify, /plan, /tasks commands that turn a high-level prompt into a full spec, technical plan, and task breakdown before any code gets written. It already supports 30+ coding agents (Claude Code, Copilot, Cursor, Codex CLI, and more) and has crossed 90k GitHub stars, making it one of the faster-growing dev tooling projects around.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://venturebeat.com/orchestration/researchers-introduce-self-harness-a-framework-that-lets-ai-agents-rewrite-their-own-rules-boosting-performance-up-to-60" target="_blank">Agents rewrite their own harness, boost performance up to 60%</a>
+      </div>
+      <div class="story-summary">Shanghai AI Lab's Self-Harness lets an agent inspect its own execution traces and edit its operating rules — system prompt, tool config, verification logic — without a human touching the harness. On Terminal-Bench-2.0 it produced 33–60% relative gains depending on the base model, another data point that harness design, not just model quality, is where a lot of agent performance now lives.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="latentspace">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://www.latent.space/p/aiewf-daily-dispatch-loops" target="_blank">AIEWF Day 2: loops, "software factories," and the rise of the Forward Deployed Engineer</a>
+      </div>
+      <div class="story-summary">Day 2 of the AI Engineer World's Fair was consumed by "loops" — turning coding agents into persistent workers that restart against the same spec — and a full main-stage track on "software factories," where teams pick which parts of the dev lifecycle to hand to agents. Forward Deployed Engineers (aka "agent engineers") got their own spotlight, with most of the real integration work happening at the orchestration layer rather than inside the models. See the deep dive tab for the full rundown.</div>
+      <div class="story-sources">
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="latentspace">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">Vercel's Andrew Qu on why agents are a new kind of software</div>
+      <div class="story-summary">Vercel's Chief of Software breaks down eve, the company's new open-source agent framework, and argues that skills, sandboxes, and agent-readable websites — not bigger models — are what matter now. See the deep dive tab for more on how eve treats every agent as a directory of files.</div>
+      <div class="story-sources">
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="category-section" id="main-models">
+  <div class="cat-header">
+    <div class="cat-dot dot-models"></div>
+    <span class="cat-name txt-models">Models &amp; Research</span>
+  </div>
+
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">Meta's "Watermelon" model reportedly catches up to GPT-5.5</div>
+      <div class="story-summary">Meta's superintelligence chief Alexandr Wang says the company's upcoming model — internally codenamed Watermelon — has closed the gap with OpenAI's GPT-5.5. Coming out of Meta's reorganized superintelligence lab, that's a claim worth watching rather than banking on — Meta's last few flagship releases haven't matched the pre-launch hype.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://towardsdatascience.com/let-the-ai-do-the-experimenting/" target="_blank">Autoresearch: letting an LLM run its own experiment loop</a>
+      </div>
+      <div class="story-summary">TLDR flagged Andrej Karpathy's autoresearch approach — an LLM that infers an optimization goal, runs experiments against it, and keeps a log for itself to build on, working best when there's a clean, measurable metric to chase. It's a narrower, more disciplined take on "agentic research" than the open-ended autonomous-scientist pitches other labs have floated.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://arxiv.org/abs/2606.30616" target="_blank">A 35B model matches trillion-parameter agents by training on longer task horizons</a>
+      </div>
+      <div class="story-summary">Shanghai AI Lab's Agents-A1, a 35B mixture-of-experts model, matches or beats trillion-parameter systems like Kimi K2.6 and DeepSeek-V4-pro on several agentic benchmarks — not through more parameters, but by training on trajectories averaging 45K tokens across long tool-use chains. It's open-sourced under Apache 2.0, and the core claim — scale the task horizon, not the weights — is a cheaper path to agentic capability if it holds up outside the paper's own benchmarks.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="thebatch">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://openai.com/index/previewing-gpt-5-6-sol/" target="_blank">GPT-5.6 arrives — but only ~20 government-approved orgs can touch it</a>
+      </div>
+      <div class="story-summary">OpenAI previewed GPT-5.6 Sol/Terra/Luna, with flagship Sol setting state-of-the-art on Terminal-Bench 2.1 (91.9%) and narrowly edging Claude Mythos 5. The catch: at the US government's request, access is limited to roughly 20 vetted organizations while OpenAI builds out stronger bio/chem/cyber classifiers — a preview of a launch, not a launch. It's the second major model this month (after Claude Mythos 5) gated by direct government involvement, which is the more interesting story than the benchmark numbers.</div>
+      <div class="story-sources">
+        <span class="src-tag thebatch">The Batch</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="thebatch">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://sakana.ai/fugu-release/" target="_blank">Sakana's Fugu models route work between other models, not just tools</a>
+      </div>
+      <div class="story-summary">Sakana AI's Fugu and Fugu-Ultra don't generate answers directly — they orchestrate a pool of other models (Claude, Gemini, GPT-5.5, even themselves) per subtask, picking whichever underlying model handles each step best. The pair hits state-of-the-art on GPQA-Diamond and several coding benchmarks while depending on no single provider — which is the real point: control the orchestrator, and you can swap providers under the hood for cost, capability, or policy reasons without touching the app layer.</div>
+      <div class="story-sources">
+        <span class="src-tag thebatch">The Batch</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="thebatch">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://microsoft.ai/news/introducing-mai-thinking-1/" target="_blank">Microsoft ships MAI-Thinking-1, its first reasoning model built from scratch</a>
+      </div>
+      <div class="story-summary">MAI-Thinking-1 is Microsoft's first reasoning model that wasn't distilled or fine-tuned from someone else's model — a break from its Phi and MAI-DS-R1 lineage, which leaned on OpenAI and DeepSeek respectively. It's roughly Claude Sonnet 4.6-class and leads seven new MAI models unveiled at Build, a sign Microsoft's April 2026 licensing changes with OpenAI are translating into real independence.</div>
+      <div class="story-sources">
+        <span class="src-tag thebatch">The Batch</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="thebatch">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://arxiv.org/abs/2601.00675" target="_blank">Better reward models close the gap on robot training</a>
+      </div>
+      <div class="story-summary">Stanford and Berkeley researchers built RoboReward, vision-language reward models (4B/8B) trained on robot-action videos augmented with synthetic failure cases, since most robotics datasets only show successes. In real-world tests, a robot arm trained on RoboReward's rewards beat one trained on Gemini Robotics-ER 1.5 by a wide margin (50% vs. 10% on one task) — though still well short of hand-assigned human rewards, which remains the ceiling.</div>
+      <div class="story-sources">
+        <span class="src-tag thebatch">The Batch</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="category-section" id="main-biz">
+  <div class="cat-header">
+    <div class="cat-dot dot-biz"></div>
+    <span class="cat-name txt-biz">Business &amp; Industry</span>
+  </div>
+
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://techcrunch.com/2026/07/02/anthropic-is-discussing-a-new-custom-chip-with-samsung/" target="_blank">Anthropic in early talks with Samsung to build a custom AI chip</a>
+      </div>
+      <div class="story-summary">Anthropic is reportedly discussing a custom AI chip with Samsung, eyeing its 2nm process and advanced packaging, though the project hasn't progressed past figuring out what the chip should even do. For now, Anthropic says AWS Trainium, Google TPUs, and Nvidia GPUs remain central to its compute strategy — this reads as a hedge against chip supply risk, not a near-term shift away from existing partners.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FALLBACK_CONTENT -->
+
+  </div>
+
+  <!-- TAB 2: Deep dives -->
+  <div class="tab-content" id="tab-deep">
+<div class="dd-section-label">Tools &amp; Products</div>
+
+<div class="dd-card" data-sources="latentspace">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://www.latent.space/p/aiewf-daily-dispatch-loops" target="_blank">AIEWF Daily Dispatch: Loops, Software Factories &amp; Forward Deployed Engineers</a></div>
+    <span class="dd-src latentspace">Latent Space</span>
+  </div>
+  <div class="dd-body">
+    <p>Day 2 of the AI Engineer World's Fair was dominated by one word: loops. swyx opened with "Loopcraft: The Art of Stacking Loops," tracing AI engineering's arc from chat to tools to goals to, now, <strong>automations and cron-style loops</strong>. That framing set up the day's main-stage track, Software Factories, anchored by Geoffrey Huntley's "everything is a ralph loop" — the idea of turning a coding agent into a persistent worker by repeatedly restarting it against the same spec.</p>
+    <p>Multiple speakers put their own spin on the concept. Microsoft's Pablo Castro described a <strong>"learning loop"</strong> inside Foundry, its AI app/agent factory, where humans and agents co-improve over time. OpenAI's Alexander Embiricos and Romain Huet argued that connecting an agent not just to the work but to <em>why</em> the work matters — and to what happens after, i.e. review and deploy — is what lets it take on more of the pipeline unsupervised. Peter Steinberger, the "ClawFather" behind OpenClaw and now at OpenAI, said his real bottleneck today is deciding what to pay attention to, and that better loops are the fix.</p>
+    <p>The <strong>software factory</strong> framing got pushback as much as buy-in. Factory's Tereza Tížková defined it as "the whole lifecycle of developing software with autonomy" — not just coding, but collecting signals, reacting to feedback and logs, prioritizing, and orchestrating. Warp's Zach Lloyd went further, arguing "software engineering will become factory engineering," framing Warp's pivot from CLI tool to factory platform as a bet that hand-written code won't make sense for much longer given how fast these systems can now move.</p>
+    <p>A parallel thread covered the rise of <strong>Forward Deployed Engineers</strong> (also called "agent engineers"). Sierra's Natalie Meurer noted that most customer-specific integration work now happens at the orchestration layer, not inside the models themselves. On the open-source side, Z.ai's Zixuan Li previewed the GLM-5.2 model and its ZCode harness (positioned against OpenAI's Codex), while Osmantic's Ahmad Osman argued that once a frontier lab proves a capability is possible, the open-source ecosystem reliably catches up more efficiently.</p>
+    <p><a href="https://www.latent.space/p/aiewf-daily-dispatch-loops" target="_blank">Read the full Latent Space post →</a></p>
+  </div>
+</div>
+
+<div class="dd-card" data-sources="latentspace">
+  <div class="dd-top">
+    <div class="dd-title">Vercel's Andrew Qu on why agents are a new kind of software</div>
+    <span class="dd-src latentspace">Latent Space</span>
+  </div>
+  <div class="dd-body">
+    <p>In this Latent Space conversation, Vercel's Chief of Software Andrew Qu discusses how the company's open-source agent framework, <strong>eve</strong>, took shape — and why he thinks skills, sandboxes, and agent-readable websites are the pieces that matter now, not bigger models.</p>
+    <p>eve treats every agent as a directory of files — instructions.md, tools/, skills/ — rather than something instantiated purely in memory, a pattern that Anthropic's Claude Skills and OpenClaw's skills directories have also converged on: <strong>the agent is what's on disk</strong>. Skills are markdown playbooks loaded only when relevant, and every agent gets its own isolated sandbox for shell commands and file access, keeping agent-generated code — treated as untrusted — out of the application runtime entirely.</p>
+    <p>We couldn't confirm the direct link to this specific episode at publish time (it wasn't yet indexed), so this entry runs on the Gmail preview text plus Vercel's own eve documentation rather than the full interview. Worth a proper read once the episode page turns up — the framework itself launched publicly at Ship London on June 17, 2026.</p>
+  </div>
+</div>
+
+  </div>
+
+</div>
+
+<script>
+function switchTab(name, el) {
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  clearFilters();
+}
+
+function filterSource(src, el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  if (wasActive) { showAll(); return; }
+  el.classList.add('active');
+  const activeTab = document.querySelector('.tab-content.active');
+  activeTab.querySelectorAll('.story, .dd-card').forEach(item => {
+    const sources = (item.dataset.sources || '').split(' ');
+    item.style.display = sources.includes(src) ? '' : 'none';
+  });
+  activeTab.querySelectorAll('.category-section').forEach(section => {
+    const visible = Array.from(section.querySelectorAll('.story'))
+      .some(s => s.style.display !== 'none');
+    section.style.display = visible ? '' : 'none';
+  });
+}
+
+function showAll() {
+  document.querySelectorAll('.story, .dd-card, .category-section').forEach(el => {
+    el.style.display = '';
+  });
+}
+
+function clearFilters() {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  showAll();
+}
+</script>
+</body>
+</html>

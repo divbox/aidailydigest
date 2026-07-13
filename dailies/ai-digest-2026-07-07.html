@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAILY.DIGEST.EXE — July 7, 2026</title>
+<style>
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+
+  --color-bg-page:    #f5f5f3;
+  --color-bg-surface: #ffffff;
+  --color-text-primary:   #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted:     #999999;
+  --color-border:         #e8e8e5;
+  --color-border-light:   #f0f0ee;
+
+  --cat-safety:      #E24B4A;
+  --cat-safety-text: #991b1b;
+  --cat-tools:       #1D9E75;
+  --cat-tools-text:  #065f46;
+  --cat-models:      #378ADD;
+  --cat-models-text: #1e40af;
+  --cat-biz:         #BA7517;
+  --cat-biz-text:    #78350f;
+
+  --src-importai-bg:      #F3F0FF;
+  --src-importai-text:    #4C3D99;
+  --src-importai-border:  #C4B5F4;
+  --src-rundown-bg:       #F0FDF4;
+  --src-rundown-text:     #166534;
+  --src-rundown-border:   #86EFAC;
+  --src-tldr-bg:          #FFF7ED;
+  --src-tldr-text:        #9A3412;
+  --src-tldr-border:      #FDBA74;
+  --src-interconnects-bg:     #F0F9FF;
+  --src-interconnects-text:   #0C4A6E;
+  --src-interconnects-border: #7DD3FC;
+  --src-alphasignal-bg:     #FDF4FF;
+  --src-alphasignal-text:   #6B21A8;
+  --src-alphasignal-border: #D8B4FE;
+  --src-thebatch-bg:        #F0FDF4;
+  --src-thebatch-text:      #14532D;
+  --src-thebatch-border:    #6EE7B7;
+  --src-latentspace-bg:     #FFF1F2;
+  --src-latentspace-text:   #881337;
+  --src-latentspace-border: #FDA4AF;
+
+  --signal-bg:     #FEF3C7;
+  --signal-text:   #92400E;
+  --signal-border: #FCD34D;
+
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-lg:   18px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+
+  --leading-tight:   1.3;
+  --leading-base:    1.5;
+  --leading-relaxed: 1.68;
+
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+  --radius-pill: 999px;
+
+  --page-width: 820px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  line-height: var(--leading-base);
+}
+
+.page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  background: var(--color-bg-surface);
+  min-height: 100vh;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+/* Header */
+.header {
+  padding: 1.75rem 2rem 1.25rem;
+  background: var(--color-bg-surface);
+  text-align: center;
+}
+.header-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+}
+.header-subtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: var(--leading-base);
+}
+.header-date {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 3px;
+}
+.header-rule {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 12px 0;
+}
+.header-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+  padding: 0 2rem;
+}
+.tab-btn {
+  padding: 11px 16px;
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-muted);
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn.active {
+  border-bottom-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+.tab-btn:hover:not(.active) { color: var(--color-text-secondary); }
+
+/* Tab content */
+.tab-content {
+  display: none;
+  padding: 1.5rem 2rem 3rem;
+}
+.tab-content.active { display: block; }
+
+/* Source filter bar */
+.source-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 2rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+}
+.filter-pill {
+  font-size: var(--text-xs);
+  padding: 3px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  cursor: pointer;
+  background: none;
+  font-family: var(--font-sans);
+  transition: opacity 0.15s, box-shadow 0.15s;
+  opacity: 0.7;
+}
+.filter-pill:hover { opacity: 1; }
+.filter-pill.active { opacity: 1; box-shadow: 0 0 0 2px currentColor; }
+
+.pill-importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.pill-rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.pill-tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.pill-interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.pill-alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.pill-thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.pill-latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category sections */
+.category-section { margin-bottom: 2rem; }
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--color-border-light);
+  margin-bottom: 0;
+}
+.cat-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.cat-name {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Stories */
+.story {
+  padding: 16px 0 14px;
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  gap: 14px;
+  transition: opacity 0.2s;
+}
+.story:last-child { border-bottom: none; }
+.story-bar {
+  width: 3px;
+  border-radius: 0;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 52px;
+}
+.story-inner { flex: 1; }
+.story-badges {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.signal-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--signal-bg);
+  color: var(--signal-text);
+  border: 1px solid var(--signal-border);
+  font-weight: 500;
+}
+.story-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  margin-bottom: 5px;
+  line-height: var(--leading-tight);
+}
+.story-title a { color: inherit; text-decoration: none; }
+.story-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.story-summary {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 9px;
+}
+.story-sources { display: flex; gap: 5px; flex-wrap: wrap; }
+.src-tag {
+  font-size: var(--text-xs);
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+}
+.src-tag.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.src-tag.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.src-tag.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.src-tag.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.src-tag.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.src-tag.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.src-tag.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category color helpers */
+.dot-safety { background: var(--cat-safety); }
+.txt-safety { color: var(--cat-safety-text); }
+.bar-safety { background: var(--cat-safety); }
+.dot-tools  { background: var(--cat-tools); }
+.txt-tools  { color: var(--cat-tools-text); }
+.bar-tools  { background: var(--cat-tools); }
+.dot-models { background: var(--cat-models); }
+.txt-models { color: var(--cat-models-text); }
+.bar-models { background: var(--cat-models); }
+.dot-biz    { background: var(--cat-biz); }
+.txt-biz    { color: var(--cat-biz-text); }
+.bar-biz    { background: var(--cat-biz); }
+
+/* Quiet day notice */
+.quiet-day {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* Deep dive cards */
+.dd-section-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  margin-top: 1.75rem;
+}
+.dd-section-label:first-child { margin-top: 0; }
+.dd-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 12px;
+}
+.dd-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.dd-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+}
+.dd-title a { color: inherit; text-decoration: none; }
+.dd-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.dd-src {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  flex-shrink: 0;
+}
+.dd-src.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.dd-src.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.dd-src.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.dd-src.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.dd-src.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.dd-src.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.dd-src.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+.dd-body {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+.dd-body p { margin-bottom: 8px; }
+.dd-body p:last-child { margin-bottom: 0; }
+.dd-body a { color: #1d4ed8; }
+.dd-body strong { color: var(--color-text-primary); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">🤖 DAILY.DIGEST.EXE</div>
+    <div class="header-subtitle">All the Beeps, Boops, and Breaking News</div>
+    <div class="header-date">July 7, 2026</div>
+    <hr class="header-rule">
+    <div class="header-meta">15 stories · 4 sources</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('main', this)">🤖 &nbsp;EXTRA! EXTRA! Read All About It!</button>
+    <button class="tab-btn" onclick="switchTab('deep', this)">🧠 &nbsp;Nerd Alert: You've Been Warned</button>
+  </div>
+
+  <!-- Source filter pills (dynamic — only sources with content) -->
+  <div class="source-bar">
+<button class="filter-pill pill-tldr" onclick="filterSource('tldr', this)">TLDR AI</button>
+<button class="filter-pill pill-rundown" onclick="filterSource('rundown', this)">Rundown AI</button>
+<button class="filter-pill pill-alphasignal" onclick="filterSource('alphasignal', this)">Alpha Signal</button>
+<button class="filter-pill pill-importai" onclick="filterSource('importai', this)">Import AI</button>
+  </div>
+
+  <!-- TAB 1: Main stories -->
+  <div class="tab-content active" id="tab-main">
+<div class="category-section" id="main-tools">
+  <div class="cat-header">
+    <div class="cat-dot dot-tools"></div>
+    <span class="cat-name txt-tools">Tools &amp; Products</span>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">GitHub Copilot adds Kimi K2 support</div>
+      <div class="story-summary">Copilot users can now pick Moonshot's Kimi K2 as a backing model. Another sign that Copilot's model picker is turning into a multi-vendor marketplace rather than an OpenAI-only tool.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">Claude reportedly auto-applies to jobs</div>
+      <div class="story-summary">Alpha Signal flags a workflow where Claude handles end-to-end job applications on a user's behalf. Details beyond the headline weren't in today's snippet, but it's a notable escalation in agentic task scope.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">pxpipe cuts inference costs 70%</div>
+      <div class="story-summary">pxpipe is claiming a 70% cost reduction, per Alpha Signal's roundup. No further detail on the technique was in today's snippet.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="rundown">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">Cursor Mobile turns a screenshot into a bug fix</div>
+      <div class="story-summary">Rundown AI highlights a new Cursor Mobile flow: screenshot a bug, get a fix, no laptop required. Part of the broader push to make coding agents usable away from the desk.</div>
+      <div class="story-sources">
+        <span class="src-tag rundown">Rundown AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">TLDR's guide to Fable</div>
+      <div class="story-summary">TLDR AI ran a how-to on getting more out of Anthropic's Fable model. Today's snippet didn't surface specifics beyond the headline mention.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="category-section" id="main-models">
+  <div class="cat-header">
+    <div class="cat-dot dot-models"></div>
+    <span class="cat-name txt-models">Models &amp; Research</span>
+  </div>
+
+  <div class="story" data-sources="importai">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank">Fable writes the fastest submitted GPU megakernel on KernelBench-Mega</a>
+      </div>
+      <div class="story-summary">Fable hit an 18.71x speedup over an optimized PyTorch baseline writing raw CUDA — well ahead of Opus 4.8 (14.4x), GLM-5.2 (11.14x), and GPT-5.5 (4.34x), all writing Triton. Kernel design is a core AI-R&amp;D task, so models getting good at it is a small but real signal toward self-improvement loops. Full breakdown in the Deep Dives tab.</div>
+      <div class="story-sources">
+        <span class="src-tag importai">Import AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">Sakana AI hits 93% on Sudoku benchmark</div>
+      <div class="story-summary">Sakana posts a 93% score on a Sudoku-solving benchmark, per Alpha Signal. Puzzle-style benchmarks like this are a cheap proxy for constraint-solving and multi-step reasoning.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">OpenMed reaches 755 tokens/sec</div>
+      <div class="story-summary">OpenMed clocks 755 tok/s, per Alpha Signal's roundup — an inference-speed claim without accompanying accuracy or hardware context in today's snippet.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">Mistral scores 587/672 on the Putnam Math Competition</div>
+      <div class="story-summary">Mistral posts 587 out of 672 on Putnam-style problems, per Alpha Signal — another entry in the ongoing frontier-model math arms race.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="importai">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank">OSWorld 2.0 benchmarks multi-hour computer-use agents</a>
+      </div>
+      <div class="story-summary">A new 108-task benchmark pushes computer-use evaluation from 2-minute toy tasks to a 1.6-hour median — nearly 70% of tasks take a skilled human over an hour. Best current setup (Opus 4.8, max thinking) only manages 20.6% binary accuracy. Full breakdown in the Deep Dives tab.</div>
+      <div class="story-sources">
+        <span class="src-tag importai">Import AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">ByteDance's Seedance 2.5 rumored for July 9</div>
+      <div class="story-summary">TLDR AI reports ByteDance is expected to launch its Dreamina Seedance 2.5 model on July 9, rolling out across Dreamina, CapCut, and other platforms.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="rundown">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">Meta benchmarks internal model 'Watermelon' against GPT-5.5</div>
+      <div class="story-summary">Rundown AI reports Meta is sizing up an internal model codenamed "Watermelon" head-to-head with OpenAI's GPT-5.5 — no results disclosed yet in today's snippet.</div>
+      <div class="story-sources">
+        <span class="src-tag rundown">Rundown AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">OpenAI preps GPT-5.6</div>
+      <div class="story-summary">TLDR AI's headline flags OpenAI readying a GPT-5.6 release; no additional detail surfaced beyond the tease.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="category-section" id="main-biz">
+  <div class="cat-header">
+    <div class="cat-dot dot-biz"></div>
+    <span class="cat-name txt-biz">Business &amp; Industry</span>
+  </div>
+
+  <div class="story" data-sources="importai">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank">Remote Labor Index success rate jumps from 2.5% to 16.1% in nine months</a>
+      </div>
+      <div class="story-summary">CAIS and Scale Labs' benchmark for end-to-end freelance-style work shows AI success rates more than quadrupling since October 2025, with Fable 5 leading frontier models at 16.1%. Jack Clark reads this as a sign the economy can't stay static much longer. Full breakdown in the Deep Dives tab.</div>
+      <div class="story-sources">
+        <span class="src-tag importai">Import AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="importai">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank">JD's Oxygen AI Item Center manages inventory across billions of SKUs</a>
+      </div>
+      <div class="story-summary">China's Amazon-scale e-commerce platform runs a self-evolving LLM/VLM pipeline processing hundreds of millions of item updates a day on Huawei Ascend NPUs. A concrete example of AI woven into back-office operations at national e-commerce scale. Full breakdown in the Deep Dives tab.</div>
+      <div class="story-sources">
+        <span class="src-tag importai">Import AI</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FALLBACK_CONTENT -->
+
+  </div>
+
+  <!-- TAB 2: Deep dives -->
+  <div class="tab-content" id="tab-deep">
+<div class="dd-section-label">Models &amp; Research</div>
+
+<div class="dd-card" data-sources="importai">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank">Fable writes the fastest submitted GPU megakernel on KernelBench-Mega</a></div>
+    <span class="dd-src importai">Import AI</span>
+  </div>
+  <div class="dd-body">
+    <p>Fable has written what a KernelBench-Mega maintainer calls the first genuine — and fastest — megakernel ever submitted to the benchmark. Writing raw CUDA for an RTX PRO 6000 Blackwell, it achieved an <strong>18.71x speedup</strong> over an optimized PyTorch baseline. For calibration: Claude Opus 4.8 hit 14.4x writing Triton, GLM-5.2 got 11.14x (also Triton), and GPT-5.5 managed 4.34x.</p>
+    <p>What makes the solution notable isn't just the speedup — it's the shape of it. Per analysis from one of the benchmark's maintainers, torch.profiler shows exactly <strong>one cooperative kernel launch per decoded token</strong>. Every other high-scoring entry decomposed the problem into 4 to 14 separate kernel launches per token. That's a structurally different (and harder) solution, not just a faster one.</p>
+    <p>Kernel design sits close to the metal of AI R&amp;D — it's one of the fundamental tasks involved in building and optimizing the systems that train and run models. Jack Clark's framing: the better models get at tasks like this, the better they get at the kinds of tasks needed for AI development generally, which is the raw material of a recursive self-improvement loop. Benchmarks like KernelBench-Mega are worth watching less for the leaderboard and more as an early gauge of how close models are getting to improving themselves.</p>
+    <p><a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank">Read the full Import AI post →</a></p>
+  </div>
+</div>
+
+<div class="dd-card" data-sources="importai">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank">OSWorld 2.0 benchmarks multi-hour computer-use agents</a></div>
+    <span class="dd-src importai">Import AI</span>
+  </div>
+  <div class="dd-body">
+    <p>A large multi-institution team (HKU, UCSD, Columbia, UCSB, Mila, Snorkel AI, Wisconsin, Alibaba Qwen, Ohio State, Simular, NeoCognition) has released OSWorld 2.0, a benchmark for multi-step, multi-program computer-use tasks. The jump in difficulty from version 1.0 is stark: median task time for a human went from 2 minutes to <strong>1.6 hours</strong> — a 48x increase — and 69.6% of tasks are estimated to take a skilled human over an hour.</p>
+    <p>The software surface expanded to match. Where OSWorld 1.0 shipped with LibreOffice, GIMP, VLC, Thunderbird, VS Code, and Chrome, 2.0 adds Slack, LinkedIn, GitLab, Overleaf, AWS, REAPER, MuseScore, WPS, LabPlot, Zotero, and simulated professional-service portals for things like insurance claims and visa applications. Task categories span document prep, database work, finance/ops analysis, admin support, sales and customer support, and graphic presentation.</p>
+    <p>Current models are still far from reliable here: the best configuration tested — Claude Opus 4.8 with maximum thinking and batched tool calls — reaches only <strong>20.6% binary accuracy</strong> and 54.8% partial-score accuracy. Performance drops sharply as tasks lengthen, especially when agents need to recover hidden state, track many items, or adapt to changing requirements.</p>
+    <p>Worth noting: OSWorld 1.0 saw scores climb from ~30% (July 2025) to ~75% (MiniMax M3, June 2026) over roughly a year. If 2.0 follows a similar ramp, today's 20% floor won't hold for long.</p>
+    <p><a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank">Read the full Import AI post →</a></p>
+  </div>
+</div>
+
+<div class="dd-section-label">Business &amp; Industry</div>
+
+<div class="dd-card" data-sources="importai">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank">Remote Labor Index success rate jumps from 2.5% to 16.1% in nine months</a></div>
+    <span class="dd-src importai">Import AI</span>
+  </div>
+  <div class="dd-body">
+    <p>Researchers at the Center for AI Safety and Scale Labs report a sharp rise in AI systems' ability to complete full, economically valuable freelance-style projects end-to-end, per their Remote Labor Index (RLI). Success rates went from 2.5% at the benchmark's October 2025 launch to <strong>16.1%</strong> in a July 2026 update — "more than quadrupled in under eight months," per the authors.</p>
+    <p>The July update tested three frontier models: GPT-5.5 (6.3%), Opus 4.8 (8.3%), and Fable 5 (16.1%), the current leader. RLI tasks are deliberately varied and real-world: examples include re-modeling a client's engagement ring in a different cut with photorealistic renders, producing a full animated advertisement synced to a supplied voiceover, and turning a scanned cadastral plan into a dimensioned floor plan with furniture layouts and renders — full deliverables, not toy problems.</p>
+    <p>Jack Clark's read is blunt: it's getting harder to reconcile this trajectory with the economy staying the same. His bet is that AI capability growth and models' increasing fluency with the same software tools humans use are outpacing how fast humans can create new comparative advantage for themselves — meaning person-light, AI-heavy organizations are more likely to expand and out-compete unaugmented humans than the reverse.</p>
+    <p><a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank">Read the full Import AI post →</a></p>
+  </div>
+</div>
+
+<div class="dd-card" data-sources="importai">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank">JD's Oxygen AI Item Center manages inventory across billions of SKUs</a></div>
+    <span class="dd-src importai">Import AI</span>
+  </div>
+  <div class="dd-body">
+    <p>JD — the Chinese e-commerce platform with 700 million users, millions of merchants, and a catalog of tens of billions of SKUs — has published details on Oxygen AI Item Center (Oxygen AIIC), the system that keeps its inventory catalog coherent. It now covers tens of thousands of JD categories and processes hundreds of millions of item updates per day, running on Huawei Ascend NPUs rather than Nvidia hardware.</p>
+    <p>The system has four core pieces: a human-AI collaborative ontology-engineering process where experts distill domain knowledge and algorithms scale it up; a "semantic search then discrimination" pipeline that externalizes the ontology into a separate knowledge base so it can update without model retraining; self-evolving item-understanding LLMs/VLMs that use lightweight "expert modules" to add capability incrementally without catastrophic forgetting; and a "unified item tunnel" interface that serves daily, minute-, and second-level pipelines while keeping data consistent.</p>
+    <p>The choice of Huawei Ascend NPUs is itself a signal — part of China's broader push toward compute self-sufficiency, run at a scale where the compute platform is described as one of the system's two primary technical challenges (the other being efficient resource use at scale).</p>
+    <p>The bigger picture: Oxygen AIIC is a working example of intelligence woven directly into back-office functions like inventory management, letting a business operate at far larger scale than would be possible with human-run processes — and to keep learning and updating largely without direct human oversight.</p>
+    <p><a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank">Read the full Import AI post →</a></p>
+  </div>
+</div>
+  </div>
+
+</div>
+
+<script>
+function switchTab(name, el) {
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  clearFilters();
+}
+
+function filterSource(src, el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  if (wasActive) { showAll(); return; }
+  el.classList.add('active');
+  const activeTab = document.querySelector('.tab-content.active');
+  activeTab.querySelectorAll('.story, .dd-card').forEach(item => {
+    const sources = (item.dataset.sources || '').split(' ');
+    item.style.display = sources.includes(src) ? '' : 'none';
+  });
+  activeTab.querySelectorAll('.category-section').forEach(section => {
+    const visible = Array.from(section.querySelectorAll('.story'))
+      .some(s => s.style.display !== 'none');
+    section.style.display = visible ? '' : 'none';
+  });
+}
+
+function showAll() {
+  document.querySelectorAll('.story, .dd-card, .category-section').forEach(el => {
+    el.style.display = '';
+  });
+}
+
+function clearFilters() {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  showAll();
+}
+</script>
+</body>
+</html>
