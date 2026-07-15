@@ -32,6 +32,14 @@ fi
 LATEST=$(printf '%s\n' "${files[@]}" | sort | tail -n 1)
 cp "$LATEST" index.html
 
+# Add a right-aligned Archive pill to the source-filter row. Anchored on the
+# opening tag, not the pills themselves — those vary day to day depending on
+# which sources had content. CSS order:999 + margin-left:auto puts this pill
+# last and pushed right regardless of how many source pills render that day.
+sed -i '' '/<div class="source-bar">/a\
+<a href="archive.html" class="filter-pill" style="order:999;margin-left:auto;text-decoration:none;opacity:0.6;background:var(--color-bg-page);color:var(--color-text-secondary);border-color:var(--color-border);">📁 Archive</a>
+' index.html
+
 {
   echo "<!DOCTYPE html><html><head><meta charset='utf-8'><title>AI Digest Archive</title></head><body>"
   echo "<h1>AI Digest Archive</h1>"
