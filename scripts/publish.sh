@@ -5,6 +5,11 @@
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
+# ponytail: launchd runs every 5 min; a lock older than that is dead, not in-use
+if [ -f .git/index.lock ] && [ $(( $(date +%s) - $(stat -f %m .git/index.lock) )) -gt 120 ]; then
+  rm -f .git/index.lock
+fi
+
 mkdir -p dailies
 
 # Move any newly-dropped daily files out of the root into dailies/
