@@ -16,9 +16,11 @@ mkdir -p dailies
 shopt -s nullglob
 new_files=(ai-digest-*.html)
 shopt -u nullglob
-for f in "${new_files[@]}"; do
-  mv "$f" "dailies/$f"
-done
+if [ ${#new_files[@]} -gt 0 ]; then
+  for f in "${new_files[@]}"; do
+    mv "$f" "dailies/$f"
+  done
+fi
 
 shopt -s nullglob
 files=(dailies/ai-digest-*.html)
