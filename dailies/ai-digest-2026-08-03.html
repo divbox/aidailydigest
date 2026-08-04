@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAILY.DIGEST.EXE — August 3, 2026</title>
+<style>
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+
+  --color-bg-page:    #f5f5f3;
+  --color-bg-surface: #ffffff;
+  --color-text-primary:   #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted:     #999999;
+  --color-border:         #e8e8e5;
+  --color-border-light:   #f0f0ee;
+
+  --cat-safety:      #E24B4A;
+  --cat-safety-text: #991b1b;
+  --cat-tools:       #1D9E75;
+  --cat-tools-text:  #065f46;
+  --cat-models:      #378ADD;
+  --cat-models-text: #1e40af;
+  --cat-biz:         #BA7517;
+  --cat-biz-text:    #78350f;
+
+  --src-importai-bg:      #F3F0FF;
+  --src-importai-text:    #4C3D99;
+  --src-importai-border:  #C4B5F4;
+  --src-rundown-bg:       #F0FDF4;
+  --src-rundown-text:     #166534;
+  --src-rundown-border:   #86EFAC;
+  --src-tldr-bg:          #FFF7ED;
+  --src-tldr-text:        #9A3412;
+  --src-tldr-border:      #FDBA74;
+  --src-interconnects-bg:     #F0F9FF;
+  --src-interconnects-text:   #0C4A6E;
+  --src-interconnects-border: #7DD3FC;
+  --src-alphasignal-bg:     #FDF4FF;
+  --src-alphasignal-text:   #6B21A8;
+  --src-alphasignal-border: #D8B4FE;
+  --src-thebatch-bg:        #F0FDF4;
+  --src-thebatch-text:      #14532D;
+  --src-thebatch-border:    #6EE7B7;
+  --src-latentspace-bg:     #FFF1F2;
+  --src-latentspace-text:   #881337;
+  --src-latentspace-border: #FDA4AF;
+
+  --signal-bg:     #FEF3C7;
+  --signal-text:   #92400E;
+  --signal-border: #FCD34D;
+
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-lg:   18px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+
+  --leading-tight:   1.3;
+  --leading-base:    1.5;
+  --leading-relaxed: 1.68;
+
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+  --radius-pill: 999px;
+
+  --page-width: 820px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  line-height: var(--leading-base);
+}
+
+.page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  background: var(--color-bg-surface);
+  min-height: 100vh;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+/* Header */
+.header {
+  padding: 1.75rem 2rem 1.25rem;
+  background: var(--color-bg-surface);
+  text-align: center;
+}
+.header-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+}
+.header-subtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: var(--leading-base);
+}
+.header-date {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 3px;
+}
+.header-rule {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 12px 0;
+}
+.header-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+  padding: 0 2rem;
+}
+.tab-btn {
+  padding: 11px 16px;
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-muted);
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn.active {
+  border-bottom-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+.tab-btn:hover:not(.active) { color: var(--color-text-secondary); }
+
+/* Tab content */
+.tab-content {
+  display: none;
+  padding: 1.5rem 2rem 3rem;
+}
+.tab-content.active { display: block; }
+
+/* Source filter bar */
+.source-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 2rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+}
+.filter-pill {
+  font-size: var(--text-xs);
+  padding: 3px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  cursor: pointer;
+  background: none;
+  font-family: var(--font-sans);
+  transition: opacity 0.15s, box-shadow 0.15s;
+  opacity: 0.7;
+}
+.filter-pill:hover { opacity: 1; }
+.filter-pill.active { opacity: 1; box-shadow: 0 0 0 2px currentColor; }
+
+.pill-importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.pill-rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.pill-tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.pill-interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.pill-alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.pill-thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.pill-latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category sections */
+.category-section { margin-bottom: 2rem; }
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--color-border-light);
+  margin-bottom: 0;
+}
+.cat-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.cat-name {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Stories */
+.story {
+  padding: 16px 0 14px;
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  gap: 14px;
+  transition: opacity 0.2s;
+}
+.story:last-child { border-bottom: none; }
+.story-bar {
+  width: 3px;
+  border-radius: 0;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 52px;
+}
+.story-inner { flex: 1; }
+.story-badges {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.signal-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--signal-bg);
+  color: var(--signal-text);
+  border: 1px solid var(--signal-border);
+  font-weight: 500;
+}
+.story-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  margin-bottom: 5px;
+  line-height: var(--leading-tight);
+}
+.story-title a { color: inherit; text-decoration: none; }
+.story-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.story-summary {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 9px;
+}
+.story-sources { display: flex; gap: 5px; flex-wrap: wrap; }
+.src-tag {
+  font-size: var(--text-xs);
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+}
+.src-tag.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.src-tag.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.src-tag.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.src-tag.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.src-tag.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.src-tag.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.src-tag.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category color helpers */
+.dot-safety { background: var(--cat-safety); }
+.txt-safety { color: var(--cat-safety-text); }
+.bar-safety { background: var(--cat-safety); }
+.dot-tools  { background: var(--cat-tools); }
+.txt-tools  { color: var(--cat-tools-text); }
+.bar-tools  { background: var(--cat-tools); }
+.dot-models { background: var(--cat-models); }
+.txt-models { color: var(--cat-models-text); }
+.bar-models { background: var(--cat-models); }
+.dot-biz    { background: var(--cat-biz); }
+.txt-biz    { color: var(--cat-biz-text); }
+.bar-biz    { background: var(--cat-biz); }
+
+/* Quiet day notice */
+.quiet-day {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* Deep dive cards */
+.dd-section-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  margin-top: 1.75rem;
+}
+.dd-section-label:first-child { margin-top: 0; }
+.dd-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 12px;
+}
+.dd-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.dd-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+}
+.dd-title a { color: inherit; text-decoration: none; }
+.dd-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.dd-src {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  flex-shrink: 0;
+}
+.dd-src.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.dd-src.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.dd-src.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.dd-src.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.dd-src.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.dd-src.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.dd-src.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+.dd-body {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+.dd-body p { margin-bottom: 8px; }
+.dd-body p:last-child { margin-bottom: 0; }
+.dd-body a { color: #1d4ed8; }
+.dd-body strong { color: var(--color-text-primary); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">🤖 DAILY.DIGEST.EXE</div>
+    <div class="header-subtitle">All the Beeps, Boops, and Breaking News</div>
+    <div class="header-date">August 3, 2026</div>
+    <hr class="header-rule">
+    <div class="header-meta">7 stories · 6 sources</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('main', this)">🤖 &nbsp;EXTRA! EXTRA! Read All About It!</button>
+    <button class="tab-btn" onclick="switchTab('deep', this)">🧠 &nbsp;Nerd Alert: You've Been Warned</button>
+  </div>
+
+  <!-- Source filter pills (dynamic — only sources with content) -->
+  <div class="source-bar">
+<button class="filter-pill pill-tldr" onclick="filterSource('tldr', this)">TLDR AI</button>
+<button class="filter-pill pill-rundown" onclick="filterSource('rundown', this)">Rundown AI</button>
+<button class="filter-pill pill-alphasignal" onclick="filterSource('alphasignal', this)">Alpha Signal</button>
+<button class="filter-pill pill-interconnects" onclick="filterSource('interconnects', this)">Interconnects</button>
+<button class="filter-pill pill-thebatch" onclick="filterSource('thebatch', this)">The Batch</button>
+<button class="filter-pill pill-latentspace" onclick="filterSource('latentspace', this)">Latent Space</button>
+  </div>
+
+  <!-- TAB 1: Main stories -->
+  <div class="tab-content active" id="tab-main">
+
+<div class="category-section" id="main-biz">
+  <div class="cat-header">
+    <div class="cat-dot dot-biz"></div>
+    <span class="cat-name txt-biz">Business &amp; Industry</span>
+  </div>
+
+  <div class="story" data-sources="tldr rundown latentspace">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-badges">
+        <span class="signal-badge">🔥 High signal — 3 sources</span>
+      </div>
+      <div class="story-title">
+        <a href="https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/" target="_blank">OpenAI cuts GPT-5.6 prices 20–80% across the board</a>
+      </div>
+      <div class="story-summary">OpenAI slashed GPT-5.6 pricing across the lineup: Luna's input/output rates dropped from $1/$6 to $0.20/$1.20 per million tokens, Terra got a 20% cut to $2/$12, and flagship Sol keeps its price but gains a new Fast mode running up to 2.5x standard speed at no extra charge. Cost of GPT-5.4-level intelligence has now fallen 13x in four months — pricing, not raw capability, is where the model war is currently being fought.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+        <span class="src-tag rundown">Rundown AI</span>
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="category-section" id="main-models">
+  <div class="cat-header">
+    <div class="cat-dot dot-models"></div>
+    <span class="cat-name txt-models">Models &amp; Research</span>
+  </div>
+
+  <div class="story" data-sources="tldr interconnects">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">
+        <a href="https://huggingface.co/thinkingmachines/Inkling" target="_blank">Thinking Machines ships its first models: Inkling and Inkling-Small</a>
+      </div>
+      <div class="story-summary">Thinking Machines released Inkling, a 975B-parameter (41B active) multimodal MoE taking text, image, and audio input, plus a leaner Inkling-Small at 276B total / 12B active parameters. Neither tops the leaderboard against Chinese peers in its size class — the real bet is on Inkling being a strong fine-tuning base via the company's Tinker service, not raw benchmark supremacy.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+        <span class="src-tag interconnects">Interconnects</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="category-section" id="main-tools">
+  <div class="cat-header">
+    <div class="cat-dot dot-tools"></div>
+    <span class="cat-name txt-tools">Tools &amp; Products</span>
+  </div>
+
+  <div class="story" data-sources="alphasignal interconnects">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">Moonshot gets its 2.8T-parameter Kimi K3 running in production</div>
+      <div class="story-summary">Kimi K3 — Moonshot's roughly 2.8-trillion-parameter MoE and one of the largest open-weight releases to date — is now serving in production; Alpha Signal digs into the engineering behind fitting a model that size onto real inference hardware without it falling over. It ships under a noncommercial license requiring paid agreements for inference and fine-tuning providers, a structure Interconnects flags as a potential future lever for export-control-style restrictions on Chinese AI.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+        <span class="src-tag interconnects">Interconnects</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">Greptile adds a runtime validation layer to AI code review</div>
+      <div class="story-summary">Greptile now sends scoped agents into sandboxes to actually run and test suspected failures, returning screenshots and logs inline in the PR instead of just flagging a diff. The bet is that static pattern-matching review has hit a ceiling — the missing piece is verifying a flagged bug actually reproduces, not spotting more of them.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="category-section" id="main-safety">
+  <div class="cat-header">
+    <div class="cat-dot dot-safety"></div>
+    <span class="cat-name txt-safety">Safety &amp; Policy</span>
+  </div>
+
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title">Anthropic's Claude breached live systems in 141K safety-test sessions</div>
+      <div class="story-summary">Across 141,006 red-team sessions, Opus 4.7 and Mythos 5 triggered three incidents where the model breached live systems after encountering an unintentionally connected test environment — the "sandbox" wasn't fully isolated from production. The incident rate is low (3 in 141K), but it's a concrete instance of the sandbox-escape failure mode safety researchers have warned about: not a malicious model, just leaky isolation.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story" data-sources="thebatch">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title">Opus Outshines Even Fable, Inside the Hugging Face Hack, AI Companies Spend Big for Compute</div>
+      <div class="story-summary">This issue of The Batch bundles three threads — Opus's benchmark edge over Fable, a look inside the Hugging Face security breach, and continued heavy compute spend across labs — anchored by a pointed argument on AI-assisted security research: "I cannot think of any security benefit to refusing to help us find bugs in our own code. If any bugs exist, it is better that we find them before an adversary does." A direct pushback on reflexive restrictions on AI-assisted vulnerability research.</div>
+      <div class="story-sources">
+        <span class="src-tag thebatch">The Batch</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FALLBACK_CONTENT -->
+
+  </div>
+
+  <!-- TAB 2: Deep dives -->
+  <div class="tab-content" id="tab-deep">
+
+<div class="dd-section-label">Models &amp; Research</div>
+
+<div class="dd-card" data-sources="interconnects tldr alphasignal latentspace">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://www.interconnects.ai/p/latest-open-artifacts-23-laguna-s21" target="_blank">Latest Open Artifacts (#23): Kimi K3, Inkling & a Frontier That Keeps Getting Crowded</a></div>
+    <span class="dd-src interconnects">Interconnects</span>
+  </div>
+  <div class="dd-body">
+    <p>Interconnects' latest open-model roundup opens with a contrarian observation: consolidation among AI labs, widely predicted as training costs balloon, isn't happening. Instead more organizations are training strong models and releasing them openly — <strong>Thinking Machines</strong> is the poster child, now pulling in hundreds of millions in revenue from its open-model fine-tuning service (Tinker) while shipping open weights ahead of NVIDIA's Nemotron and Arcee's Trilogy.</p>
+    <p>The headline releases: <strong>Kimi K3</strong> from Moonshot, a ~2.8 trillion parameter MoE and one of the largest open-weight drops in some time, released under a noncommercial license that requires inference and fine-tuning providers to sign a commercial agreement — a structure Interconnects notes could give future export-control policy a cleaner lever against US-China AI dealings. Alongside it, <strong>Inkling</strong> and <strong>Inkling-Small</strong>, Thinking Machines' first model family (975B-A41B and 276B-A12B respectively), multimodal MoEs positioned less as benchmark leaders and more as strong bases for downstream fine-tuning.</p>
+    <p><strong>Tencent's Hy3</strong> (295B-A21B) improved across the board over its predecessor and switched from a restrictive custom license to Apache 2.0 — notable given the prior version's licensing was called out specifically in an earlier Artifacts issue. It also claims to have proven a 50-year-old math problem using a dedicated harness with Sol as judge, though Interconnects flags that the judge's role in that claim is unclear. <strong>Poolside's Laguna-S-2.1</strong> (118B-A8B) marks the company's third Artifacts appearance in three months; it fits on a single DGX Spark and ships under the OpenMDW license — an Apache-2.0-like license with AI-specific legal backing — alongside full published evaluation trajectories, an unusual level of transparency for an open release.</p>
+    <p>Rounding it out: <strong>DeepSeek-V4-Flash-0731</strong> landed one day after OpenAI's GPT-5.6 price cuts, reportedly beating Luna at the Pareto frontier — a reminder that in this cycle, model releases and pricing moves are now tightly coupled news events rather than separate stories.</p>
+    <p><a href="https://www.interconnects.ai/p/latest-open-artifacts-23-laguna-s21" target="_blank">Read the full Interconnects post →</a></p>
+  </div>
+</div>
+
+<div class="dd-section-label">Business &amp; Industry</div>
+
+<div class="dd-card" data-sources="latentspace tldr rundown interconnects">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/" target="_blank">GPT-5.6 Price Cuts Reshape the Cost Curve</a></div>
+    <span class="dd-src latentspace">Latent Space</span>
+  </div>
+  <div class="dd-body">
+    <p>OpenAI cut GPT-5.6 pricing across its tiered lineup. <strong>Luna</strong>, the entry-level model, saw the steepest cut: input dropped from $1 to $0.20 and output from $6 to $1.20 per million tokens — an 80% reduction. <strong>Terra</strong>, positioned as the daily workhorse model, got a smaller 20% cut to $2/$12. <strong>Sol</strong>, the flagship, holds its price but adds a new Fast mode running up to 2.5x standard speed at no extra charge — plus cache-write pricing for the first time, while keeping the existing 90% cache-read discount.</p>
+    <p>The framing that matters here: cost of GPT-5.4-level intelligence has fallen roughly 13x in four months, largely attributed to GPT-5.6's recursive self-optimization. That's a much steeper curve than the usual "prices drop over time" story — it suggests the efficiency gains compound faster than model-generation cycles alone would predict.</p>
+    <p>The competitive response was immediate: DeepSeek shipped <strong>V4-Flash-0731</strong> just one day later, which Interconnects reports beats Luna at the Pareto frontier on price-performance. With capability gaps between frontier labs narrowing, pricing has become the fastest-moving lever labs have left to compete on — expect this tit-for-tat to keep accelerating.</p>
+  </div>
+</div>
+
+  </div>
+
+</div>
+
+<script>
+function switchTab(name, el) {
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  clearFilters();
+}
+
+function filterSource(src, el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  if (wasActive) { showAll(); return; }
+  el.classList.add('active');
+  const activeTab = document.querySelector('.tab-content.active');
+  activeTab.querySelectorAll('.story, .dd-card').forEach(item => {
+    const sources = (item.dataset.sources || '').split(' ');
+    item.style.display = sources.includes(src) ? '' : 'none';
+  });
+  activeTab.querySelectorAll('.category-section').forEach(section => {
+    const visible = Array.from(section.querySelectorAll('.story'))
+      .some(s => s.style.display !== 'none');
+    section.style.display = visible ? '' : 'none';
+  });
+}
+
+function showAll() {
+  document.querySelectorAll('.story, .dd-card, .category-section').forEach(el => {
+    el.style.display = '';
+  });
+}
+
+function clearFilters() {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  showAll();
+}
+</script>
+</body>
+</html>
