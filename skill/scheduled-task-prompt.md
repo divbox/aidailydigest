@@ -1,10 +1,12 @@
-# Scheduled task prompt — `ai-newsletter-digest`
+# Scheduled task prompt — `ai-daily`
 
-This is a manually-maintained snapshot of the live prompt for the Cowork scheduled task, kept here purely for version history. **This file is not read by anything** — the actual source of truth is Cowork's own scheduled-task storage at `/Users/divbox/claude/Scheduled/ai-newsletter-digest/SKILL.md` on the Mac, outside this repo (see `CLAUDE.md` / `docs/digest-hub-spec.md` for why: keeping git off the Cowork side avoids needing GitHub credentials inside the sandbox).
+This is a manually-maintained snapshot of the live prompt for the Cowork scheduled task, kept here purely for version history. **This file is not read by anything** — the actual source of truth is Cowork's own scheduled-task storage at `/Users/divbox/claude/Scheduled/ai-daily/SKILL.md` on the Mac, outside this repo (see `CLAUDE.md` / `docs/digest-hub-spec.md` for why: keeping git off the Cowork side avoids needing GitHub credentials inside the sandbox).
 
 If the task prompt changes again, copy the new text in here by hand and note the date/reason below. There's no automation syncing these — if this file and the live task ever disagree, the live task wins.
 
-**Last synced:** 2026-07-03 — fixed the Latent Space sender (was silently falling back to a broken subject-search) and switched deep-dive extraction (Import AI, Interconnects, Latent Space) from Gmail `get_thread` to WebSearch + `web_fetch` against the source site, since `get_thread` with `FULL_CONTENT` reliably exceeded the tool's token limit on these newsletters. See `feedback_digest_gmail_body_size` and `project_digest_latent_space_sender_fix` in Claude's memory for the full story.
+**Last synced:** 2026-08-07 — corrected the task ID this file documents: the live task is `ai-daily` (this was previously written as `ai-newsletter-digest`, which is a disabled, stale duplicate that hasn't run since 2026-07-03 — the docs just never caught up when the task got recreated under a new name). Also added a rule to use `/Users/divbox/claude/Projects/AIDigest/.tmp/` for any scratch/intermediate files instead of `/tmp`, since `/tmp` is shared across concurrent Cowork sessions and a stale file left there by an unrelated session had collided with a digest run before. No changes made to the WebSearch/deep-dive logic or content-safeguard handling in this pass — those are still open discussion, not settled.
+
+**2026-07-03 sync (prior):** fixed the Latent Space sender (was silently falling back to a broken subject-search) and switched deep-dive extraction (Import AI, Interconnects, Latent Space) from Gmail `get_thread` to WebSearch + `web_fetch` against the source site, since `get_thread` with `FULL_CONTENT` reliably exceeded the tool's token limit on these newsletters. See `feedback_digest_gmail_body_size` and `project_digest_latent_space_sender_fix` in Claude's memory for the full story.
 
 ---
 
@@ -27,5 +29,7 @@ Follow the ai-newsletter-digest skill instructions, with these corrections takin
 5. Load the HTML template from the skill's assets/template.html and fill in all placeholders including SOURCE_PILLS (only for sources with content), TAB1_STORIES, TAB2_DEEPDIVES, DATE, STORY_COUNT, SOURCE_COUNT
 
 6. Save the final file to /Users/divbox/claude/Projects/AIDigest/ as ai-digest-YYYY-MM-DD.html using today's date
+
+7. Scratch/intermediate files: never write to /tmp directly — it's shared across concurrent Cowork sessions and can collide with unrelated runs. Use /Users/divbox/claude/Projects/AIDigest/.tmp/ instead if scratch space is needed mid-run (create it if missing).
 
 The user skims daily newsletters (TLDR AI, Rundown AI, Alpha Signal, The Batch) for headlines. Daily/weekly technical newsletters (Import AI, Interconnects, Latent Space) get full deep-dive treatment in Tab 2. Assume a technical reader who follows AI closely.

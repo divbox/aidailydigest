@@ -30,14 +30,15 @@ All sources active in the skill. Skill runs M–F; Monday looks back 3 days (cov
 
 ## Digest Behavior
 
-- Run schedule: M–F (no weekends), 6:06am — this is a Cowork scheduled task, stored independently of this project folder, not deleted or affected by the project split. Its prompt now points here (`/Users/divbox/claude/Projects/AIDigest/`) as of 2026-07-02.
+- Run schedule: M–F (no weekends), ~6:01am — this is a Cowork scheduled task, stored independently of this project folder, not deleted or affected by the project split. Its prompt now points here (`/Users/divbox/claude/Projects/AIDigest/`) as of 2026-07-02.
+- **Task ID correction (2026-08-07):** the live task is `ai-daily`, not `ai-newsletter-digest`. `ai-newsletter-digest` and `ai-daily-digest` are both disabled duplicates left over from earlier setup — `ai-newsletter-digest` hasn't run since 2026-07-03. This doc previously pointed at the wrong task name; see Maintenance section below. The two dead duplicates haven't been deleted yet — still sitting there disabled.
 - Date window: yesterday's date only (Monday: previous 3 days)
 - No content found: renders a "quiet day" notice; fallback block rises to top
 - Processed emails (i.e. ones that made it into that day's digest) get the `aidigest` label applied and `INBOX` removed — done as the last step, only after the HTML file saves. Emails that didn't make the cut stay in the inbox.
 
 ## Maintenance
 
-- The Cowork scheduled task's prompt (`ai-newsletter-digest`, stored at `/Users/divbox/claude/Scheduled/ai-newsletter-digest/SKILL.md`, outside this repo) is mirrored for version control at `skill/scheduled-task-prompt.md`. **Whenever the scheduled task's prompt is edited again, copy the new text into `skill/scheduled-task-prompt.md` in the same session and note the date/reason.** Nothing syncs these automatically — if they ever disagree, the live Cowork task is the source of truth, this file is just the diff trail.
+- The Cowork scheduled task's prompt (`ai-daily`, stored at `/Users/divbox/claude/Scheduled/ai-daily/SKILL.md`, outside this repo) is mirrored for version control at `skill/scheduled-task-prompt.md`. **Whenever the scheduled task's prompt is edited again, copy the new text into `skill/scheduled-task-prompt.md` in the same session and note the date/reason.** Nothing syncs these automatically — if they ever disagree, the live Cowork task is the source of truth, this file is just the diff trail.
 
 ## Daily Status Check
 
