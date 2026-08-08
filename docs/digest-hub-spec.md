@@ -11,7 +11,7 @@ The digest already generates daily as a standalone HTML file, but getting it in 
 - One stable URL colleagues can pin/bookmark that always shows today's digest, no manual sharing per day.
 - Zero manual steps between the digest generating and it being live on that URL.
 - Earlier digests stay reachable via a simple archive list, grouped by month.
-- Live well before colleagues need it — the digest runs at 6:06am M–F, so there's hours of slack before any morning meeting.
+- Live well before colleagues need it — the digest runs at ~6:01am M–F, so there's hours of slack before any morning meeting.
 
 ## Non-goals (v1)
 
@@ -22,7 +22,7 @@ The digest already generates daily as a standalone HTML file, but getting it in 
 
 ## Locked decisions
 
-- **Repo scope:** the whole `Claude Training` project folder is the git repo.
+- **Repo scope:** the whole `AIDigest` project folder is the git repo (this doc predates the 2026-07-02 split out of the old `Claude Training` project — folder name updated here, rest of doc otherwise unchanged from the original spec).
 - **Visibility:** public repo.
 - **Hosting:** GitHub Pages, serving from the `main` branch root. No work VM involved at all.
 - **Archive layout:** links grouped by month.
@@ -30,7 +30,7 @@ The digest already generates daily as a standalone HTML file, but getting it in 
 - **Change detection:** `git diff` after regenerating, not a sentinel/marker file. No-op if nothing changed.
 - **Dated digests live in `dailies/`**, not the repo root — moved there by the publish script, not the skill.
 
-One consequence of "whole folder as repo" worth remembering: everything in `Claude Training` is public, including `CLAUDE.md` and the packaged skill. Nothing there looks sensitive today — just keep that in mind for anything dropped into this folder going forward.
+One consequence of "whole folder as repo" worth remembering: everything in this project folder is public, including `CLAUDE.md` and the packaged skill. Nothing there looks sensitive today — just keep that in mind for anything dropped into this folder going forward.
 
 ## Why the skill doesn't change
 
@@ -41,7 +41,7 @@ The fix is to keep git entirely off the Cowork side. The skill keeps doing exact
 ## Architecture
 
 ```
-Claude Training/                    (repo root = GitHub Pages source)
+AIDigest/                           (repo root = GitHub Pages source)
 ├── index.html                      regenerated each run — always the latest digest
 ├── archive.html                    regenerated each run — links grouped by month
 ├── .nojekyll                       disables GitHub's Jekyll processing (plain HTML only)

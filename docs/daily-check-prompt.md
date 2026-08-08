@@ -4,15 +4,17 @@ This is a manually-maintained snapshot of the live prompt for the Cowork schedul
 
 **Last synced:** 2026-07-11 — initial version, set up alongside the shared status-tracking habit across projects (see `~/claude/Projects/status/`).
 
+**Note, 2026-08-07:** this file was written when the task was still called `ai-newsletter-digest` and the publish pipeline was intentionally paused — neither is true anymore (live task is `ai-daily`, runs ~6:01am; `publish.sh` has been running and pushing successfully via `launchd` since mid-July). Corrected below since this task (`aidigest-status-check`) is currently disabled and nobody had caught the drift. This note itself isn't reflected in the live task's actual prompt — re-sync by hand if that task gets re-enabled and edited.
+
 ---
 
 Check in on the AI Digest Hub project (`/Users/divbox/claude/Projects/AIDigest/`) and update its status.
 
-Context: the `ai-newsletter-digest` skill runs M–F at 6:06am, writing `ai-digest-YYYY-MM-DD.html` into the project root. A separate script (`scripts/publish.sh`) is supposed to sweep those into `dailies/`, rebuild `index.html`/`archive.html`, and push to GitHub — but that part is intentionally paused (see `TODO.md`) until digest generation itself has run cleanly for a while. Don't treat the pause itself as a problem.
+Context: the `ai-daily` scheduled task runs M–F at ~6:01am, using the `ai-newsletter-digest` skill, writing `ai-digest-YYYY-MM-DD.html` into the project root. A separate script (`scripts/publish.sh`) sweeps those into `dailies/`, rebuilds `index.html`/`archive.html`, and pushes to GitHub — this pipeline is live and running via `launchd`, not paused.
 
 1. Did a digest get produced when expected? If today is a weekday, check for `ai-digest-<yesterday's date>.html` in the project root or already in `dailies/`. Missing on a weekday = flag (skill likely failed silently). If today is Monday, one file covering Fri–Sun is normal.
 
-2. Count root-level `ai-digest-*.html` files not yet swept into `dailies/`. This number is expected to grow for now — don't flag the pile itself, just note the count so drift is visible over time.
+2. Count root-level `ai-digest-*.html` files not yet swept into `dailies/`. Now that the publish pipeline is live (`launchd` runs `publish.sh` every 5 minutes), this pile should stay at 0 or 1 — anything more than that sitting around means the pipeline isn't picking files up and is worth flagging.
 
 3. Check `TODO.md`'s "Still to do" section for deferred items with a stated target (e.g., "next week" as of a given date). If today is more than ~7 days past that stated date and the item is still open with no update noting why, flag it as overdue against its own plan.
 
