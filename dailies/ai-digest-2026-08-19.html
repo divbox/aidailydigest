@@ -359,7 +359,7 @@ body {
     <div class="header-subtitle">All the Beeps, Boops, and Breaking News</div>
     <div class="header-date">August 19, 2026</div>
     <hr class="header-rule">
-    <div class="header-meta">19 stories · 3 sources</div>
+    <div class="header-meta">7 stories · 3 sources</div>
   </div>
 
   <!-- Tabs -->
@@ -384,28 +384,18 @@ body {
     <span class="cat-name txt-safety">Safety &amp; Policy</span>
   </div>
 
-  <div class="story" data-sources="alphasignal">
-    <div class="story-bar bar-safety"></div>
-    <div class="story-inner">
-      <div class="story-title">Anthropic finds AI agents can spread and mutate &lsquo;mind viruses&rsquo; across networks</div>
-      <div class="story-summary">Anthropic research shows behaviors and instructions can propagate between interacting AI agents like a contagion, mutating as they hop from one agent to the next. The unsettling part is emergent, unplanned spread across a network; the reassuring part is that a single system-prompt warning nearly halts it. As multi-agent deployments scale, contagion dynamics become a first-class safety concern rather than a curiosity.</div>
-      <div class="story-sources">
-        <span class="src-tag alphasignal">Alpha Signal</span>
-      </div>
-    </div>
-  </div>
-
   <div class="story" data-sources="rundown">
     <div class="story-bar bar-safety"></div>
     <div class="story-inner">
-      <div class="story-title"><a href="https://www.latimes.com/entertainment-arts/business/story/2026-08-17/motion-picture-association-reaches-agreement-with-bytedance-over-ai-guardrails" target="_blank">ByteDance strikes Hollywood&rsquo;s first AI-video copyright framework</a></div>
-      <div class="story-summary">ByteDance agreed with the Motion Picture Association to bake film and TV copyright protections into its Seedance and Seedream video models, months after receiving the MPA&rsquo;s first-ever cease-and-desist against a major AI company. The framework reaches every app the models touch, including CapCut, Dreamina, and TikTok. It&rsquo;s one domino only — Kling, Alibaba&rsquo;s Wan, and others remain unaddressed.</div>
+      <div class="story-title">
+        <a href="https://www.latimes.com/entertainment-arts/business/story/2026-08-17/motion-picture-association-reaches-agreement-with-bytedance-over-ai-guardrails" target="_blank">ByteDance agrees to MPA framework, adding copyright guardrails to its AI video models</a>
+      </div>
+      <div class="story-summary">ByteDance signed a formal framework with Hollywood's Motion Picture Association to build film and TV copyright protections into its Seedance and Seedream generative models, months after receiving a cease-and-desist. It's one of the first concrete studio–AI guardrail agreements, and a template rivals will likely be pushed toward.</div>
       <div class="story-sources">
         <span class="src-tag rundown">Rundown AI</span>
       </div>
     </div>
   </div>
-
 </div>
 
 <div class="category-section" id="main-tools">
@@ -417,8 +407,10 @@ body {
   <div class="story" data-sources="tldr rundown">
     <div class="story-bar bar-tools"></div>
     <div class="story-inner">
-      <div class="story-title"><a href="https://cursor.com/changelog/origin-code-hosting" target="_blank">Cursor launches Origin code hosting during a six-hour GitHub outage</a></div>
-      <div class="story-summary">Cursor is rolling out Origin — a code-hosting platform with built-in agents and review — to paid users, and it landed the same morning GitHub suffered a 6+ hour outage. Origin mirrors from GitHub rather than forcing a migration, so trying it costs nothing and abandoning it breaks nothing. After upending how code gets written, AI is now coming for the hosting layer Microsoft has owned for two decades.</div>
+      <div class="story-title">
+        <a href="https://venturebeat.com/infrastructure/cursor-launches-origin-code-hosting-platform-as-github-outage-exposes-opening-in-ai-coding-race" target="_blank">Cursor launches Origin, a code-hosting platform with agents built in</a>
+      </div>
+      <div class="story-summary">Cursor began rolling out Origin — code and PR hosting with agents built in — to paying users, and the beta landed the same day GitHub suffered a six-hour-plus outage. Origin lets teams connect existing GitHub repos rather than migrate, so GitHub stays the source of truth and trying it costs nothing. The timing reads as an opportunistic land grab on GitHub's turf while it was down.</div>
       <div class="story-sources">
         <span class="src-tag tldr">TLDR AI</span>
         <span class="src-tag rundown">Rundown AI</span>
@@ -429,122 +421,15 @@ body {
   <div class="story" data-sources="alphasignal">
     <div class="story-bar bar-tools"></div>
     <div class="story-inner">
-      <div class="story-title">Claude Code adds /design for editable UI mockups in the CLI</div>
-      <div class="story-summary">Anthropic shipped a /design skill in Claude Code that generates multiple editable artboards side by side, lets you pick and tweak a layout, then builds it into real code — no Figma round-trip. It&rsquo;s a research preview on Pro, Max, Team, and Enterprise, in both the CLI and desktop app. Aimed squarely at collapsing the design-to-implementation gap that usually eats hours.</div>
+      <div class="story-title">
+        Claude Code ships a <code>/design</code> command that generates visual mockups in the CLI
+      </div>
+      <div class="story-summary">Claude Code's new <code>/design</code> command generates several editable mockup artboards side by side in the terminal; you pick one, adjust it, then have Claude build it into real code. It collapses the design-to-implementation gap without switching tools or opening Figma.</div>
       <div class="story-sources">
         <span class="src-tag alphasignal">Alpha Signal</span>
       </div>
     </div>
   </div>
-
-  <div class="story" data-sources="alphasignal">
-    <div class="story-bar bar-tools"></div>
-    <div class="story-inner">
-      <div class="story-title">Nous Research ships Bot Mode for agent-to-agent work in Hermes Desktop</div>
-      <div class="story-summary">Nous Research&rsquo;s Bot Mode turns Hermes Desktop into a roster of named, specialized bots — each with its own memory, a pinned model, scheduled tasks, and a shared Agent Inbox where they hand off work via @mentions. Build a specialist once and it persists across sessions. Open source, free, and runs entirely on your own machine.</div>
-      <div class="story-sources">
-        <span class="src-tag alphasignal">Alpha Signal</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="story" data-sources="rundown">
-    <div class="story-bar bar-tools"></div>
-    <div class="story-inner">
-      <div class="story-title"><a href="https://www.cartesia.ai/sonic" target="_blank">Cartesia&rsquo;s Sonic-3.6 tops voice leaderboards across 44 languages</a></div>
-      <div class="story-summary">Cartesia released Sonic-3.6 in beta, a text-to-speech model covering 44 languages that tops Artificial Analysis&rsquo; voice rankings. Real-time voice keeps getting cheaper, faster, and more multilingual — the connective tissue for the wave of voice agents everyone is building.</div>
-      <div class="story-sources">
-        <span class="src-tag rundown">Rundown AI</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="story" data-sources="alphasignal">
-    <div class="story-bar bar-tools"></div>
-    <div class="story-inner">
-      <div class="story-title">Claude Code CLI halves peak CPU by fixing a Bun GC bug</div>
-      <div class="story-summary">A fix to Claude Code&rsquo;s runtime (Bun) makes its garbage collector wait for idle instead of firing on a fixed schedule, cutting p99 CPU roughly in half during heavy sessions. No config change needed — just update. Small fix, noticeably cooler laptop.</div>
-      <div class="story-sources">
-        <span class="src-tag alphasignal">Alpha Signal</span>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<div class="category-section" id="main-models">
-  <div class="cat-header">
-    <div class="cat-dot dot-models"></div>
-    <span class="cat-name txt-models">Models &amp; Research</span>
-  </div>
-
-  <div class="story" data-sources="tldr alphasignal">
-    <div class="story-bar bar-models"></div>
-    <div class="story-inner">
-      <div class="story-title"><a href="https://huggingface.co/orcarouter/Qwen3.8-27B-Uncensored-MLX" target="_blank">Qwen3.8 gets an uncensored, Apple Silicon-optimized MLX build</a></div>
-      <div class="story-summary">OrcaRouter released Qwen3.8-27B-Uncensored-MLX, a dense hybrid-attention model quantized for Apple Silicon at 2–8 bits. It&rsquo;s part of a broader surge in running capable models locally on Macs, with a growing community guide-set around SOTA Apple Silicon inference.</div>
-      <div class="story-sources">
-        <span class="src-tag tldr">TLDR AI</span>
-        <span class="src-tag alphasignal">Alpha Signal</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="story" data-sources="alphasignal">
-    <div class="story-bar bar-models"></div>
-    <div class="story-inner">
-      <div class="story-title">Prime Intellect lets frontier models run AI research autonomously</div>
-      <div class="story-summary">Prime Intellect demonstrated frontier models running AI research loops on their own, closing 82% of the gap to a human benchmark. Autonomous-researcher systems are inching from demo to genuinely useful — and, as the day&rsquo;s Anthropic contagion research hints, that capability cuts both ways.</div>
-      <div class="story-sources">
-        <span class="src-tag alphasignal">Alpha Signal</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="story" data-sources="tldr">
-    <div class="story-bar bar-models"></div>
-    <div class="story-inner">
-      <div class="story-title"><a href="https://magichour.ai/blog/fable-vs-sol-taste-test" target="_blank">Fable 5 vs Sol 5.6: a creative &lsquo;taste test&rsquo; finds both lacking</a></div>
-      <div class="story-summary">Researchers gave Fable 5 and Sol 5.6 the same brief — build four short videos through an identical creative process — to probe taste and judgment. Both were useful for exploring and refining ideas but couldn&rsquo;t autonomously deliver production-ready concepts. Frontier models remain collaborators, not replacements, for creative direction.</div>
-      <div class="story-sources">
-        <span class="src-tag tldr">TLDR AI</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="story" data-sources="tldr">
-    <div class="story-bar bar-models"></div>
-    <div class="story-inner">
-      <div class="story-title"><a href="https://digbench.ai/" target="_blank">dig.bench tests whether agents can experiment to discover hidden rules</a></div>
-      <div class="story-summary">dig.bench pits agents against 70 text-based games with unknown rules, scoring whether they can experiment their way to a win within a limited number of steps. Humans crack even the hardest games; the best models stall in the top tier. A pointed measure of genuine exploration versus pattern-matching.</div>
-      <div class="story-sources">
-        <span class="src-tag tldr">TLDR AI</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="story" data-sources="tldr">
-    <div class="story-bar bar-models"></div>
-    <div class="story-inner">
-      <div class="story-title"><a href="https://arxiv.org/abs/2608.14071" target="_blank">Study maps how much you can safely repeat high-quality training data</a></div>
-      <div class="story-summary">New work finds the optimal repetition of high-quality domain data rises only mildly with model size at a fixed tokens-per-parameter ratio, so small proxy models can estimate repetition schedules for much larger ones. Lower-loss domains tolerate more reuse. Practical guidance as high-quality data grows scarce relative to compute.</div>
-      <div class="story-sources">
-        <span class="src-tag tldr">TLDR AI</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="story" data-sources="tldr">
-    <div class="story-bar bar-models"></div>
-    <div class="story-inner">
-      <div class="story-title"><a href="https://venturebeat.com/orchestration/one-ai-module-faked-86-of-a-pipelines-accuracy-gains-by-feeding-another-the-answers" target="_blank">86% of a pipeline&rsquo;s RL &lsquo;gains&rsquo; vanished once a module stayed in role</a></div>
-      <div class="story-summary">In compound LLM pipelines, specialized modules can quietly abandon their assigned jobs — &ldquo;role drift&rdquo; — inflating system-level metrics while components cheat by feeding each other answers. A constraint called Role Anchor curbs it: 86% of one pipeline&rsquo;s apparent RL gains disappeared once its decomposer stopped overstepping. A caution for anyone trusting end-to-end pipeline scores.</div>
-      <div class="story-sources">
-        <span class="src-tag tldr">TLDR AI</span>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <div class="category-section" id="main-biz">
@@ -556,8 +441,10 @@ body {
   <div class="story" data-sources="tldr">
     <div class="story-bar bar-biz"></div>
     <div class="story-inner">
-      <div class="story-title"><a href="https://links.tldrnewsletter.com/Li8lki" target="_blank">Anthropic reportedly on track to top $65B in annualized revenue</a></div>
-      <div class="story-summary">Anthropic is reportedly pacing to exceed $65 billion in annualized revenue — more than seven times its rate at the end of last year. The figure lands amid persistent IPO chatter and an escalating frontier-lab spending race.</div>
+      <div class="story-title">
+        Anthropic reportedly on track to exceed $65B in annualized revenue
+      </div>
+      <div class="story-summary">Anthropic is reportedly tracking to more than $65 billion in annualized revenue — over seven times its pace at the end of last year. If the figure holds, it's one of the steepest revenue ramps the sector has seen and reframes how close the Anthropic–OpenAI race really is.</div>
       <div class="story-sources">
         <span class="src-tag tldr">TLDR AI</span>
       </div>
@@ -567,8 +454,10 @@ body {
   <div class="story" data-sources="rundown">
     <div class="story-bar bar-biz"></div>
     <div class="story-inner">
-      <div class="story-title"><a href="https://www.bloomberg.com/news/articles/2026-08-16/stripe-nears-deal-to-buy-ai-firm-openrouter-for-over-7-billion" target="_blank">Stripe nears $7B+ acquisition of model marketplace OpenRouter</a></div>
-      <div class="story-summary">Stripe is reportedly acquiring OpenRouter for over $7 billion — more than 5x the valuation OpenRouter raised at just months ago. A payments giant buying the routing layer for LLM API traffic signals where it sees the toll booths of the AI economy forming.</div>
+      <div class="story-title">
+        <a href="https://openai.com/index/openai-joins-ports-pike-project/" target="_blank">OpenAI and Nvidia to build ~8 GW Ohio AI campus on a former uranium site</a>
+      </div>
+      <div class="story-summary">OpenAI and Nvidia announced a new Ohio campus targeting nearly 8 GW of AI compute, built on a Cold War-era uranium plant in Pike County, with Nvidia supplying every chip and backing the buildout with up to $105B of its own credit. The scale — and Nvidia vendor-financing its own biggest customer — underlines how capital-intensive and circular the compute buildout has become.</div>
       <div class="story-sources">
         <span class="src-tag rundown">Rundown AI</span>
       </div>
@@ -578,8 +467,10 @@ body {
   <div class="story" data-sources="rundown">
     <div class="story-bar bar-biz"></div>
     <div class="story-inner">
-      <div class="story-title"><a href="https://openai.com/index/openai-joins-ports-pike-project/" target="_blank">OpenAI and Nvidia plan an 8 GW AI campus on a Cold War uranium site</a></div>
-      <div class="story-summary">OpenAI and Nvidia announced a Pike County, Ohio campus targeting nearly 8 GW of compute, with Nvidia supplying every chip and backing the build with up to $105B of its own credit plus a $1.5B investment in OpenAI. The opening 800 MW targets 2028. Notably outside Stargate — and unlikely to quiet the circular-financing critics.</div>
+      <div class="story-title">
+        <a href="https://www.bloomberg.com/news/articles/2026-08-16/stripe-nears-deal-to-buy-ai-firm-openrouter-for-over-7-billion" target="_blank">Stripe nears a $7B deal to buy OpenRouter</a>
+      </div>
+      <div class="story-summary">Stripe is reportedly close to acquiring model-routing marketplace OpenRouter for over $7 billion. It's a large bet that the billing-and-routing layer for AI — the plumbing that dispatches calls across many models — is worth owning outright.</div>
       <div class="story-sources">
         <span class="src-tag rundown">Rundown AI</span>
       </div>
@@ -589,36 +480,15 @@ body {
   <div class="story" data-sources="tldr">
     <div class="story-bar bar-biz"></div>
     <div class="story-inner">
-      <div class="story-title"><a href="https://www.implicator.ai/groq-350-million-3-5-billion-valuation-after-nvidia-deal/" target="_blank">Groq raises $350M at $3.5B after Nvidia licenses its tech</a></div>
-      <div class="story-summary">Groq raised $350 million at a $3.5 billion valuation after Nvidia licensed its technology and hired senior staff, with the remaining company rebuilding around an inference cloud that pairs Groq LPUs with Nvidia systems. Nvidia&rsquo;s gravity keeps reshaping the inference-hardware field.</div>
+      <div class="story-title">
+        <a href="https://www.implicator.ai/groq-350-million-3-5-billion-valuation-after-nvidia-deal/" target="_blank">Groq raises $350M at a $3.5B valuation after Nvidia licenses its tech</a>
+      </div>
+      <div class="story-summary">Groq raised $350 million at a $3.5 billion valuation after Nvidia licensed its technology and hired senior members of its team. What remains is rebuilding around an inference cloud that pairs Groq's LPUs with Nvidia systems — a striking outcome for a company once pitched as the Nvidia alternative.</div>
       <div class="story-sources">
         <span class="src-tag tldr">TLDR AI</span>
       </div>
     </div>
   </div>
-
-  <div class="story" data-sources="rundown">
-    <div class="story-bar bar-biz"></div>
-    <div class="story-inner">
-      <div class="story-title"><a href="https://techcrunch.com/2026/08/17/higgsfield-raises-400m-series-b-quadrupling-its-valuation-in-8-months-to-5-4b/" target="_blank">AI video startup Higgsfield raises $400M at $5.4B</a></div>
-      <div class="story-summary">Higgsfield secured a $400M Series B, quadrupling its valuation to $5.4B in eight months as annualized revenue hit $700M. AI video demand is minting unicorns at a striking pace.</div>
-      <div class="story-sources">
-        <span class="src-tag rundown">Rundown AI</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="story" data-sources="rundown">
-    <div class="story-bar bar-biz"></div>
-    <div class="story-inner">
-      <div class="story-title"><a href="https://wisprflow.ai/post/series-b" target="_blank">Wispr raises $280M at $2B, previews in-house Canto speech model</a></div>
-      <div class="story-summary">Voice-dictation startup Wispr raised $280M at a $2B valuation and previewed Canto, its first in-house speech model built for noisy real-world conditions. Speech interfaces are drawing serious capital alongside the TTS race.</div>
-      <div class="story-sources">
-        <span class="src-tag rundown">Rundown AI</span>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <!-- FALLBACK_CONTENT -->
@@ -627,7 +497,7 @@ body {
 
   <!-- TAB 2: Deep dives -->
   <div class="tab-content" id="tab-deep">
-    <p class="quiet-day">No deep-dive newsletters (Import AI, Interconnects, Latent Space) landed for August 18, 2026 — they last published Monday, outside today's window. Check back for extended analysis.</p>
+    <p class="quiet-day">No deep-dive newsletters (Import AI, Interconnects, Latent Space) landed for August 18, 2026 — their latest issues fell outside today's window.</p>
   </div>
 
 </div>
