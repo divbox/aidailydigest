@@ -36,6 +36,10 @@ All sources active in the skill. Skill runs M–F; Monday looks back 3 days (cov
 - No content found: renders a "quiet day" notice; fallback block rises to top
 - Processed emails (i.e. ones that made it into that day's digest) get the `aidigest` label applied and `INBOX` removed — done as the last step, only after the HTML file saves. Emails that didn't make the cut stay in the inbox.
 
+## Scheduled Task Discipline
+
+`ai-daily` and the daily status-check task run unattended — nobody reviews them live. If a documented step in either task's prompt breaks mid-run, the correct response is to apply only that task's own documented fallback for the failure, or, if nothing documented covers it, skip the affected part and state the specific failure plainly in the run's final message (which is what the completion notification carries). Never reason out a new workaround live and quietly ship it — that's how `ai-daily`'s email-retrieval step ended up rewritten three times in two months (2026-07-03, 2026-08-07, 2026-09-03), each time differently, each time reactive. A recurring failure gets fixed by deliberately editing the task's prompt afterward, with review, the way the 2026-09-03 fix was done — not by re-solving it inside the next run that hits it. See `skill/scheduled-task-prompt.md`'s sync notes for the full incident history.
+
 ## Maintenance
 
 - The Cowork scheduled task's prompt (`ai-daily`, stored at `/Users/divbox/claude/Scheduled/ai-daily/SKILL.md`, outside this repo) is mirrored for version control at `skill/scheduled-task-prompt.md`. **Whenever the scheduled task's prompt is edited again, copy the new text into `skill/scheduled-task-prompt.md` in the same session and note the date/reason.** Nothing syncs these automatically — if they ever disagree, the live Cowork task is the source of truth, this file is just the diff trail.
