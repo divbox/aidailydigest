@@ -51,7 +51,7 @@ All sources active in the skill. Skill runs M–F; Monday looks back 3 days (cov
 
 ## Hub Pipeline (not the skill's job — see docs/digest-hub-spec.md)
 
-The skill only ever writes `ai-digest-YYYY-MM-DD.html` into this project's root. Everything past that — moving it into `dailies/`, regenerating `index.html`/`archive.html`, committing, pushing to GitHub — is `scripts/publish.sh`, run natively on the Mac via `launchd` (see `scripts/com.divbox.digest-publish.plist`). Git credentials and pushes never happen from inside Cowork's sandbox by design.
+The skill only ever writes `ai-digest-YYYY-MM-DD.html` into this project's root. Everything past that — moving it into `dailies/`, regenerating `index.html`/`archive.html`, committing, pushing to GitHub — is `scripts/publish.sh`, run natively on the Mac via `launchd` (see `scripts/com.divbox.digest-publish.plist`). No git command of any kind (`add`/`commit`/`push`, but also `status`/`log`/`diff`) should ever run against this repo from inside Cowork's sandbox — even read-only-looking commands can trigger an index write that the sandbox's write-once file policy then can't clean up, leaving a stray `.git/index.lock` that blocks the next git operation (Claude's or the user's). Confirmed 2026-09-03: a plain `git status` run purely to check state triggered exactly this. See `feedback-digest-repo-git-restricted` in Claude's memory.
 
 ## To Consider Adding Later
 - Ahead of AI (Sebastian Raschka) — PhD-level ML research
