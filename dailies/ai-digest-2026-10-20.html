@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAILY.DIGEST.EXE — October 20, 2026</title>
+<style>
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+
+  --color-bg-page:    #f5f5f3;
+  --color-bg-surface: #ffffff;
+  --color-text-primary:   #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted:     #999999;
+  --color-border:         #e8e8e5;
+  --color-border-light:   #f0f0ee;
+
+  --cat-safety:      #E24B4A;
+  --cat-safety-text: #991b1b;
+  --cat-tools:       #1D9E75;
+  --cat-tools-text:  #065f46;
+  --cat-models:      #378ADD;
+  --cat-models-text: #1e40af;
+  --cat-biz:         #BA7517;
+  --cat-biz-text:    #78350f;
+
+  --src-importai-bg:      #F3F0FF;
+  --src-importai-text:    #4C3D99;
+  --src-importai-border:  #C4B5F4;
+  --src-rundown-bg:       #F0FDF4;
+  --src-rundown-text:     #166534;
+  --src-rundown-border:   #86EFAC;
+  --src-tldr-bg:          #FFF7ED;
+  --src-tldr-text:        #9A3412;
+  --src-tldr-border:      #FDBA74;
+  --src-interconnects-bg:     #F0F9FF;
+  --src-interconnects-text:   #0C4A6E;
+  --src-interconnects-border: #7DD3FC;
+  --src-alphasignal-bg:     #FDF4FF;
+  --src-alphasignal-text:   #6B21A8;
+  --src-alphasignal-border: #D8B4FE;
+  --src-thebatch-bg:        #F0FDF4;
+  --src-thebatch-text:      #14532D;
+  --src-thebatch-border:    #6EE7B7;
+  --src-latentspace-bg:     #FFF1F2;
+  --src-latentspace-text:   #881337;
+  --src-latentspace-border: #FDA4AF;
+
+  --signal-bg:     #FEF3C7;
+  --signal-text:   #92400E;
+  --signal-border: #FCD34D;
+
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-lg:   18px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+
+  --leading-tight:   1.3;
+  --leading-base:    1.5;
+  --leading-relaxed: 1.68;
+
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+  --radius-pill: 999px;
+
+  --page-width: 820px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  line-height: var(--leading-base);
+}
+
+.page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  background: var(--color-bg-surface);
+  min-height: 100vh;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+/* Header */
+.header {
+  padding: 1.75rem 2rem 1.25rem;
+  background: var(--color-bg-surface);
+  text-align: center;
+}
+.header-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+}
+.header-subtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: var(--leading-base);
+}
+.header-date {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 3px;
+}
+.header-rule {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 12px 0;
+}
+.header-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+  padding: 0 2rem;
+}
+.tab-btn {
+  padding: 11px 16px;
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-muted);
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn.active {
+  border-bottom-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+.tab-btn:hover:not(.active) { color: var(--color-text-secondary); }
+
+/* Tab content */
+.tab-content {
+  display: none;
+  padding: 1.5rem 2rem 3rem;
+}
+.tab-content.active { display: block; }
+
+/* Source filter bar */
+.source-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 2rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+}
+.filter-pill {
+  font-size: var(--text-xs);
+  padding: 3px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  cursor: pointer;
+  background: none;
+  font-family: var(--font-sans);
+  transition: opacity 0.15s, box-shadow 0.15s;
+  opacity: 0.7;
+}
+.filter-pill:hover { opacity: 1; }
+.filter-pill.active { opacity: 1; box-shadow: 0 0 0 2px currentColor; }
+
+.pill-importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.pill-rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.pill-tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.pill-interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.pill-alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.pill-thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.pill-latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category sections */
+.category-section { margin-bottom: 2rem; }
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--color-border-light);
+  margin-bottom: 0;
+}
+.cat-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.cat-name {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Stories */
+.story {
+  padding: 16px 0 14px;
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  gap: 14px;
+  transition: opacity 0.2s;
+}
+.story:last-child { border-bottom: none; }
+.story-bar {
+  width: 3px;
+  border-radius: 0;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 52px;
+}
+.story-inner { flex: 1; }
+.story-badges {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.signal-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--signal-bg);
+  color: var(--signal-text);
+  border: 1px solid var(--signal-border);
+  font-weight: 500;
+}
+.story-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  margin-bottom: 5px;
+  line-height: var(--leading-tight);
+}
+.story-title a { color: inherit; text-decoration: none; }
+.story-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.story-summary {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 9px;
+}
+.story-sources { display: flex; gap: 5px; flex-wrap: wrap; }
+.src-tag {
+  font-size: var(--text-xs);
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+}
+.src-tag.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.src-tag.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.src-tag.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.src-tag.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.src-tag.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.src-tag.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.src-tag.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+
+/* Category color helpers */
+.dot-safety { background: var(--cat-safety); }
+.txt-safety { color: var(--cat-safety-text); }
+.bar-safety { background: var(--cat-safety); }
+.dot-tools  { background: var(--cat-tools); }
+.txt-tools  { color: var(--cat-tools-text); }
+.bar-tools  { background: var(--cat-tools); }
+.dot-models { background: var(--cat-models); }
+.txt-models { color: var(--cat-models-text); }
+.bar-models { background: var(--cat-models); }
+.dot-biz    { background: var(--cat-biz); }
+.txt-biz    { color: var(--cat-biz-text); }
+.bar-biz    { background: var(--cat-biz); }
+
+/* Quiet day notice */
+.quiet-day {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* Deep dive cards */
+.dd-section-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  margin-top: 1.75rem;
+}
+.dd-section-label:first-child { margin-top: 0; }
+.dd-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 12px;
+}
+.dd-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.dd-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+}
+.dd-title a { color: inherit; text-decoration: none; }
+.dd-title a:hover { text-decoration: underline; color: #1d4ed8; }
+.dd-src {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  flex-shrink: 0;
+}
+.dd-src.importai      { background: var(--src-importai-bg);      color: var(--src-importai-text);      border-color: var(--src-importai-border); }
+.dd-src.rundown       { background: var(--src-rundown-bg);       color: var(--src-rundown-text);       border-color: var(--src-rundown-border); }
+.dd-src.tldr          { background: var(--src-tldr-bg);          color: var(--src-tldr-text);          border-color: var(--src-tldr-border); }
+.dd-src.interconnects { background: var(--src-interconnects-bg); color: var(--src-interconnects-text); border-color: var(--src-interconnects-border); }
+.dd-src.alphasignal   { background: var(--src-alphasignal-bg);   color: var(--src-alphasignal-text);   border-color: var(--src-alphasignal-border); }
+.dd-src.thebatch      { background: var(--src-thebatch-bg);      color: var(--src-thebatch-text);      border-color: var(--src-thebatch-border); }
+.dd-src.latentspace   { background: var(--src-latentspace-bg);   color: var(--src-latentspace-text);   border-color: var(--src-latentspace-border); }
+.dd-body {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+.dd-body p { margin-bottom: 8px; }
+.dd-body p:last-child { margin-bottom: 0; }
+.dd-body a { color: #1d4ed8; }
+.dd-body strong { color: var(--color-text-primary); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">🤖 DAILY.DIGEST.EXE</div>
+    <div class="header-subtitle">All the Beeps, Boops, and Breaking News</div>
+    <div class="header-date">October 20, 2026</div>
+    <hr class="header-rule">
+    <div class="header-meta">22 stories · 4 sources</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('main', this)">🤖 &nbsp;EXTRA! EXTRA! Read All About It!</button>
+    <button class="tab-btn" onclick="switchTab('deep', this)">🧠 &nbsp;Nerd Alert: You've Been Warned</button>
+  </div>
+
+  <!-- Source filter pills (dynamic — only sources with content) -->
+  <div class="source-bar">
+<button class="filter-pill pill-tldr" onclick="filterSource('tldr', this)">TLDR AI</button>
+<button class="filter-pill pill-rundown" onclick="filterSource('rundown', this)">Rundown AI</button>
+<button class="filter-pill pill-alphasignal" onclick="filterSource('alphasignal', this)">Alpha Signal</button>
+<button class="filter-pill pill-importai" onclick="filterSource('importai', this)">Import AI</button>
+
+  </div>
+
+  <!-- TAB 1: Main stories -->
+  <div class="tab-content active" id="tab-main">
+<div class="category-section" id="main-safety">
+<div class="cat-header"><div class="cat-dot dot-safety"></div><span class="cat-name txt-safety">Safety &amp; Policy</span></div>
+<div class="story" data-sources="rundown"><div class="story-bar bar-safety"></div><div class="story-inner"><div class="story-title"><a href="https://x.com/opencode/status/2111519637049319818" target="_blank">OpenCode warns hackers may have taken users&#x27; saved OpenAI and Anthropic keys</a></div><div class="story-summary">OpenCode says attackers may have grabbed API keys users had saved, and tied the breach to a mass effort to copy AI models. Rotate any keys stored in the tool.</div><div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div></div></div>
+<div class="story" data-sources="alphasignal"><div class="story-bar bar-safety"></div><div class="story-inner"><div class="story-title">Multi-agent sim: Grok&#x27;s town collapsed in 4 days, GPT behaved best</div><div class="story-summary">In a 16-day simulation, GPT agents behaved best, Grok&#x27;s town collapsed within four days and Claude&#x27;s built a democracy; mixing models reportedly cut crime 96%. Alpha Signal gave no link.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
+</div>
+<div class="category-section" id="main-tools">
+<div class="cat-header"><div class="cat-dot dot-tools"></div><span class="cat-name txt-tools">Tools &amp; Products</span></div>
+<div class="story" data-sources="tldr"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://www.testingcatalog.com/openai-possibly-testing-gpt-image-3/" target="_blank">OpenAI tests &quot;Aurora&quot; image models in arena</a></div><div class="story-summary">Three references (aurora-red-alpha, green-alpha, blue-alpha) briefly appeared in OpenAI&#x27;s API and blind arena tests, possibly GPT Image 3. Red was faster but lower quality; green slower but better looking.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
+<div class="story" data-sources="tldr"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://claude.dev/blog/solving-code-review-at-anthropic/" target="_blank">How the Claude Code team does code review</a></div><div class="story-summary">The team automated most review stages to cope with higher volume: continuous review, automated verification, multi-layer checks before a human sees it, and a tiered risk system for approvals.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
+<div class="story" data-sources="tldr"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://links.tldrnewsletter.com/VT4HHo" target="_blank">Make coding agents trustworthy through architecture, not prompting</a></div><div class="story-summary">The argument: reliable agents come from better code architecture, strong invariants and automated verification. Mine past agent mistakes and review comments, then redesign the system so those failures can&#x27;t recur.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
+<div class="story" data-sources="alphasignal"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title">Claude Code strips 25 bloatware apps from a Xiaomi TV</div><div class="story-summary">Given only the TV&#x27;s model number, Claude Code found it over Wi-Fi via ADB, removed 25 packages and built a custom launcher. No root, fully reversible, and reportedly works on other Android and Google TVs. The repo has 1.3k stars.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
+<div class="story" data-sources="alphasignal"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title">Grok Bot gets 3x faster computer-use tasks and new connectors</div><div class="story-summary">Computer-use tasks finish about 3x faster on average and other responses arrive in under half the prior time. Bot can be tagged on X, supports email plus aliases, and adds Robinhood, Coinbase, Trello, PostHog, beehiiv and eToro connectors.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
+<div class="story" data-sources="rundown"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://www.krea.ai/krea-3" target="_blank">Krea 3 image editor launches</a></div><div class="story-summary">Krea claims 3x the speed of Google&#x27;s Nano Banana Pro at under half the cost, with a focus on precise, consistent edits.</div><div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div></div></div>
+<div class="story" data-sources="alphasignal"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title">Claude builds a WebGPU water renderer in 30 minutes</div><div class="story-summary">Reported as written from scratch with no libraries in about half an hour. No link in the newsletter.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
+<div class="story" data-sources="tldr"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://links.tldrnewsletter.com/24IIkx" target="_blank">Stack Overflow for Agents triples signups after a ChatGPT plugin</a></div><div class="story-summary">Signups rose 3x overnight after the ChatGPT plugin integration.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
+</div>
+<div class="category-section" id="main-models">
+<div class="cat-header"><div class="cat-dot dot-models"></div><span class="cat-name txt-models">Models &amp; Research</span></div>
+<div class="story" data-sources="tldr rundown alphasignal"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-badges"><span class="signal-badge">🔥 High signal — 3 sources</span></div><div class="story-title"><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017" target="_blank">DeepSeek ships V4.1-Flash-1017 and opens its search and fetch APIs</a></div><div class="story-summary">DeepSeek&#x27;s updated Flash model is faster, gives shorter answers, and claims 77.0% on DeepSWE, ahead of Claude Opus 5 (74.0%) and GPT-5.6 Sol (73.0%). Cross-layer KV cache reuse plus FP4 KV caching cuts the persistent KV footprint to roughly 1/8 of V4-Flash (890 bytes/token), with a 1M context window and MIT-licensed weights. DeepSeek&#x27;s Search and Fetch APIs are now open to developers at $0.75 per 1,000 calls.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
+<div class="story" data-sources="alphasignal"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title">Claude designs quantum circuits up to 10x more efficient than published work</div><div class="story-summary">Alpha Signal reports Claude autonomously redesigned quantum circuits from plain-English instructions, with headline claims up to 10x (and in the intro, up to 39x) cheaper than published work. The newsletter gave no paper link.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
+<div class="story" data-sources="tldr"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://www.anthropic.com/research/ecdsa-curve-origins" target="_blank">Claude explains the origins of ECDSA curve seeds</a></div><div class="story-summary">Claude traced the seeds of standard ECDSA curves to a C library&#x27;s lrand48 generator seeded with Unix timestamps, rather than hash algorithms or a backdoor.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
+<div class="story" data-sources="alphasignal"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title">Distillation trick cuts image generation from 50 steps to 8</div><div class="story-summary">A new distillation method reportedly drops image generation from 50 denoising steps to 8, already at 12,410 downloads. No link was provided in the newsletter.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
+<div class="story" data-sources="tldr"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://www.mercor.com/research/labor-index/benchmark-map/" target="_blank">A benchmark map of the US economy finds 90% of working hours barely covered</a></div><div class="story-summary">Mercor&#x27;s Benchmark Map finds roughly 90% of American working hours go to tasks with little or no coverage from existing benchmarks, making real-world model capability hard to judge.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
+<div class="story" data-sources="rundown"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://x.com/odysseyml/status/2111589148146749616" target="_blank">Odyssey wires a simulated fruit-fly brain into its world model</a></div><div class="story-summary">A demo connects a simulated fruit fly&#x27;s brain to Odyssey-3, which generates virtual worlds, letting the digital insect fly through them with no human steering.</div><div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div></div></div>
+</div>
+<div class="category-section" id="main-biz">
+<div class="cat-header"><div class="cat-dot dot-biz"></div><span class="cat-name txt-biz">Business &amp; Industry</span></div>
+<div class="story" data-sources="tldr rundown"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://www.anthropic.com/news/public-benefit-fund" target="_blank">Anthropic puts 5% of its equity into a Public Benefit Fund</a></div><div class="story-summary">The new LLC would receive 5% of Anthropic&#x27;s equity (about $48B at its May valuation) if shareholders approve, with more added as valuation climbs. It can fund nonprofits or direct distributions to specific populations, such as workers hit by AI, and none of the stock goes to lobbying. Until money reaches people, it will be hard to tell this apart from good PR.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span></div></div></div>
+<div class="story" data-sources="tldr rundown"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://www.anthropic.com/research/employment-at-anthropic" target="_blank">Anthropic study: junior technical hiring falls from 27% to 9%</a></div><div class="story-summary">Anthropic&#x27;s study of its own workforce shows agents logging 6x the hours of the people running them and engineers shipping 5x the code changes of six months ago, with agent code rolled back no more often than human code. Claude agents sit idle about 80% of the time waiting on a human, so human attention is now the bottleneck.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span></div></div></div>
+<div class="story" data-sources="tldr"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://techcrunch.com/2026/10/17/replit-is-no-longer-working-with-anthropic-ceo-says/" target="_blank">Replit makes OpenAI its default agent provider, dropping Anthropic</a></div><div class="story-summary">Replit swapped Anthropic for OpenAI as the preferred provider for Replit Agent, citing cost, performance and partnership considerations. CEO Amjad Masad says users can still pick Claude and other models.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
+<div class="story" data-sources="rundown"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://blog.google/products-and-platforms/products/news/news-ai-pilot-update-publishers/" target="_blank">Google adds Axios, CNN and the FT to its paid AI news program</a></div><div class="story-summary">The program now covers more than 400 outlets, as AI answers keep eating into publishers&#x27; search traffic.</div><div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div></div></div>
+<div class="story" data-sources="tldr"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://thenextweb.com/news/qualcomm-cristiano-amon-ai-companies-phones-2028" target="_blank">Qualcomm: AI labs want 100B-parameter models on phones by 2028</a></div><div class="story-summary">AI companies want phones running 100B-plus-parameter models continuously by 2028, and some are already starting to build their own phones.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
+</div>
+
+
+<!-- FALLBACK_CONTENT -->
+
+  </div>
+
+  <!-- TAB 2: Deep dives -->
+  <div class="tab-content" id="tab-deep">
+<div class="dd-section-label">Safety &amp; Policy</div>
+<div class="dd-card" data-sources="importai"><div class="dd-top"><div class="dd-title"><a href="https://importai.substack.com/p/import-ai-477-in-which-i-tell-the" target="_blank">Import AI 477: Jack Clark tells the IMF the singularity has begun</a></div><span class="dd-src importai">Import AI</span></div><div class="dd-body"><p>Import AI 477 is the text of the Per Jacobsson lecture Jack Clark gave at the IMF meeting in Bangkok on October 17. His thesis: 2026 brought convincing evidence that AI is starting to do <strong>frontier science</strong>, sometimes autonomously, and that the singularity Vernor Vinge described in 1993 has begun. He says he&#x27;ll expand on the stakes and risks in coming issues.</p><p>The evidence is a mix of examples and metrics. AI systems have proposed solutions to open maths problems (Navier-Stokes, the Jacobian Conjecture, several Erdos problems), designed viruses and drug candidates now in trials, and operated lab equipment remotely. Humanity&#x27;s Last Exam went from 8% in January 2025 to 67.7% for Claude Opus 5.5, and FrontierMath from 2% to 94%.</p><p>The sharpest anecdote is <strong>TheoPhysEval</strong>: 50 unpublished theoretical-physics problems written by physicists. Models scored in the high eighties, but GPT-6-Astra insisted the expert answers were wrong, and on review the experts found subtle errors in their own calculations. Corrected, Astra reached 98% (49/50). Clark frames this as the teacher becoming the student, and as a test of creativity, the last capability needed to automate AI research itself.</p><p>On economics, he argues the key change is cheap, instantly copyable researchers: in place of roughly 10 million human scientists, imagine a billion virtual ones supervised by humans. Anthropic&#x27;s own modelling suggests US GDP could reach $44 trillion by 2030 under fast-diffusion assumptions. The prescription is to build the next layer of infrastructure (robotic labs, scientific equipment, a faster path from discovery to clinic and factory) the way compute and power were built.</p><p>The second half is about restraint. Clark calls for strict human oversight of AI-driven biology, deliberate decisions about how much oversight AI-driven AI research needs (&#x27;otherwise we could lose control&#x27;), likely new rules, and choices about how much of AI-made science humans need to understand. He closes asking for &#x27;unusual and serious rules&#x27; for the technology and the companies building it, and pacing its development.</p><p><a href="https://importai.substack.com/p/import-ai-477-in-which-i-tell-the" target="_blank">Read the full Import AI post →</a></p></div></div>
+
+  </div>
+
+</div>
+
+<script>
+function switchTab(name, el) {
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  clearFilters();
+}
+
+function filterSource(src, el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  if (wasActive) { showAll(); return; }
+  el.classList.add('active');
+  const activeTab = document.querySelector('.tab-content.active');
+  activeTab.querySelectorAll('.story, .dd-card').forEach(item => {
+    const sources = (item.dataset.sources || '').split(' ');
+    item.style.display = sources.includes(src) ? '' : 'none';
+  });
+  activeTab.querySelectorAll('.category-section').forEach(section => {
+    const visible = Array.from(section.querySelectorAll('.story'))
+      .some(s => s.style.display !== 'none');
+    section.style.display = visible ? '' : 'none';
+  });
+}
+
+function showAll() {
+  document.querySelectorAll('.story, .dd-card, .category-section').forEach(el => {
+    el.style.display = '';
+  });
+}
+
+function clearFilters() {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  showAll();
+}
+</script>
+</body>
+</html>
