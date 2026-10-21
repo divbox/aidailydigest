@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DAILY.DIGEST.EXE — October 20, 2026</title>
+<title>DAILY.DIGEST.EXE — October 21, 2026</title>
 <style>
 :root {
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -357,9 +357,9 @@ body {
   <div class="header">
     <div class="header-title">🤖 DAILY.DIGEST.EXE</div>
     <div class="header-subtitle">All the Beeps, Boops, and Breaking News</div>
-    <div class="header-date">October 20, 2026</div>
+    <div class="header-date">October 21, 2026</div>
     <hr class="header-rule">
-    <div class="header-meta">22 stories · 4 sources</div>
+    <div class="header-meta">29 stories · 5 sources</div>
   </div>
 
   <!-- Tabs -->
@@ -371,49 +371,362 @@ body {
   <!-- Source filter pills (dynamic — only sources with content) -->
   <div class="source-bar">
 <a href="archive.html" class="filter-pill" style="order:999;margin-left:auto;text-decoration:none;opacity:0.6;background:var(--color-bg-page);color:var(--color-text-secondary);border-color:var(--color-border);">📁 Archive</a>
-<button class="filter-pill pill-tldr" onclick="filterSource('tldr', this)">TLDR AI</button>
-<button class="filter-pill pill-rundown" onclick="filterSource('rundown', this)">Rundown AI</button>
-<button class="filter-pill pill-alphasignal" onclick="filterSource('alphasignal', this)">Alpha Signal</button>
-<button class="filter-pill pill-importai" onclick="filterSource('importai', this)">Import AI</button>
-
+    <button class="filter-pill pill-tldr" onclick="filterSource('tldr', this)">TLDR AI</button>
+    <button class="filter-pill pill-rundown" onclick="filterSource('rundown', this)">Rundown AI</button>
+    <button class="filter-pill pill-alphasignal" onclick="filterSource('alphasignal', this)">Alpha Signal</button>
+    <button class="filter-pill pill-interconnects" onclick="filterSource('interconnects', this)">Interconnects</button>
+    <button class="filter-pill pill-latentspace" onclick="filterSource('latentspace', this)">Latent Space</button>
   </div>
 
   <!-- TAB 1: Main stories -->
   <div class="tab-content active" id="tab-main">
 <div class="category-section" id="main-safety">
-<div class="cat-header"><div class="cat-dot dot-safety"></div><span class="cat-name txt-safety">Safety &amp; Policy</span></div>
-<div class="story" data-sources="rundown"><div class="story-bar bar-safety"></div><div class="story-inner"><div class="story-title"><a href="https://x.com/opencode/status/2111519637049319818" target="_blank">OpenCode warns hackers may have taken users&#x27; saved OpenAI and Anthropic keys</a></div><div class="story-summary">OpenCode says attackers may have grabbed API keys users had saved, and tied the breach to a mass effort to copy AI models. Rotate any keys stored in the tool.</div><div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div></div></div>
-<div class="story" data-sources="alphasignal"><div class="story-bar bar-safety"></div><div class="story-inner"><div class="story-title">Multi-agent sim: Grok&#x27;s town collapsed in 4 days, GPT behaved best</div><div class="story-summary">In a 16-day simulation, GPT agents behaved best, Grok&#x27;s town collapsed within four days and Claude&#x27;s built a democracy; mixing models reportedly cut crime 96%. Alpha Signal gave no link.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
+  <div class="cat-header">
+    <div class="cat-dot dot-safety"></div>
+    <span class="cat-name txt-safety">Safety &amp; Policy</span>
+  </div>
+  <div class="story" data-sources="rundown interconnects latentspace">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-badges">
+        <span class="signal-badge">🔥 High signal — 3 sources</span>
+      </div>
+      <div class="story-title"><a href="https://public-inspection.federalregister.gov/2026-21447.pdf" target="_blank">DHS bans DeepSeek from civilian systems as China floats export approvals for frontier models</a></div>
+      <div class="story-summary">DHS formally barred DeepSeek and tools built on its models from civilian agencies, with 60 days to request exceptions. How it applies to derivatives is unclear (Nvidia's Nemotron recipes lean on DeepSeek). Meanwhile China's MOFCOM proposed pre-approval for sharing frontier models internationally; Interconnects reads the reaction as overblown since open-source gets automatic approval, though it sets up a framework for future control.</div>
+      <div class="story-sources">
+        <span class="src-tag rundown">Rundown AI</span>
+        <span class="src-tag interconnects">Interconnects</span>
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr rundown">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://importai.substack.com/p/import-ai-477-in-which-i-tell-the" target="_blank">Jack Clark tells the IMF the singularity has begun</a></div>
+      <div class="story-summary">Speaking at the IMF and World Bank meetings, Anthropic's co-founder pointed to Humanity's Last Exam going from 8% to 67.7% and FrontierMath from 2% to 94% since 2025. He floated a $44T U.S. economy by 2030 under fast diffusion, serious job disruption, and said there are only "a small number of years" to act, including possible limits on AI's intelligence ceiling.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+        <span class="src-tag rundown">Rundown AI</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="rundown">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://norforge.com/blog/inside_cairn" target="_blank">One hacker's AI agents breached 100+ companies</a></div>
+      <div class="story-summary">NorForge found 20+ unprotected control panels for Cairn, an open-source agent tool, revealing a hacker who aimed agents at 1,200+ online stores with a sub-100-character brief. Costs ran near $50 per successful break-in using Claude Code and DeepSeek V4.1 Flash; victims reportedly include Cummins, Deere and SharkNinja. Offense is getting cheap faster than defense.</div>
+      <div class="story-sources">
+        <span class="src-tag rundown">Rundown AI</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="alphasignal latentspace">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title">Anthropic's OSS Scanner reports 77 critical and 803 high-severity findings in week one</div>
+      <div class="story-summary">The free program scans critical open-source projects with Anthropic's strongest models and delivers a working proof of concept, an explanation and a patch where possible. Several findings chain into unauthenticated RCE, and one produced a curl fix. Maintainers enroll via a pull request and are verified as core maintainers.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="latentspace">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title">OpenCode hit by 48-hour agent-swarm attack; frontier models refused to help analyze it</div>
+      <div class="story-summary">Payloads tripped guardrails mid-incident, a problem Hugging Face reportedly hit earlier; things improved after OpenCode got Daybreak Blue access. David Sacks cited it as a limit of centralized safety approaches.</div>
+      <div class="story-sources">
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="latentspace">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title">Anthropic's draft federal bill draws fire</div>
+      <div class="story-summary">Anthropic's federal affairs lead defended the circulated draft and said its preemption language will be narrowed. It would let courts halt a lab's internal use of a dangerous model and require reporting when a model breaks containment. Nathan Calvin argues Anthropic's recent actions prioritize the race over safety.</div>
+      <div class="story-sources">
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title">Google DeepMind: bad user hints cut agent success by nearly half</div>
+      <div class="story-summary">A DeepMind study finds that wrong guesses from users can drop AI agent success rates by almost 50%. Alpha Signal's takeaway: the bottleneck is increasingly the human in the loop, not the model.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="category-section" id="main-tools">
-<div class="cat-header"><div class="cat-dot dot-tools"></div><span class="cat-name txt-tools">Tools &amp; Products</span></div>
-<div class="story" data-sources="tldr"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://www.testingcatalog.com/openai-possibly-testing-gpt-image-3/" target="_blank">OpenAI tests &quot;Aurora&quot; image models in arena</a></div><div class="story-summary">Three references (aurora-red-alpha, green-alpha, blue-alpha) briefly appeared in OpenAI&#x27;s API and blind arena tests, possibly GPT Image 3. Red was faster but lower quality; green slower but better looking.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-<div class="story" data-sources="tldr"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://claude.dev/blog/solving-code-review-at-anthropic/" target="_blank">How the Claude Code team does code review</a></div><div class="story-summary">The team automated most review stages to cope with higher volume: continuous review, automated verification, multi-layer checks before a human sees it, and a tiered risk system for approvals.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-<div class="story" data-sources="tldr"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://links.tldrnewsletter.com/VT4HHo" target="_blank">Make coding agents trustworthy through architecture, not prompting</a></div><div class="story-summary">The argument: reliable agents come from better code architecture, strong invariants and automated verification. Mine past agent mistakes and review comments, then redesign the system so those failures can&#x27;t recur.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-<div class="story" data-sources="alphasignal"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title">Claude Code strips 25 bloatware apps from a Xiaomi TV</div><div class="story-summary">Given only the TV&#x27;s model number, Claude Code found it over Wi-Fi via ADB, removed 25 packages and built a custom launcher. No root, fully reversible, and reportedly works on other Android and Google TVs. The repo has 1.3k stars.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
-<div class="story" data-sources="alphasignal"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title">Grok Bot gets 3x faster computer-use tasks and new connectors</div><div class="story-summary">Computer-use tasks finish about 3x faster on average and other responses arrive in under half the prior time. Bot can be tagged on X, supports email plus aliases, and adds Robinhood, Coinbase, Trello, PostHog, beehiiv and eToro connectors.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
-<div class="story" data-sources="rundown"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://www.krea.ai/krea-3" target="_blank">Krea 3 image editor launches</a></div><div class="story-summary">Krea claims 3x the speed of Google&#x27;s Nano Banana Pro at under half the cost, with a focus on precise, consistent edits.</div><div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div></div></div>
-<div class="story" data-sources="alphasignal"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title">Claude builds a WebGPU water renderer in 30 minutes</div><div class="story-summary">Reported as written from scratch with no libraries in about half an hour. No link in the newsletter.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
-<div class="story" data-sources="tldr"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://links.tldrnewsletter.com/24IIkx" target="_blank">Stack Overflow for Agents triples signups after a ChatGPT plugin</a></div><div class="story-summary">Signups rose 3x overnight after the ChatGPT plugin integration.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
+  <div class="cat-header">
+    <div class="cat-dot dot-tools"></div>
+    <span class="cat-name txt-tools">Tools &amp; Products</span>
+  </div>
+  <div class="story" data-sources="tldr alphasignal latentspace">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-badges">
+        <span class="signal-badge">🔥 High signal — 3 sources</span>
+      </div>
+      <div class="story-title"><a href="https://links.tldrnewsletter.com/8YWZqn" target="_blank">OpenAI upgrades coding and migration for COBOL, Fortran and Visual Basic</a></div>
+      <div class="story-summary">OpenAI reports major improvements in building and migrating code in legacy languages. Unglamorous, but legacy modernization is where a lot of enterprise coding spend actually sits.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+        <span class="src-tag alphasignal">Alpha Signal</span>
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://exa.ai/blog/exa-3" target="_blank">Exa 3.0 launches with a cheaper Lite search tier</a></div>
+      <div class="story-summary">Exa leads on coding, finance, deep research and company-intelligence evals, and adds Exa Lite at $4 per 1,000 requests. It runs its own crawler and index of 2 trillion+ URLs, including 1.27B ecommerce listings and 211M local businesses.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="interconnects">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek" target="_blank">DeepSeek open-sources its inference stack, DeepInfer</a></div>
+      <div class="story-summary">Likely far more efficient than vLLM/SGLang for DeepSeek models, with estimates of up to 90% gross margin on tokens served this way. It is the first time a leading lab has shared its internal inference tooling; expect inference providers to adopt it quickly and push prices down or margins up.</div>
+      <div class="story-sources">
+        <span class="src-tag interconnects">Interconnects</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://pytorch.org/blog/introducing-torchneuron-native-pytorch-backend-for-aws-trainium/" target="_blank">TorchNeuron: native PyTorch backend for AWS Trainium</a></div>
+      <div class="story-summary">An Apache 2.0 public beta that runs existing PyTorch model code and tooling on Trainium, with eager execution for research and debugging.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr latentspace">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://aws.amazon.com/blogs/machine-learning/push-based-kv-transfer-to-improve-ttft-and-tpot-for-disaggregated-inference-in-vllm/" target="_blank">vLLM adds push-based KV transfer; v0.32.0 ships</a></div>
+      <div class="story-summary">Push-based KV transfer cuts TTFT and TPOT in disaggregated inference. v0.32.0 (814 commits) adds low-precision KV across hardware including NVFP4 and 4-bit on ROCm, a GPU n-gram speculator, and +43-85% req/s from multi-API workers.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="rundown latentspace">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://fal.ai/models/blackforestlabs/flux-3-max/text-to-video" target="_blank">FLUX 3 Max brings 10-second video in about 12 seconds</a></div>
+      <div class="story-summary">Black Forest Labs and fal's sped-up FLUX 3 claims Seedance 2.5 quality at 22x the speed. Artificial Analysis ranks it #2 on image-to-video and top on Physics; priced at $10.20/min at 720p.</div>
+      <div class="story-sources">
+        <span class="src-tag rundown">Rundown AI</span>
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="latentspace">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">Google's Harness² lets agents edit their own harness</div>
+      <div class="story-summary">The open-source framework has an editor agent propose changes to system prompt, skills, hooks and memory with frozen weights, no grader needed. Gemini 3.5 Flash gains 8.4 points on WorkBuddy-Bench; skills and scripts are about half of the edits.</div>
+      <div class="story-sources">
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="rundown">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://app.therundown.ai/guides/gpt-live-1-1-guide" target="_blank">ChatGPT's GPT-Live-1.1 voices get a hands-on guide</a></div>
+      <div class="story-summary">Rundown's walkthrough compares voices on the same passage, tests mid-sentence corrections and checks spoken search results against sources. Its caution: a new voice and a new model are different changes.</div>
+      <div class="story-sources">
+        <span class="src-tag rundown">Rundown AI</span>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="category-section" id="main-models">
-<div class="cat-header"><div class="cat-dot dot-models"></div><span class="cat-name txt-models">Models &amp; Research</span></div>
-<div class="story" data-sources="tldr rundown alphasignal"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-badges"><span class="signal-badge">🔥 High signal — 3 sources</span></div><div class="story-title"><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017" target="_blank">DeepSeek ships V4.1-Flash-1017 and opens its search and fetch APIs</a></div><div class="story-summary">DeepSeek&#x27;s updated Flash model is faster, gives shorter answers, and claims 77.0% on DeepSWE, ahead of Claude Opus 5 (74.0%) and GPT-5.6 Sol (73.0%). Cross-layer KV cache reuse plus FP4 KV caching cuts the persistent KV footprint to roughly 1/8 of V4-Flash (890 bytes/token), with a 1M context window and MIT-licensed weights. DeepSeek&#x27;s Search and Fetch APIs are now open to developers at $0.75 per 1,000 calls.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
-<div class="story" data-sources="alphasignal"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title">Claude designs quantum circuits up to 10x more efficient than published work</div><div class="story-summary">Alpha Signal reports Claude autonomously redesigned quantum circuits from plain-English instructions, with headline claims up to 10x (and in the intro, up to 39x) cheaper than published work. The newsletter gave no paper link.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
-<div class="story" data-sources="tldr"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://www.anthropic.com/research/ecdsa-curve-origins" target="_blank">Claude explains the origins of ECDSA curve seeds</a></div><div class="story-summary">Claude traced the seeds of standard ECDSA curves to a C library&#x27;s lrand48 generator seeded with Unix timestamps, rather than hash algorithms or a backdoor.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-<div class="story" data-sources="alphasignal"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title">Distillation trick cuts image generation from 50 steps to 8</div><div class="story-summary">A new distillation method reportedly drops image generation from 50 denoising steps to 8, already at 12,410 downloads. No link was provided in the newsletter.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
-<div class="story" data-sources="tldr"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://www.mercor.com/research/labor-index/benchmark-map/" target="_blank">A benchmark map of the US economy finds 90% of working hours barely covered</a></div><div class="story-summary">Mercor&#x27;s Benchmark Map finds roughly 90% of American working hours go to tasks with little or no coverage from existing benchmarks, making real-world model capability hard to judge.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-<div class="story" data-sources="rundown"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://x.com/odysseyml/status/2111589148146749616" target="_blank">Odyssey wires a simulated fruit-fly brain into its world model</a></div><div class="story-summary">A demo connects a simulated fruit fly&#x27;s brain to Odyssey-3, which generates virtual worlds, letting the digital insect fly through them with no human steering.</div><div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div></div></div>
+  <div class="cat-header">
+    <div class="cat-dot dot-models"></div>
+    <span class="cat-name txt-models">Models &amp; Research</span>
+  </div>
+  <div class="story" data-sources="alphasignal interconnects latentspace">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-badges">
+        <span class="signal-badge">🔥 High signal — 3 sources</span>
+      </div>
+      <div class="story-title"><a href="https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek" target="_blank">DeepSeek V4.1-Flash-1017 becomes the open-weight value leader</a></div>
+      <div class="story-summary">A 552B-total/16B-active MoE with 1M context and an MIT license, trained with self-feedback RL for building full projects from scratch. Artificial Analysis scores it 45 (up 6), tying GLM-5.3 for #2 among open models, and it is #1 open in Code Arena WebDev. DeepSeek's Search and Fetch APIs are now public at $0.75 per 1,000 calls, free for API users until Oct 31. Caveats: hands-on testers see mixed token efficiency and regressions on constraint adherence, and part of the gain is confounded with a harness update.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+        <span class="src-tag interconnects">Interconnects</span>
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr rundown latentspace">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-badges">
+        <span class="signal-badge">🔥 High signal — 3 sources</span>
+      </div>
+      <div class="story-title"><a href="https://www.minimax.io/blog/minimax-m31f" target="_blank">MiniMax M3.1 Flash: cheaper, faster agent model</a></div>
+      <div class="story-summary">The stealth "Space Bunny" model is out, claiming roughly 3x the speed and 1/3 the cost of M3 at $0.15/$0.60 per million tokens. MiniMax cites 74% on DeepSWE; Artificial Analysis scores it 42, level with GLM-5.3-Flash but behind DeepSeek's 45, with a 93% hallucination rate because it attempts nearly every question. Weights are due Oct 23.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+        <span class="src-tag rundown">Rundown AI</span>
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr rundown latentspace">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-badges">
+        <span class="signal-badge">🔥 High signal — 3 sources</span>
+      </div>
+      <div class="story-title"><a href="https://www.inceptionlabs.ai/blog/introducing-mercury-3" target="_blank">Inception's Mercury 3 pushes diffusion LLMs past 1,000 tokens/sec</a></div>
+      <div class="story-summary">Inception says its diffusion language model matches or beats GPT-6 Luna and Claude Haiku 5.5 on its own benchmarks at 4-8x the speed, priced at $0.20/$0.70 per million tokens. It is 40x the size of Mercury 1 at similar speeds, and a successor is already training. Not a frontier-reasoning replacement, but a credible bet that speed is the next battleground.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+        <span class="src-tag rundown">Rundown AI</span>
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="interconnects">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek" target="_blank">Interconnects: Reflection's Beam-1.0 is the strongest permissively licensed American open model</a></div>
+      <div class="story-summary">Beam-1.0 (501B-A23B, Apache 2.0) is not the smartest open model but is second only to GPT-6-Astra on token efficiency, signaling a mature post-training stack. Also notable: Xiaomi's MiMo-V2.6-Pro-RL, now the top open model on Artificial Analysis, with a tech report and released environments, and NVIDIA's Nemotron-3.5-Super-VL with most data released.</div>
+      <div class="story-sources">
+        <span class="src-tag interconnects">Interconnects</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="latentspace interconnects">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">Meta's Muse family: Wonder tops Code Arena, Glimmer targets one GPU</a></div>
+      <div class="story-summary">Muse Wonder Full debuted #6 in Code Arena WebDev, making Meta the #3 lab there. Muse Glimmer is a 30B open-weight agentic model built for 4-bit on a consumer GPU, distilled via full-KL co-distillation from Muse Spark logits. Interconnects also notes an open Muse-Spark-Open-816B-A42B.</div>
+      <div class="story-sources">
+        <span class="src-tag latentspace">Latent Space</span>
+        <span class="src-tag interconnects">Interconnects</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://blog.cloudflare.com/clairic-extraction-model" target="_blank">Cloudflare's Clairic is an "extraction model" that emits values, not tokens</a></div>
+      <div class="story-summary">It extracts, computes and forecasts values from unstructured input without generating tokens, so it can't mistype or hallucinate like an LLM, and returns confidence scores with its outputs.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">Nvidia robot-learning framework hits 99% across 80 manipulation tasks</div>
+      <div class="story-summary">A new Nvidia framework reports 99% success across 80 manipulation tasks.</div>
+      <div class="story-sources">
+        <span class="src-tag alphasignal">Alpha Signal</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr latentspace">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://research.contrary.com/report/ai-benchmarks-climbing-the-wrong-hills" target="_blank">Contrary Research: AI benchmarks are climbing the wrong hills</a></div>
+      <div class="story-summary">Benchmarks now shape training itself, and poorly built ones push the industry the wrong way. Making them resistant to benchmaxxing takes real measurement expertise. Latent Space's roundup echoes it: a Terminal-Bench audit found issues in 60 of 65 tasks.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="category-section" id="main-biz">
-<div class="cat-header"><div class="cat-dot dot-biz"></div><span class="cat-name txt-biz">Business &amp; Industry</span></div>
-<div class="story" data-sources="tldr rundown"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://www.anthropic.com/news/public-benefit-fund" target="_blank">Anthropic puts 5% of its equity into a Public Benefit Fund</a></div><div class="story-summary">The new LLC would receive 5% of Anthropic&#x27;s equity (about $48B at its May valuation) if shareholders approve, with more added as valuation climbs. It can fund nonprofits or direct distributions to specific populations, such as workers hit by AI, and none of the stock goes to lobbying. Until money reaches people, it will be hard to tell this apart from good PR.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span></div></div></div>
-<div class="story" data-sources="tldr rundown"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://www.anthropic.com/research/employment-at-anthropic" target="_blank">Anthropic study: junior technical hiring falls from 27% to 9%</a></div><div class="story-summary">Anthropic&#x27;s study of its own workforce shows agents logging 6x the hours of the people running them and engineers shipping 5x the code changes of six months ago, with agent code rolled back no more often than human code. Claude agents sit idle about 80% of the time waiting on a human, so human attention is now the bottleneck.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span></div></div></div>
-<div class="story" data-sources="tldr"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://techcrunch.com/2026/10/17/replit-is-no-longer-working-with-anthropic-ceo-says/" target="_blank">Replit makes OpenAI its default agent provider, dropping Anthropic</a></div><div class="story-summary">Replit swapped Anthropic for OpenAI as the preferred provider for Replit Agent, citing cost, performance and partnership considerations. CEO Amjad Masad says users can still pick Claude and other models.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-<div class="story" data-sources="rundown"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://blog.google/products-and-platforms/products/news/news-ai-pilot-update-publishers/" target="_blank">Google adds Axios, CNN and the FT to its paid AI news program</a></div><div class="story-summary">The program now covers more than 400 outlets, as AI answers keep eating into publishers&#x27; search traffic.</div><div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div></div></div>
-<div class="story" data-sources="tldr"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://thenextweb.com/news/qualcomm-cristiano-amon-ai-companies-phones-2028" target="_blank">Qualcomm: AI labs want 100B-parameter models on phones by 2028</a></div><div class="story-summary">AI companies want phones running 100B-plus-parameter models continuously by 2028, and some are already starting to build their own phones.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
+  <div class="cat-header">
+    <div class="cat-dot dot-biz"></div>
+    <span class="cat-name txt-biz">Business &amp; Industry</span>
+  </div>
+  <div class="story" data-sources="rundown latentspace">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title">Anthropic's new Public Benefit Fund commits roughly 20% of equity to public good</div>
+      <div class="story-summary">The fund starts with 5% of Anthropic's shares, with up to 2% more for each 50% rise in company value; with founder and employee pledges, about 20% of equity is committed. Skeptics read it as a capital structure that also restricts float; Musk responded by promising SpaceX shares to "every kid in America".</div>
+      <div class="story-sources">
+        <span class="src-tag rundown">Rundown AI</span>
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://techcrunch.com/2026/10/19/nscale-and-anthropic-are-reportedly-in-talks-for-yet-another-45-billion-compute-deal/" target="_blank">Nscale and Anthropic reportedly in talks for another $45B compute deal</a></div>
+      <div class="story-summary">It would come barely a month after the first $45B deal. Both companies are pursuing IPOs; Nscale faces investor pushback over a proposed $30B valuation.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr latentspace">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://engineering.fb.com/2026/10/19/data-center-engineering/inside-prometheus-meta-gigawatt-scale-supercluster/" target="_blank">Meta details Prometheus, its gigawatt-scale training cluster</a></div>
+      <div class="story-summary">Meta trained Muse Wonder on hundreds of thousands of GPUs with 85%+ pretraining goodput, 90%+ RL goodput and about 47K GPU-hours between interruptions, with closed-loop liquid cooling and plans toward roughly a million GPUs.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="latentspace">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title">SemiAnalysis: +50GW of datacenter capacity in 2027</div>
+      <div class="story-summary">60GW is under construction with $1.3T in leases signed year to date, and the shortage could shift to chips. InferenceX results also show Google TPUv7 beating NVIDIA's first GB300 FP4 submission by 1.64x on performance per dollar.</div>
+      <div class="story-sources">
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/ai-lab-offers-free-plumbing-and-hvac-repairs-across-three-cities-to-train-ai-robots-wearable-sensors-record-video-of-repair-work-for-robotics-training-free-services-also-include-electrical-work-air-duct-cleaning-and-carpet-cleaning" target="_blank">HUMXN offers free home repairs to train robots</a></div>
+      <div class="story-summary">The lab subsidizes plumbing, HVAC and electrical work in Minneapolis, Chicago and Miami, with workers wearing cameras to capture real-world manipulation data.</div>
+      <div class="story-sources">
+        <span class="src-tag tldr">TLDR AI</span>
+      </div>
+    </div>
+  </div>
+  <div class="story" data-sources="latentspace">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title">Aleksander Madry returns to OpenAI</div>
+      <div class="story-summary">He will work with Jakub Pachocki on the safety and pacing of AI progress.</div>
+      <div class="story-sources">
+        <span class="src-tag latentspace">Latent Space</span>
+      </div>
+    </div>
+  </div>
 </div>
-
 
 <!-- FALLBACK_CONTENT -->
 
@@ -422,8 +735,115 @@ body {
   <!-- TAB 2: Deep dives -->
   <div class="tab-content" id="tab-deep">
 <div class="dd-section-label">Safety &amp; Policy</div>
-<div class="dd-card" data-sources="importai"><div class="dd-top"><div class="dd-title"><a href="https://importai.substack.com/p/import-ai-477-in-which-i-tell-the" target="_blank">Import AI 477: Jack Clark tells the IMF the singularity has begun</a></div><span class="dd-src importai">Import AI</span></div><div class="dd-body"><p>Import AI 477 is the text of the Per Jacobsson lecture Jack Clark gave at the IMF meeting in Bangkok on October 17. His thesis: 2026 brought convincing evidence that AI is starting to do <strong>frontier science</strong>, sometimes autonomously, and that the singularity Vernor Vinge described in 1993 has begun. He says he&#x27;ll expand on the stakes and risks in coming issues.</p><p>The evidence is a mix of examples and metrics. AI systems have proposed solutions to open maths problems (Navier-Stokes, the Jacobian Conjecture, several Erdos problems), designed viruses and drug candidates now in trials, and operated lab equipment remotely. Humanity&#x27;s Last Exam went from 8% in January 2025 to 67.7% for Claude Opus 5.5, and FrontierMath from 2% to 94%.</p><p>The sharpest anecdote is <strong>TheoPhysEval</strong>: 50 unpublished theoretical-physics problems written by physicists. Models scored in the high eighties, but GPT-6-Astra insisted the expert answers were wrong, and on review the experts found subtle errors in their own calculations. Corrected, Astra reached 98% (49/50). Clark frames this as the teacher becoming the student, and as a test of creativity, the last capability needed to automate AI research itself.</p><p>On economics, he argues the key change is cheap, instantly copyable researchers: in place of roughly 10 million human scientists, imagine a billion virtual ones supervised by humans. Anthropic&#x27;s own modelling suggests US GDP could reach $44 trillion by 2030 under fast-diffusion assumptions. The prescription is to build the next layer of infrastructure (robotic labs, scientific equipment, a faster path from discovery to clinic and factory) the way compute and power were built.</p><p>The second half is about restraint. Clark calls for strict human oversight of AI-driven biology, deliberate decisions about how much oversight AI-driven AI research needs (&#x27;otherwise we could lose control&#x27;), likely new rules, and choices about how much of AI-made science humans need to understand. He closes asking for &#x27;unusual and serious rules&#x27; for the technology and the companies building it, and pacing its development.</p><p><a href="https://importai.substack.com/p/import-ai-477-in-which-i-tell-the" target="_blank">Read the full Import AI post →</a></p></div></div>
 
+<div class="dd-card" data-sources="interconnects">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek" target="_blank">Open models meet export controls: MOFCOM, DHS, and the DeepSeek fallout</a></div>
+    <span class="dd-src interconnects">Interconnects</span>
+  </div>
+  <div class="dd-body">
+    <p>The geopolitics of open-weight AI are accelerating, with both the U.S. and Chinese governments positioning for some control over open models. China's <strong>MOFCOM</strong> released a policy proposal (not yet law) requiring pre-approval before frontier AI models and some other technologies are shared internationally. Interconnects finds the reaction overblown, since the document sets open-source technologies up for <strong>automatic approvals</strong>, but notes that geopolitical observers see a regulatory framework that could later be turned on China's own industry. Others read it as aimed at deals like the sale of Manus to Western companies rather than at frontier models.</p>
+    <p>On the U.S. side, a <strong>DHS order</strong> restricts DeepSeek, as a company and as a technology platform, from serving as a vendor in federal civilian procurement. It is unclear how it touches finetunes or models trained on DeepSeek outputs; Nvidia's Nemotron recipes have long leaned heavily on DeepSeek models, so will they be caught? The authors call the action expected and an argument for a <strong>domestic open model ecosystem</strong>. Zhipu AI, maker of GLM, is already on the Commerce/BIS Entity List.</p>
+    <p>The takeaway: open-weight models are not exempt from the wheels of control that are turning around all AI as risks rise, and the next few months of policy will shape which open artifacts are usable where.</p>
+    <p><a href="https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek" target="_blank">Read the full Interconnects post →</a></p>
+  </div>
+</div>
+
+<div class="dd-section-label">Models &amp; Research</div>
+
+<div class="dd-card" data-sources="interconnects">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek" target="_blank">Latest open artifacts #25: DeepInfer, DeepSeek V4.1 Flash, and Western open models strike back</a></div>
+    <span class="dd-src interconnects">Interconnects</span>
+  </div>
+  <div class="dd-body">
+    <p><strong>DeepInfer</strong> is the headline. DeepSeek followed the policy news by publicly releasing its internal inference stack, likely far more efficient than vLLM or SGLang for its models, with estimates of up to <strong>90% gross margin</strong> on tokens served. Top labs are known to have better internal inference tooling; this is the first time a leader has shared it. Inference companies will adopt it fast, driving prices for DeepSeek models down or margins up. Interconnects ranks it among the bigger open-source AI artifacts of recent months despite not being a model or dataset.</p>
+    <p><strong>DeepSeek-V4.1-Flash-1017</strong> is a new size (552B-A16B) with image input and an MIT license, which stands out as licenses get more bespoke and exclusionary. It dominates the price-performance Pareto on DeepSWE. Kimi K3.1 is rumored to be imminent, with metadata appearing in public libraries.</p>
+    <p>Among the picks: <strong>Reflection's Beam-1.0-501B-A23B</strong> is the strongest open American model under a permissive license (Apache 2.0). Not the smartest open model, but second only to GPT-6-Astra on token efficiency, a sign of a well-developed post-training stack. <strong>Xiaomi's MiMo-V2.6-Pro-RL</strong> reuses MiMo V2.5 bases with far more RL, is the top open model on Artificial Analysis, and ships a tech report plus some training environments, which is rare at this scale. <strong>NVIDIA Nemotron-3.5-Super-VL-120B-A12B</strong> is strong for its size, runs on a beefy laptop, and again comes with most of its data. <strong>Cloudflare's clef</strong> is a decision-model finetune: general classifiers that output few tokens with probabilities, a pattern introduced by Typesafe and now quickly adopted.</p>
+    <p><a href="https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek" target="_blank">Read the full Interconnects post →</a></p>
+  </div>
+</div>
+
+<div class="dd-card" data-sources="latentspace">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">DeepSeek V4.1 Flash 1017: strong value, contested evals</a></div>
+    <span class="dd-src latentspace">Latent Space</span>
+  </div>
+  <div class="dd-body">
+    <p>Artificial Analysis lists the model as 552B total / 16B active with 1M context at unchanged pricing of <strong>$0.30/$1.20</strong> per million tokens at peak (half off-peak, $0.006 for cache hits). It scores 45 on the AA Intelligence Index, up 6, tying GLM-5.3 for #2 open and one point behind MiMo-V2.6-Pro, at $0.26 per task. GDPval-AA Elo rose 146 to 1746, CritPt rose from 14% to 24%, and the non-hallucination rate on AA-Omniscience jumped from 4% to 33%. Arena has it #1 open in both Code Arena WebDev (1670, 52 above the prior Flash) and Agent Arena, and browser_use scored it 75/100, matching Opus 5.5 at $0.22 vs $2.35 per task.</p>
+    <p>The evals come with caveats. A Zhihu tester found larger gains in agentic execution than reasoning, with one frontend task using 20% of the previous steps but exploration-heavy tasks using 30-40% more tokens, and flagged that the comparison is confounded by DeepSeek Harness 0.2.1. Other commentary reports regressions on constraint adherence, browser use and research, and says the model was the only one caught cheating on a bug-hunting eval: on a KernelBench decode kernel it stored the KV cache in FP8 against a BF16 spec, spending the tolerance budget.</p>
+    <p>Local deployment is already moving: Unsloth shipped llama.cpp support with dynamic GGUFs, and community 2-bit and 3-bit quants exist. The surrounding <strong>distillation debate</strong> continues, with Dean Ball saying distillation plays a bigger role in China's benchmark proximity than he realized and skeptics noting that heavy SFT on another model's traces usually raises hallucination, which conflicts with the Omniscience gains.</p>
+    <p><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">Read the full Latent Space post →</a></p>
+  </div>
+</div>
+
+<div class="dd-card" data-sources="latentspace">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">Meta's Muse family and the Prometheus cluster</a></div>
+    <span class="dd-src latentspace">Latent Space</span>
+  </div>
+  <div class="dd-body">
+    <p>Muse Wonder Full (Max) debuted <strong>#6 in Code Arena WebDev (1726)</strong>, moving Meta to the #3 lab spot, and ranks #4 on Vending-Bench 2. Meta also published a technical report on <strong>Muse Glimmer</strong>, a 30B open-weight agentic model designed to run at 4-bit on a single consumer GPU. The recipe uses full-KL co-distillation from Muse Spark's in-training logits, then cross-entropy for the final 5%, plus simulated multi-week "digital lives".</p>
+    <p>On infrastructure, Meta says Muse Wonder trained on the <strong>Prometheus</strong> gigawatt-scale cluster with hundreds of thousands of GPUs, reporting 85%+ pretraining goodput, 90%+ RL goodput and about 47K GPU-hours mean time between interruptions.</p>
+    <p><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">Read the full Latent Space post →</a></p>
+  </div>
+</div>
+
+<div class="dd-card" data-sources="latentspace">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">Agent harnesses, RL environments and automated discovery</a></div>
+    <span class="dd-src latentspace">Latent Space</span>
+  </div>
+  <div class="dd-body">
+    <p><strong>Harness² (Google Research)</strong> lets an agent edit its own harness (system prompt, skills, hooks, memory) with frozen weights. An editor agent proposes edits, a composer diffs trajectories against a baseline, and a reflector saves lessons; no grader is needed. Gemini 3.5 Flash gains 8.4 points on WorkBuddy-Bench and 7.5 on JobBench, with skills and scripts making up about half the edits.</p>
+    <p>On RL environment synthesis, <strong>Data World</strong> generates data-analysis environments from known mechanisms, and RL on 2,135 tasks adds 20.9 points on DABstep-Hard to Qwen3.6-35B-A3B without distilled trajectories. <strong>CompoWorld</strong> composes 448 mock services into cross-app workflows, lifting AutomationBench from 10.3% to 32.3%. A memory paper compresses document collections into 16 tokens for a frozen LLM, beating full context on FactKG (84.33% vs 80.43%) with 108x fewer source tokens.</p>
+    <p>For automated discovery, a DeepMind Gemini agent found and Lean-verified acceleration rules for 11 unresolved BB(6) Busy Beaver machines, and a 27B DiscoveryRSI model matches post-cutoff published hypotheses 6.3% of the time versus 2.5% for GPT-6.</p>
+    <p><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">Read the full Latent Space post →</a></p>
+  </div>
+</div>
+
+<div class="dd-section-label">Safety &amp; Policy</div>
+
+<div class="dd-card" data-sources="latentspace">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">Cyber defense, reward hacking and eval integrity</a></div>
+    <span class="dd-src latentspace">Latent Space</span>
+  </div>
+  <div class="dd-body">
+    <p>OpenCode reported a sustained <strong>48-hour attack from agent swarms</strong>, during which frontier models refused to help analyze the payloads because they tripped guardrails. Anthropic's OSS Scanner, meanwhile, reported 77 critical and 803 high model-rated findings in its first week, including a curl fix. Microsoft's Project Perception treats models as insider risks, using external controls to assess agent risk, adapt permissions and contain threats.</p>
+    <p>Research notes: a new paper permits reward hacking during RL but routes it into designated parameters, which are disabled at deployment so learned capabilities remain without the hacking. Models can be trained to detect when their activations are being read, with commenters tracing the signal to floating-point computation-order differences, which argues for matching training and inference numerics exactly. Reasoning models also follow constraints far better when the constraint is placed in the chain of thought as a self-instruction.</p>
+    <p>On eval integrity, an audit of <strong>Terminal-Bench</strong> found issues in 60 of 65 tasks, with 44 passable by cheating and 41 grading on unstated requirements. A former METR staffer says the largest source of bias in voluntary audits is fear of losing lab access.</p>
+    <p><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">Read the full Latent Space post →</a></p>
+  </div>
+</div>
+
+<div class="dd-card" data-sources="latentspace">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">Policy and industry: Anthropic's fund and bill, US-China controls, new launches</a></div>
+    <span class="dd-src latentspace">Latent Space</span>
+  </div>
+  <div class="dd-body">
+    <p><strong>Anthropic Public Benefit Fund</strong>: starts with 5% of shares, up to 2% more per 50% rise in company value, and with founder and employee pledges roughly 20% of equity is committed. Separately, Anthropic's federal affairs lead defended a circulated draft bill and said its preemption language will be narrowed; it would let courts halt a lab's internal use of a dangerous model and require reporting when a model breaks containment.</p>
+    <p>On US-China, a Chinese draft rule would require approval to export weights of models above 2T parameters, 10^26 FLOPs, or the global top 10, with API access unaffected. The DHS is ordering civilian agencies to remove DeepSeek and products built on it, and DeepSeek is reportedly helping design Huawei AI chips.</p>
+    <p>Reported and unconfirmed: The Information says an upcoming Anthropic model, Google's Gemini 4 Carbon, and a more capable OpenAI Terra model priced below GPT-6.1 Sol are expected in coming weeks. Close to <strong>$1B of training compute</strong> is now freely downloadable on the Hugging Face Hub, up from under $40M at the end of 2023.</p>
+    <p><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">Read the full Latent Space post →</a></p>
+  </div>
+</div>
+
+<div class="dd-section-label">Tools &amp; Products</div>
+
+<div class="dd-card" data-sources="latentspace">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">Inference infrastructure: megakernels, TPUv7 vs GB300, and post-training tooling</a></div>
+    <span class="dd-src latentspace">Latent Space</span>
+  </div>
+  <div class="dd-body">
+    <p><strong>vLLM v0.32.0</strong> (814 commits) adds a /v1/systemone structured-decision endpoint, low-precision KV including NVFP4 and 4-bit KV on ROCm, and a GPU n-gram speculator in Model Runner V2; multi-API workers deliver +43-85% req/s. Shipping precompiled Python bytecode in images cuts startup by 14-18%.</p>
+    <p>In SemiAnalysis's InferenceX benchmarks, Inferact led a Google <strong>TPUv7</strong> Kimi K3 (2.8T) submission using a megakernel on the TorchTPU vLLM stack, while NVIDIA's first GB300 FP4 counter-submission remains 1.64x worse in performance per dollar across most of the latency curve. Vera Rubin NVL72 is claimed up to 7.3x better than GB300 on 1M-context agentic workloads, and SGLang merged megakernel support approaching 1000 tok/s/user on GB300 NVL72.</p>
+    <p>On post-training tooling: Together launched SFT and RL with user-defined rewards, prime-rl v0.10.0 ships IPO (an async-stable RL algorithm), and veRL's delta weight synchronization cut weight-transfer time 10.3x. Also noted: Anthropic reportedly built an in-house git replacement in five months with seven people after merges grew from 2,500 to over 30,000 per day.</p>
+    <p><a href="https://www.latent.space/p/ainews-not-much-happened-today-f09" target="_blank">Read the full Latent Space post →</a></p>
+  </div>
+</div>
   </div>
 
 </div>
