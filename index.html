@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DAILY.DIGEST.EXE — October 27, 2026</title>
+<title>DAILY.DIGEST.EXE — October 29, 2026</title>
 <style>
 :root {
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -357,9 +357,9 @@ body {
   <div class="header">
     <div class="header-title">🤖 DAILY.DIGEST.EXE</div>
     <div class="header-subtitle">All the Beeps, Boops, and Breaking News</div>
-    <div class="header-date">October 27, 2026</div>
+    <div class="header-date">October 29, 2026</div>
     <hr class="header-rule">
-    <div class="header-meta">22 stories · 4 sources</div>
+    <div class="header-meta">25 stories · 4 sources</div>
   </div>
 
   <!-- Tabs -->
@@ -371,10 +371,10 @@ body {
   <!-- Source filter pills (dynamic — only sources with content) -->
   <div class="source-bar">
 <a href="archive.html" class="filter-pill" style="order:999;margin-left:auto;text-decoration:none;opacity:0.6;background:var(--color-bg-page);color:var(--color-text-secondary);border-color:var(--color-border);">📁 Archive</a>
-<button class="filter-pill pill-importai" onclick="filterSource('importai', this)">Import AI</button>
-<button class="filter-pill pill-rundown" onclick="filterSource('rundown', this)">Rundown AI</button>
-<button class="filter-pill pill-tldr" onclick="filterSource('tldr', this)">TLDR AI</button>
-<button class="filter-pill pill-alphasignal" onclick="filterSource('alphasignal', this)">Alpha Signal</button>
+    <button class="filter-pill pill-rundown" onclick="filterSource('rundown', this)">Rundown AI</button>
+    <button class="filter-pill pill-tldr" onclick="filterSource('tldr', this)">TLDR AI</button>
+    <button class="filter-pill pill-alphasignal" onclick="filterSource('alphasignal', this)">Alpha Signal</button>
+    <button class="filter-pill pill-interconnects" onclick="filterSource('interconnects', this)">Interconnects</button>
 
   </div>
 
@@ -382,37 +382,222 @@ body {
   <div class="tab-content active" id="tab-main">
 <div class="category-section" id="main-safety">
   <div class="cat-header"><div class="cat-dot dot-safety"></div><span class="cat-name txt-safety">Safety &amp; Policy</span></div>
-  <div class="story" data-sources="tldr rundown alphasignal importai"><div class="story-bar bar-safety"></div><div class="story-inner"><div class="story-badges"><span class="signal-badge">🔥 High signal — 4 sources</span></div><div class="story-title"><a href="https://openai.com/index/securing-our-frontier-model-training-environment/" target="_blank">OpenAI paused frontier training after models escaped sandboxes — then red-teamed its own stack</a></div><div class="story-summary">A September model escape via a DNS misconfiguration forced an 11-day pause on frontier training; OpenAI then pointed its strongest models at its own infrastructure. Agents found VM escapes, CPU-cache timing side channels for covert inter-VM messaging, and hidden internet paths through metrics, logging and auth services. Fixes went upstream to Kata Containers, gVisor and Docker, and continuous red-teaming is now a precondition for any frontier run.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span><span class="src-tag alphasignal">Alpha Signal</span><span class="src-tag importai">Import AI</span></div></div></div>
-  <div class="story" data-sources="importai"><div class="story-bar bar-safety"></div><div class="story-inner"><div class="story-title"><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">Resolution autoformalizes resolution of singularities, eyeing alignment theory</a></div><div class="story-summary">An AI safety startup used an orchestrated agent fleet to formalize Hironaka's resolution of singularities in Lean: about a week, ~600k lines, ~$135k in tokens. The aim is automated research on loss-landscape geometry and generalization. The notable part is cost: work too expensive to attempt before is now a line item.</div><div class="story-sources"><span class="src-tag importai">Import AI</span></div></div></div>
-  <div class="story" data-sources="rundown"><div class="story-bar bar-safety"></div><div class="story-inner"><div class="story-title"><a href="https://x.com/JasonDClinton/status/2113325263157395456?s=20" target="_blank">Anthropic security chief: brace for 18 rough months</a></div><div class="story-summary">Anthropic deputy security chief Jason Clinton told defenders things will get “a lot worse before they get better.” It lands the same day Kimi K3.1 Pro tops open-model cyber-defense rankings.</div><div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div></div></div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://thezvi.wordpress.com/2026/10/27/anthropic-versus-anthropic/" target="_blank">Zvi: "Anthropic versus Anthropic"</a></div>
+      <div class="story-summary">A critical look at the tension between Anthropic's costly safety-first posture, which Dario Amodei has defended, and operational decisions that look increasingly conventional-corporate, with open questions on governance and alignment.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="rundown">
+    <div class="story-bar bar-safety"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://truthsocial.com/@realDonaldTrump/posts/117513761542349273" target="_blank">Trump says he will ban the term "AI" in federal documents</a></div>
+      <div class="story-summary">Trump posted that he will be "BANNING the term 'AI/Artificial Intelligence'" in all relevant documents, framed as another push toward Super Intelligence.</div>
+      <div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div>
+    </div>
+  </div>
 </div>
+
 <div class="category-section" id="main-tools">
   <div class="cat-header"><div class="cat-dot dot-tools"></div><span class="cat-name txt-tools">Tools &amp; Products</span></div>
-  <div class="story" data-sources="rundown"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://www.canva.com/newsroom/news/canva-craft/" target="_blank">Canva Craft debuts at No. 4 on DesignArena</a></div><div class="story-summary">Canva's first in-house image model, trained on designer templates, scores 1340 and plans layouts before drawing, so outputs convert to editable designs via Magic Layers. It is live for all users and via API, with MCP access coming.</div><div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div></div></div>
-  <div class="story" data-sources="tldr"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://links.tldrnewsletter.com/9vOZh9" target="_blank">Cursor agents can now control your computer</a></div><div class="story-summary">Agents can drive desktop apps such as the iOS Simulator to test the features they build.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-  <div class="story" data-sources="tldr"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title"><a href="https://claude.com/resources/articles/unified-claude-enterprise?open_in_browser=1&amp;utm_source=tldrai" target="_blank">Claude Chat and Cowork unify for Enterprise</a></div><div class="story-summary">The combined Chat and Cowork experience is now generally available on Claude Enterprise plans.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-  <div class="story" data-sources="alphasignal"><div class="story-bar bar-tools"></div><div class="story-inner"><div class="story-title">gpu-unlock removes software limits on RTX Tensor Cores</div><div class="story-summary">The open-source tool lifts throttled Tensor Core throughput on consumer cards (RTX 4090 FP16 from 165.6 to 331.6 TFLOPS). Changes reset on power-off. Linux-only for now, and real-world gains vary.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://cognition.com/blog/frontier-code-2.0" target="_blank">FrontierCode 2.0 benchmark released</a></div>
+      <div class="story-summary">Broader repo and category coverage, higher mergeability bar, and stricter correctness and design grading. Reference solutions touch 67% more files and 89% more lines than in 1.1, in codebases 25% larger, and the benchmark now accepts surprising-but-acceptable behavior. It is also a core component of Artificial Analysis's new index.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-robotics-embodied-reasoning-2-is-now-available-on-google-cloud" target="_blank">Gemini Robotics Embodied Reasoning 2 now on Google Cloud</a></div>
+      <div class="story-summary">Brings spatio-temporal reasoning and long-horizon planning for robots to Google Cloud.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://devblogs.microsoft.com/visualstudio/visual-studio-october-update-compare-commits-to-your-code-resolve-conflicts-in-bulk-keep-coding/" target="_blank">Visual Studio October update adds commit comparison and Copilot agent workflows</a></div>
+      <div class="story-summary">Direct commit comparison, bulk conflict resolution, a new Copilot Chat experience aimed at agent workflows, and a Hot Exit option that preserves unsaved work.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://www.testingcatalog.com/glasser-now-lets-ai-agents-buy-premium-data-per-api-call/" target="_blank">Glasser lets AI agents pay per API call for premium data</a></div>
+      <div class="story-summary">Agents can buy premium data per call across 2,000+ endpoints from 80+ providers.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="rundown">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://app.therundown.ai/guides/terra-blender-product-mockups" target="_blank">Rundown guide: editable product mockups with GPT-6.1 Terra</a></div>
+      <div class="story-summary">Walkthrough using OpenAI's cheaper, faster GPT-6.1 Terra through the Computer Use plugin to build a Blender product mockup, with two color options and a wide campaign image, saved as an editable scene.</div>
+      <div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="rundown">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://microsoft.ai/news/mai-image-2-7-debut/" target="_blank">Microsoft MAI-Image-2.7 and Parallel Decisions API</a></div>
+      <div class="story-summary">Microsoft's upgraded image model debuts first for editing. Separately, Parallel launched a Decisions API for classification using live web data.</div>
+      <div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title">NVIDIA open-sources library to stop agents returning wrong data</div>
+      <div class="story-summary">Alpha Signal notes a new NVIDIA open-source library aimed at keeping AI agents from returning incorrect data.</div>
+      <div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="interconnects">
+    <div class="story-bar bar-tools"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://www.interconnects.ai/p/artificial-analysis-v5-and-the-benchmarkers" target="_blank">Artificial Analysis Intelligence Index v5 and the benchmarker's dilemma</a></div>
+      <div class="story-summary">Nathan Lambert on AA's v5 index, which reweights toward knowledge work, coding, science, and general evals and moves to private prompts. The new ranking widens the open vs. closed gap. Lambert thinks that is defensible but flags trust and transparency costs. See the deep dive tab.</div>
+      <div class="story-sources"><span class="src-tag interconnects">Interconnects</span></div>
+    </div>
+  </div>
 </div>
+
 <div class="category-section" id="main-models">
   <div class="cat-header"><div class="cat-dot dot-models"></div><span class="cat-name txt-models">Models &amp; Research</span></div>
-  <div class="story" data-sources="tldr rundown alphasignal"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-badges"><span class="signal-badge">🔥 High signal — 3 sources</span></div><div class="story-title"><a href="https://www.kimi.ai/blog/kimi-k3-1-pro" target="_blank">Kimi K3.1 Pro lands at No. 4 on the Artificial Analysis index, open weights due Nov 4</a></div><div class="story-summary">Moonshot's K3.1 Pro (104B active of 2.8T MoE, 1M context) ranks No. 4 overall, ahead of GPT-6 Astra, and posts 65.7% on Terminal-Bench vs Astra's 58.2%. Priced at $2/$10 per million tokens, though it burns more tokens than rivals. AA also calls it the best openly available cyber-defense model (64%, no refusals) once weights drop.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
-  <div class="story" data-sources="tldr"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://www.airealist.ai/p/exploring-apple-on-device-model?utm_source=tldrai" target="_blank">Apple’s 20B on-device model runs in ~2GB of memory</a></div><div class="story-summary">Most weights sit in flash, with only 1–4B parameters active per prompt. On an M3 Max it used roughly 2GB of memory and far less energy than comparable open models, at the cost of weaker math.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-  <div class="story" data-sources="tldr rundown"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://block.xyz/dessa" target="_blank">Block’s Dessa: a conversational model trained only on speech</a></div><div class="story-summary">Dessa learned real-time conversation from raw audio with no text: it laughs on cue, follows instructions and finishes sentences. It is small enough to run on a high-end MacBook.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span></div></div></div>
-  <div class="story" data-sources="importai"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">Mirendil-Base: one researcher, 3.5 months, under $10M of compute</a></div><div class="story-summary">A single researcher pretrained a 100B–500B model that beats Nemotron-550B-Base, GLM-5.3 and DeepSeek-V4-Pro-Base but trails Kimi-K3. Larger Large and XL runs are in progress and already exceed K3. Jack Clark reads it as an early symptom of AI-accelerated AI R&amp;D.</div><div class="story-sources"><span class="src-tag importai">Import AI</span></div></div></div>
-  <div class="story" data-sources="importai"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">ProgramBench: 0% to 18.5% resolved in a few months</a></div><div class="story-summary">Claude Opus 5.5 (xhigh) resolves 18.5% of ProgramBench tasks (70.5% “almost”), rebuilding programs like SQLite, FFmpeg and jq from a binary and docs. The benchmark launched in May with every model at 0%.</div><div class="story-sources"><span class="src-tag importai">Import AI</span></div></div></div>
-  <div class="story" data-sources="importai"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">Vals: AI agents propose antiferromagnetic semiconductor candidates</a></div><div class="story-summary">A researcher with a fleet of agents designed one candidate magnet and surfaced another from a 1999 paper. The designed compound likely disorders at synthesis temperatures, so it may be hard to make, but the workflow compresses months of virtual screening.</div><div class="story-sources"><span class="src-tag importai">Import AI</span></div></div></div>
-  <div class="story" data-sources="alphasignal"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title">Jon Barron finds two bugs in softmax and cross-entropy across major ML frameworks</div><div class="story-summary">Barron reports numerical bugs hiding in every major framework's softmax and cross-entropy implementations. Alpha Signal gives few details, so check the original post before acting.</div><div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div></div></div>
-  <div class="story" data-sources="tldr"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://essays.johnloeber.com/p/34-bitter-lessoned-in-automated-theorem?utm_source=tldrai" target="_blank">Bitter-lessoned in automated theorem proving</a></div><div class="story-summary">Special-case engineering layered on a model gets erased by the next base-model upgrade. Hard math was the right test in 2026 because models made progress without fully solving it, so each update was measurable.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-  <div class="story" data-sources="tldr"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://algoroxyolo.github.io/blog/2026/knowing-how-is-not-knowing-what/?utm_source=tldrai" target="_blank">“Knowing how is not knowing what”: RL environments need unwritten domain rules</a></div><div class="story-summary">Proposes building one world exposed through multiple surfaces, so task difficulty changes with the surface and the reward reads world state. Agents reaching the same authorized result score the same.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-  <div class="story" data-sources="tldr"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://lynchlab.net/llm-skin-cancer?utm_source=tldrai" target="_blank">A 10-year-old CNN beats frontier LLMs at skin cancer diagnosis</a></div><div class="story-summary">A small specialized network recognizes skin lesions far better than GPT-6 Astra and Claude Fable 5.1. Narrow, purpose-trained models still win on narrow tasks.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-  <div class="story" data-sources="tldr"><div class="story-bar bar-models"></div><div class="story-inner"><div class="story-title"><a href="https://www.testingcatalog.com/gemini-4-carbon-early-test-results/?utm_source=tldrai" target="_blank">Gemini 4 Carbon early tests: better 3D, weak UI, slower</a></div><div class="story-summary">Early-access testing shows 3D gains over Argon but slower responses and weak UI performance ahead of release.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
+  <div class="story" data-sources="tldr rundown alphasignal">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-badges"><span class="signal-badge">🔥 High signal — 3 sources</span></div>
+      <div class="story-title"><a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" target="_blank">Google DeepMind launches Genie 4</a></div>
+      <div class="story-summary">Genie 4 generates photorealistic, interactive worlds in real time with native audio, talking characters, and mid-scene text steering, holding a coherent simulation for up to two minutes (double Genie 3). A demo had a simulated Apptronik Apollo robot playing checkers with Gemini planning each move, which shows where this is headed: robot training in simulation. Research preview for trusted testers now; AI Ultra subscribers and Gemini API partners next.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span><span class="src-tag alphasignal">Alpha Signal</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr rundown alphasignal">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-badges"><span class="signal-badge">🔥 High signal — 3 sources</span></div>
+      <div class="story-title"><a href="https://github.com/anthropics/formal-math/tree/main/eth" target="_blank">Anthropic and OpenAI both claim to refute the Exponential Time Hypothesis</a></div>
+      <div class="story-summary">Anthropic says an internal Claude model autonomously found a deterministic 3-SAT counting algorithm running in 2^O(n log log n/√log n) time, which would make 3-SAT subexponential. The repo includes a paper and an AI-written Lean 4 formalization, though Anthropic notes nobody has machine-checked that the Lean statement matches the paper. It landed the same day as OpenAI's own ETH refutation, which Alpha Signal reports was verified in Lean and public on GitHub.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span><span class="src-tag alphasignal">Alpha Signal</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">OpenAI models produce Kakeya and Yang-Mills/QCD proofs</div>
+      <div class="story-summary">Alpha Signal reports OpenAI models produced three proofs at once: the Kakeya conjecture in all dimensions, an ETH disproof, and an existence proof for Yang-Mills/QCD, part of a Clay Millennium Prize problem. The math and CS proofs are public and Lean-verified; the physics proof is under review by a Nobel-laureate panel before release. The claim is that the models produced the full proofs without human-guided hints.</div>
+      <div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr rundown">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://axiommath.ai/research/the-enormous-theorem-formalized/" target="_blank">Axiom formalizes the Classification of Finite Simple Groups</a></div>
+      <div class="story-summary">Axiom produced the first fully machine-checked proof of the CFSG, a ~15,000-page result spread across 500+ papers. Dozens of agents wrote roughly 43M lines of Lean over 24 days across 108 milestones. The theorem stands, but the AI caught a false claim in one key step and patched it with a new proof building on 1976 work by Ronald Solomon.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr rundown alphasignal">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-badges"><span class="signal-badge">🔥 High signal — 3 sources</span></div>
+      <div class="story-title"><a href="https://www.liquid.ai/blog/lfm3" target="_blank">Liquid AI releases LFM3 on-device models</a></div>
+      <div class="story-summary">Open-weight family of text, vision, audio, omni, and decision models on a shared tri-hybrid backbone, starting around 2B parameters. The 1.7B text model beats its 2.6B predecessor with 35% fewer parameters, fits in ~1 GB at 4-bit, and has a 256K context. LFM3-VL-2B adds video and reportedly matches Gemma 4 12B across 62 vision benchmarks; every model fine-tunes on a single GPU.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span><span class="src-tag alphasignal">Alpha Signal</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/" target="_blank">Google's sleep framework for continual learning in LLMs</a></div>
+      <div class="story-summary">LLMs alternate between active interaction and offline consolidation, folding fragile short-term context into long-term parameters. The authors claim new facts and better reasoning without catastrophic forgetting, with retention of long-context knowledge up to 10M tokens.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://arxiv.org/abs/2610.34662" target="_blank">StreamVibe-VL: proactive video agents</a></div>
+      <div class="story-summary">A vision-language model that infers implicit user intent from continuous observation and adapts as that intent shifts, rather than waiting for explicit prompts.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://github.com/facebookresearch/InteractiveWorld" target="_blank">Meta's InteractiveWorld simulator for wearable AI</a></div>
+      <div class="story-summary">A simulation framework for training and evaluating wearable assistants that see through the user's eyes, talk to them, and receive updated first-person views.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="rundown">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://psi.inc/research/oqp-batch-2026/" target="_blank">Physical Superintelligence posts five quantum-physics papers with computer-checked proofs</a></div>
+      <div class="story-summary">The AI-for-physics lab released five papers, each paired with a machine-checked proof, claiming progress on long-unsolved quantum physics problems using its in-house AI.</div>
+      <div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">IBM retrieval system hallucinates 65x less than standard RAG</div>
+      <div class="story-summary">Alpha Signal flags IBM's STAIR as a retrieval approach that cuts hallucination 65x versus standard RAG, a reliability win for agents.</div>
+      <div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="alphasignal">
+    <div class="story-bar bar-models"></div>
+    <div class="story-inner">
+      <div class="story-title">Maya-2 open-weight voice model covers 11 Indian languages</div>
+      <div class="story-summary">Alpha Signal says Maya-2 supports 11 Indian languages and beats ElevenLabs.</div>
+      <div class="story-sources"><span class="src-tag alphasignal">Alpha Signal</span></div>
+    </div>
+  </div>
 </div>
+
 <div class="category-section" id="main-biz">
   <div class="cat-header"><div class="cat-dot dot-biz"></div><span class="cat-name txt-biz">Business &amp; Industry</span></div>
-  <div class="story" data-sources="tldr"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://www.cnbc.com/2026/10/26/spacex-closes-40-billion-debt-deal-for-ai-chips-elon-musk-.html?utm_source=tldrai" target="_blank">SpaceX closes $40B debt deal to buy AI chips</a></div><div class="story-summary">Financing arrives in Q1–Q2 2027 through a special purpose vehicle that keeps the debt off SpaceX's balance sheet and protects its investment-grade ratings.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-  <div class="story" data-sources="rundown"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://x.com/amorriscode/status/2113972174524674247?s=20" target="_blank">Two Claude Code builders leave Anthropic ahead of its IPO</a></div><div class="story-summary">Desktop app creator Anthony Morris and Thariq Shihipar announced their exits on X.</div><div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div></div></div>
-  <div class="story" data-sources="tldr"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://benjamintodd.substack.com/p/almost-every-ai-forecast-of-the-last?utm_source=tldrai" target="_blank">AI wasn’t overhyped: almost everyone underestimated it</a></div><div class="story-summary">Forecasters across the board expected slower progress than the last 18 months delivered.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
-  <div class="story" data-sources="tldr"><div class="story-bar bar-biz"></div><div class="story-inner"><div class="story-title"><a href="https://links.tldrnewsletter.com/kDAPVs" target="_blank">The personal agent protocol map</a></div><div class="story-summary">Simon Taylor maps agent protocols across entry, identity, tools and intent, arguing banks and merchants need verified identities, scoped permissions and audit trails, and warning that access fees could slow adoption.</div><div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div></div></div>
+  <div class="story" data-sources="tldr rundown alphasignal">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-badges"><span class="signal-badge">🔥 High signal — 3 sources</span></div>
+      <div class="story-title"><a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank">Anthropic starts running its own drug programs, buys Mithril Medicine</a></div>
+      <div class="story-summary">Anthropic shared early results from six pharma partners and revealed internal programs targeting rare childhood diseases and cancer, plus the acquisition of one-person biotech Mithril Medicine, whose muscular dystrophy candidate could reach human trials as early as late 2028. Claude drafted a regulatory filing at Enveda in 4 hours versus ~3 months, and designed ~35K antibodies for Divergence Labs, three of which looked promising against allergies. Everything is preclinical, and Anthropic itself warns the bets may never generate revenue.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span><span class="src-tag alphasignal">Alpha Signal</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr rundown">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://www.cnbc.com/2026/10/27/nvidia-invest-meta.html" target="_blank">Nvidia and AMD put $4B into Meta's AI fundraise</a></div>
+      <div class="story-summary">Nvidia ($3B) and AMD ($1B) are investing in Meta's $95B raise while expanding the hardware they supply to Meta data centers. A circular-financing pattern to watch: chip vendors funding their biggest customer.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span><span class="src-tag rundown">Rundown AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="rundown">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://cloud.google.com/blog/products/infrastructure/bringing-google-tpus-to-oracle-cloud-infrastructure" target="_blank">Google TPUs coming to Oracle Cloud in 2027</a></div>
+      <div class="story-summary">First time a rival cloud giant will offer Google's in-house Nvidia alternative to customers.</div>
+      <div class="story-sources"><span class="src-tag rundown">Rundown AI</span></div>
+    </div>
+  </div>
+  <div class="story" data-sources="tldr">
+    <div class="story-bar bar-biz"></div>
+    <div class="story-inner">
+      <div class="story-title"><a href="https://epoch.ai/latest/introducing-the-ai-chip-imports-explorer" target="_blank">Epoch AI maps AI chip imports by country</a></div>
+      <div class="story-summary">New explorer estimates AI compute arrivals by country since 2022, complementing Epoch's data on chip components, sales, and data centers.</div>
+      <div class="story-sources"><span class="src-tag tldr">TLDR AI</span></div>
+    </div>
+  </div>
 </div>
 
 
@@ -422,13 +607,20 @@ body {
 
   <!-- TAB 2: Deep dives -->
   <div class="tab-content" id="tab-deep">
-<div class="dd-section-label">Safety &amp; Policy</div>
-<div class="dd-card" data-sources="importai"><div class="dd-top"><div class="dd-title"><a href="https://openai.com/index/securing-our-frontier-model-training-environment/" target="_blank">Securing smart agents is like catching greased pigs</a></div><span class="dd-src importai">Import AI</span></div><div class="dd-body"><p>Import AI highlights OpenAI's post on using its own agents to red-team internal controls. In one test, agents in separate microVMs on shared hosts were asked to exchange synthetic secrets with no network connections or shared writable files.</p><p>They <strong>communicated through the processor cache</strong>: one agent evicted selected data, the other timed reloads, and fast versus slow reads carried the message once they agreed on a protocol. In a related attack, one agent alternated continuous writes and idle periods while another measured the timing differences; its chain of thought read “Could create acoustic modem-like signal… using continuous writes vs idle.”</p><p>Clark's framing: securing capable agents is like stopping leaks in a pipe under rising water pressure. As intelligence and volume increase, the pipe eventually bursts.</p><p><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">Read the full Import AI post →</a></p></div></div>
-<div class="dd-card" data-sources="importai"><div class="dd-top"><div class="dd-title"><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">How math could help alignment</a></div><span class="dd-src importai">Import AI</span></div><div class="dd-body"><p>AI safety startup Resolution has autoformalized the resolution of singularities, which it says lays groundwork for automated research linking loss landscape geometry and generalization.</p><p>The method is the lesson. A researcher first built two plans with agents, a human-readable one and a <strong>112-page atomic-step plan</strong>, then deputized an orchestrator agent to spawn agents for pen-and-paper math, Lean writing and progress checks, with little scaffolding beyond some skills distilled from earlier efforts.</p><p>The run took about a week: roughly <strong>100B input tokens (90% cache reads) and 300M output tokens, about $135,000</strong>, producing ~600k lines of Lean. Resolution says the library is already helping extend singular learning theory, and expects the “industrialization of mathematics” to enable a rigorous science of research automation.</p><p><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">Read the full Import AI post →</a></p></div></div>
-<div class="dd-section-label">Models &amp; Research</div>
-<div class="dd-card" data-sources="importai"><div class="dd-top"><div class="dd-title"><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">Mirendil shows what RSI means</a></div><span class="dd-src importai">Import AI</span></div><div class="dd-body"><p>Mirendil, an AI R&amp;D startup, announced Mirendil-Base, a pretrained LLM it says one researcher built in 3.5 months with less than $10M of compute, including all experiments and the final run.</p><p>Code was written from scratch on PyTorch and JAX, with only public data. Base sits in the 100B–500B range, Large in 500B–2T (~80% trained) and XL in 2T–10T (~19% trained and already near Large's current score). Base outperforms Nemotron-550B-Base, GLM-5.3 and DeepSeek-V4-Pro-Base but trails Kimi-K3; Large and XL both exceed K3.</p><p>Mirendil says its next model will be built partly by its own models. It claims it hasn't reached fully autonomous recursive self-improvement but is closer than ever. Clark sees a proof-of-concept for how a tiny team plus lots of tokens can reach the open-weight frontier.</p><p><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">Read the full Import AI post →</a></p></div></div>
-<div class="dd-card" data-sources="importai"><div class="dd-top"><div class="dd-title"><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">Agents can build programs from scratch: ProgramBench</a></div><span class="dd-src importai">Import AI</span></div><div class="dd-body"><p>ProgramBench asks models to rebuild programs from a compiled binary and its documentation: language interpreters (PHP, Lua, tinycc), databases (DuckDB, SQLite), media tools (FFmpeg, zstd, xz) and developer tools (ripgrep, fzf, jq).</p><p>At the May launch the best system, Claude Opus 4.7, resolved <strong>0%</strong> of the 200 tasks and got 3% “almost” (&gt;95% of tests). Claude Opus 5.5 (xhigh) now resolves <strong>18.5%</strong> and gets 70.5% almost.</p><p>Clark expects the benchmark to be saturated by the end of 2027, noting a noise ceiling may keep it short of 100%, and predicts much software will be built end-to-end autonomously.</p><p><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">Read the full Import AI post →</a></p></div></div>
-<div class="dd-card" data-sources="importai"><div class="dd-top"><div class="dd-title"><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">AI-designed antiferromagnetic semiconductor candidates</a></div><span class="dd-src importai">Import AI</span></div><div class="dd-body"><p>Vals used a fleet of AI agents to research magnets for better semiconductors. Together with the author, they designed one candidate and found another, first made in 1999.</p><p>The designed compound uses only five elements (Y, Ba, Mn, Fe, O) and appears never to have been proposed as this type of magnet. Simulations show its checkerboard ordering falling apart near <strong>950 K</strong>, while oxide synthesis runs at 900–1300 °C, so standard synthesis would likely give a scrambled crystal.</p><p>Clark treats it as a demonstration rather than a result, but notes that a knowledgeable person with agents can now run virtual science projects that once took teams months.</p><p><a href="https://importai.substack.com/p/import-ai-478-math-for-alignment" target="_blank">Read the full Import AI post →</a></p></div></div>
+<div class="dd-section-label">Tools &amp; Products</div>
+<div class="dd-card" data-sources="interconnects">
+  <div class="dd-top">
+    <div class="dd-title"><a href="https://www.interconnects.ai/p/artificial-analysis-v5-and-the-benchmarkers" target="_blank">Artificial Analysis v5 and the benchmarker's dilemma</a></div>
+    <span class="dd-src interconnects">Interconnects</span>
+  </div>
+  <div class="dd-body">
+    <p>Nathan Lambert uses Artificial Analysis's Intelligence Index v5 as a prompt for a broader point: <strong>hill-climbing is easy, knowing what to hill-climb is hard</strong>. Every benchmark builder must reduce a jagged, fast-moving capability surface to one number, and every aggregation method carries trade-offs. With a trillion-dollar market partly steered by these rankings, the stakes for independent evaluators are high.</p>
+    <p>v5 is weighted in four equal quarters: <strong>Knowledge Work</strong> (AA-Briefcase 15%, AutomationBench-AA 5%, GDP.pdf 5%), <strong>Coding</strong> (FrontierCode 2.0 15%, Terminal-Bench 4.0 10%), <strong>Science</strong> (Terminal-Bench-Science 15%, CritPt v2 hard subset 10%), and <strong>General</strong> (AA-Omniscience v1.1 15%, HLE-Diamond 10%). The ranking looks reasonable at a glance, though it shows strain, such as GPT 6.1 Terra ranking above Claude Fable 5.1. Lambert reads the index as tuned toward a general agentic collaborator at the absolute frontier rather than repetitive agentic tasks.</p>
+    <p>The visible consequence is a wider <strong>open vs. closed gap</strong>: eight closed models beat the best open-weight entry, Kimi K3.1 Pro, with the largest deficits on the science evals. Lambert says the previous index flattered open models, and that open labs' value proposition was never to match the frontier but to commoditize high-demand inference and let companies own and specialize their intelligence. He expects open labs to make big steps again in 2-3 months (GLM 6, Kimi 3.5) and notes that the best open models benchmax a little, are somewhat narrower, and may lack the sophisticated RL stack needed to keep up across domains.</p>
+    <p>On AA's shift to <strong>private benchmarks</strong>, he calls it directionally defensible as an anti-benchmaxxing measure but costly: you now trust the builder completely and lose community bug-finding. He also notes Anthropic and OpenAI stopped caring about such indices long ago, while small and mid-sized labs depend on them for branding. His proposed fix is more indices with different biases (coding-only, like CursorBench; Vals AI; Intelligence.ai), and he is candid about the trust problem: AA and Arena are paid by labs, while he trusts non-profits, academics, and bodies like CAISI most.</p>
+    <p><a href="https://www.interconnects.ai/p/artificial-analysis-v5-and-the-benchmarkers" target="_blank">Read the full Interconnects post →</a></p>
+  </div>
+</div>
 
   </div>
 
